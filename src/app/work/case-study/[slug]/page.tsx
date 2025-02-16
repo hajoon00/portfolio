@@ -1,0 +1,37 @@
+"use client";
+
+import { caseStudies } from "@/data";
+import dynamic from "next/dynamic";
+import { notFound } from "next/navigation";
+import { useParams } from "next/navigation";
+
+export default function CaseStudyDetail({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  // React.use()를 사용하여 params를 비동기적으로 unwrap
+  const { slug } = useParams();
+
+  // slug에 해당하는 케이스 스터디를 찾기
+  const caseStudy = caseStudies.find((study) => study.slug === slug);
+
+  if (!caseStudy) {
+    console.log("Case study not found for slug:", slug); // 케이스 스터디가 없는 경우 로그 출력
+    return notFound();
+  }
+
+  // 동적으로 케이스 스터디 상세 콘텐츠 로드
+  const ContentComponent = dynamic(
+    () => import(`@/app/content/case-study/${caseStudy.slug}.tsx`),
+    { ssr: false }
+  );
+
+  console.log("Case study found:", caseStudy); // 케이스 스터디가 발견된 경우 로그 출력
+
+  return (
+    <div className="p-6">
+      <ContentComponent />
+    </div>
+  );
+}

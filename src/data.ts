@@ -2,18 +2,30 @@
 export const experiences = [
   {
     id: "exp-01",
-    title: "Frontend Developer at XYZ",
-    company: "XYZ Inc.",
-    year: "2023",
+    slug: "cdr",
+    title: "CDR Associates Internship",
+    company: "CDR Associates",
+    date: "2023",
     description: "Worked on UI components using React and Tailwind CSS.",
     hashtags: ["Frontend", "React", "Tailwind CSS"],
     //imageUrl: "/images/xyz-logo.png", // 예시 이미지 URL
   },
   {
     id: "exp-02",
-    title: "UI/UX Designer at ABC",
+    slug: "k-pensa",
+    title: "Executive Board at K-PEnSA",
     company: "ABC Studio",
-    year: "2022",
+    date: "2022",
+    description: "Led the design system for a mobile app.",
+    hashtags: ["UI/UX", "Design System", "Mobile App"],
+    //imageUrl: "/images/abc-logo.png", // 예시 이미지 URL
+  },
+  {
+    id: "exp-03",
+    slug: "reading-for-youhak",
+    title: "Executive Board at K-PEnSA",
+    company: "ABC Studio",
+    date: "2022",
     description: "Led the design system for a mobile app.",
     hashtags: ["UI/UX", "Design System", "Mobile App"],
     //imageUrl: "/images/abc-logo.png", // 예시 이미지 URL
@@ -23,16 +35,16 @@ export const experiences = [
 export const caseStudies = [
   {
     id: "cs-01",
-    title: "Redesigning the E-commerce Experience",
-    client: "Online Retailer",
-    year: "2023",
+    slug: "hasom",
+    title: "Branding for a Cat",
+    date: "2023",
     description: "Improved conversion rates through better UX/UI.",
   },
   {
     id: "cs-02",
+    slug: "CooKR",
     title: "Branding for a New Tech Startup",
-    client: "Startup X",
-    year: "2022",
+    date: "2022",
     description: "Developed a cohesive brand identity.",
   },
 ];
