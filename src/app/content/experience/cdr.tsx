@@ -12,8 +12,7 @@ const KPensaExperience = () => {
             Overview
           </h2>
           <p className="mt-2 text-2xl font-bold tracking-tight sm:text-2xl">
-            Marketing Chair @K-PEnSA (Korea-PENN Engineers & Scientists
-            Association)
+            Internship at CDR Associates
           </p>
           <dl className="mt-6 divide-y divide-gray-100">
             <div className="px-4 py-6 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">

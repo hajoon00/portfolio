@@ -1,7 +1,11 @@
+"use client";
+
+import Spline from "@splinetool/react-spline";
+
 export default function Home() {
   return (
-    <main className="p-10">
-      <h1 className="text-3xl font-bold">Welcome to Hajoon Park's Portfolio</h1>
+    <main className="w-screen h-screen cursor-pointer">
+      <Spline scene="https://prod.spline.design/d7PSRnEj61SdPRTb/scene.splinecode" />
     </main>
   );
 }
