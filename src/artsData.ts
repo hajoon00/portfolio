@@ -13,16 +13,23 @@ export const arts: Record<
 > = {
   digitalArt: [
     {
-      src: "/arts/DippinDots.gif",
+      src: "/images/arts/DippinDots.gif",
       alt: "Dippin' Dots",
       title: "Dippin' Dots",
       description: "Dippin' Dots",
       link: "https://editor.p5js.org/hajoon00/full/aVsl3x4XF",
     },
+    {
+      src: "/images/arts/Elan_Fullshot.jpg",
+      alt: "Elan_fullshot",
+      title: "Elan Fullshot",
+      description: "MAYA",
+      
+    },
   ],
   handDrawing: [
     {
-      src: "/arts/Desert.png",
+      src: "/images/arts/Desert.png",
       alt: "Desert",
       title: "Desert",
       description: "Desert",

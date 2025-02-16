@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <nav className="bg-transparent fixed w-full z-40 top-0 start-0">
-          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link href="/">
               <span className="self-center text-2xl text-hajoon font-semibold whitespace-nowrap">
                 Hajoon Park
@@ -26,7 +26,7 @@ export default function RootLayout({
             </Link>
 
             <div className="hidden md:flex md:w-auto">
-              <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg md:space-x-8 md:flex-row md:mt-0">
+              <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 md:flex-row md:mt-0">
                 <li>
                   <Link
                     href="/"

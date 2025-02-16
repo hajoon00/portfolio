@@ -28,14 +28,12 @@ export default function ArtPage() {
   }, [modalImage]);
 
   return (
-    <div className="bg-gray-100 min-h-screen pt-8">
+    <div className=" min-h-screen pt-8">
       <section className="max-w-screen-xl mx-auto px-4 py-8 text-center">
-        <h1 className="mb-4 font-bold text-4xl text-gray-800">
-          예술, 또는 낙서
-        </h1>
+        <h1 className="mb-4 font-bold text-4xl text-gray-800">Doodle to Art</h1>
         <p className="text-gray-600 text-lg">
-          때로는 디자인의 규칙을 지키지 않고 싶을 때가 있습니다. 걸작을
-          모방하기도 하며, 저만의 그림을 그리기도 합니다.
+          Sometimes, I don't want to follow the rules of design. I imitate
+          masterpieces or create my own drawings.
         </p>
       </section>
 
@@ -49,7 +47,7 @@ export default function ArtPage() {
                 type="button"
                 className={`px-6 py-2 rounded-full font-medium ${
                   selectedTab === tab
-                    ? "bg-blue-500 text-white"
+                    ? "bg-gray-500 text-white"
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                 }`}
                 onClick={() => setSelectedTab(tab)}
@@ -69,7 +67,7 @@ export default function ArtPage() {
           {arts[selectedTab].map((art, index) => (
             <div
               key={index}
-              className="relative group w-full bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 cursor-pointer transition-transform transform hover:scale-105"
+              className="relative group w-full bg-white shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105"
               onClick={() => setModalImage(art)}
             >
               <img
