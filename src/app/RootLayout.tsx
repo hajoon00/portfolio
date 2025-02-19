@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./globals.css"; // Tailwind 스타일 적용
 import Footer from "./components/footer";
-import GoBackButton from "./components/gobackbutton";
 
 export default function RootLayout({
   children,
