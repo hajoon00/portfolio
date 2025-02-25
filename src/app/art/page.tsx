@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { arts, CategoryKey } from "@/artsData";
+import Image from "next/image";
 
 export default function ArtPage() {
   const [selectedTab, setSelectedTab] = useState<CategoryKey>("digitalArt");
@@ -70,9 +71,11 @@ export default function ArtPage() {
               className="relative group w-full bg-white shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105"
               onClick={() => setModalImage(art)}
             >
-              <img
+              <Image
                 src={art.src}
                 alt={art.alt}
+                width={500}
+                height={300}
                 className="w-full h-80 object-cover"
               />
               <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
@@ -95,10 +98,12 @@ export default function ArtPage() {
               ✕
             </button>
             <div className="overflow-hidden">
-              <img
+              <Image
                 className="object-contain max-h-[80vh] max-w-full"
                 src={modalImage.src}
                 alt={modalImage.alt}
+                width={500}
+                height={300}
               />
             </div>
             <div className="p-4 text-center">

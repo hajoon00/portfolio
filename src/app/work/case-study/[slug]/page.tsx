@@ -11,8 +11,8 @@ interface PageProps {
 }
 
 const Page = ({ params }: PageProps) => {
-  // React.use()를 사용하여 params를 비동기적으로 unwrap
-  const { slug } = useParams();
+  // Use params directly instead of useParams
+  const slug = params.slug; // Use params here
 
   // slug에 해당하는 케이스 스터디를 찾기
   const caseStudy = caseStudies.find((study) => study.slug === slug);

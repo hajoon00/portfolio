@@ -10,8 +10,8 @@ interface PageProps {
 }
 
 const Page = ({ params }: PageProps) => {
-  // React.use()를 사용하여 params를 비동기적으로 unwrap
-  const { slug } = useParams();
+  // Use params directly instead of useParams
+  const slug = params.slug; // Use params here
 
   // slug에 해당하는 경험을 찾기
   const experience = experiences.find((exp) => exp.slug === slug);

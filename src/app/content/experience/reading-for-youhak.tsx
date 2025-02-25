@@ -88,10 +88,10 @@ const ReadingForYouhak: NextPage = () => {
                 1. Content Strategy & Production
               </h3>
               <p className="mt-4 text-lg leading-8 text-gray-400">
-                The founding philosophy of "Reading for Youhak" was to provide
-                easily accessible study abroad information. We chose YouTube as
-                our primary platform, producing over 50 videos that simplified
-                complex admissions topics.
+                The founding philosophy of &quot;Reading for Youhak&quot; was to
+                provide easily accessible study abroad information. We chose
+                YouTube as our primary platform, producing over 50 videos that
+                simplified complex admissions topics.
               </p>
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Image
