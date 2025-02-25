@@ -73,7 +73,7 @@ const KPensaExperience = () => {
             Biweekly Study Session
           </h3>
           <p className="mt-4 text-lg leading-8 text-gray-600">
-            This is the club's main event and has the highest participation
+            This is the club&apos;s main event and has the highest participation
             rate. I hosted biweekly study sessions where students in similar
             majors could help each other and create a space to support their
             academic growth.
@@ -82,15 +82,15 @@ const KPensaExperience = () => {
             The posters were variations of a base template that I created. I
             used Adobe Illustrator and tailored the graphics based on the snacks
             and theme of each session. Special events such as Halloween and
-            Valentine's Day had unique colors, fonts, and other graphic elements
-            that suited the theme.
+            Valentine&apos;s Day had unique colors, fonts, and other graphic
+            elements that suited the theme.
           </p>
           {/* <StudySessionCarousel /> */}
           <h3 className="mt-8 text-lg font-bold text-gray-900">
             Social Events
           </h3>
           <p className="mt-4 text-lg leading-8 text-gray-600">
-            A collection of various attempts that align with the event's
+            A collection of various attempts that align with the event&apos;s
             concept.
           </p>
           {/* <SocialEventsCarousel /> */}
@@ -98,7 +98,7 @@ const KPensaExperience = () => {
             Academic Events
           </h3>
           <p className="mt-4 text-lg leading-8 text-gray-600">
-            A collection of various attempts that align with the event's
+            A collection of various attempts that align with the event&apos;s
             concept.
           </p>
           {/* <AcademicEventsCarousel /> */}

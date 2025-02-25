@@ -5,11 +5,12 @@ import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { useParams } from "next/navigation";
 
-export default function CaseStudyDetail({
-  params,
-}: {
+// Add type for params and use it or remove if not needed
+interface PageProps {
   params: { slug: string };
-}) {
+}
+
+const Page = ({ params }: PageProps) => {
   // React.use()를 사용하여 params를 비동기적으로 unwrap
   const { slug } = useParams();
 
@@ -34,4 +35,6 @@ export default function CaseStudyDetail({
       <ContentComponent />
     </div>
   );
-}
+};
+
+export default Page;

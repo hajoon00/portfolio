@@ -1,11 +1,11 @@
 import { NextPage } from "next";
+import Image from "next/image";
 
 const consultingProcess = [
   {
     step: "Step 1",
     title: "상담",
-    description:
-      "Initial consultation to understand student's goals and background",
+    description: `Initial consultation to understand student's goals and background`,
   },
   {
     step: "Step 2",
@@ -94,15 +94,19 @@ const ReadingForYouhak: NextPage = () => {
                 complex admissions topics.
               </p>
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <img
+                <Image
                   src="/vercel.svg"
                   alt="youtube home"
-                  className="rounded-lg shadow-xl"
+                  width={500}
+                  height={300}
+                  className="rounded-md shadow-md"
                 />
-                <img
+                <Image
                   src="/vercel.svg"
                   alt="youtube videos"
-                  className="rounded-lg shadow-xl"
+                  width={500}
+                  height={300}
+                  className="rounded-md shadow-md"
                 />
               </div>
             </div>
