@@ -7,7 +7,7 @@ const Work = () => {
     <div className="px-6 py-12 sm:px-32 sm:py-16">
       {/* Experience Section */}
       <section className="mt-12">
-        <h2 className="text-2xl font-semibold text-gray-900">Experience</h2>
+        <h2 className="text-2xl font-semibold text-gray-200">Experience</h2>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {experiences.map((exp) => (
             <Link
@@ -37,7 +37,7 @@ const Work = () => {
                   {exp.hashtags.map((hashtag, idx) => (
                     <span
                       key={idx}
-                      className="inline-block text-xs text-gray-300 mr-2"
+                      className="inline-block text-xs text-gray-200 mr-2"
                     >
                       #{hashtag}
                     </span>
@@ -51,7 +51,7 @@ const Work = () => {
 
       {/* Case Study Section */}
       <section className="mt-12">
-        <h2 className="text-2xl font-semibold text-gray-900">Case Study</h2>
+        <h2 className="text-2xl font-semibold text-gray-200">Case Study</h2>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {caseStudies.map((cs) => (
             <Link

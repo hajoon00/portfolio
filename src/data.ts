@@ -3,7 +3,7 @@ export const experiences = [
   {
     id: "exp-01",
     slug: "cdr",
-    title: "CDR Associates Internship",
+    title: "CDR Associates",
     company: "CDR Associates",
     date: "2023",
     description: "Worked on UI components using React and Tailwind CSS.",

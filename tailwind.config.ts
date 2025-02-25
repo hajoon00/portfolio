@@ -11,7 +11,22 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        hajoon: 
+        {
+          200: `#9CB3C9`,
+          500: '#264E73',
+          700: `#0A2743`,
+          900: '#001223',
+        },
       },
+      fontFamily: {
+        freesentation: ['freesentation', 'sans-serif'], // Add your variable font here
+      },
+      maxHeight: {
+        '25': '25%',
+        '50': '50%',
+        '90': '90%',
+      }
     },
   },
   plugins: [],
