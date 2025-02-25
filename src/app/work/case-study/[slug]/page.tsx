@@ -3,7 +3,6 @@
 import { caseStudies } from "@/data";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
-import { useParams } from "next/navigation";
 
 // Add type for params and use it or remove if not needed
 interface PageProps {

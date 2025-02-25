@@ -32,8 +32,8 @@ export default function ArtPage() {
     <div className=" min-h-screen pt-8">
       <section className="max-w-screen-xl mx-auto px-4 py-8 text-center">
         <h1 className="mb-4 font-bold text-4xl text-gray-800">Doodle to Art</h1>
-        <p className="text-gray-600 text-lg">
-          Sometimes, I don't want to follow the rules of design. I imitate
+        <p className="mt-4 text-lg leading-8 text-gray-800">
+          Sometimes, I don&apos;t want to follow the rules of design. I imitate
           masterpieces or create my own drawings.
         </p>
       </section>

@@ -3,7 +3,6 @@
 import { experiences } from "@/data";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
-import { useParams } from "next/navigation";
 
 interface PageProps {
   params: { slug: string };
