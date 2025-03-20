@@ -1,89 +1,114 @@
+"use client";
+
 import Link from "next/link";
-import { experiences, caseStudies } from "@/data";
-import Image from "next/image";
+import { projects, experiences, merchDesigns } from "@/data";
 
-const Work = () => {
+export default function WorkPage() {
   return (
-    <div className="px-6 py-12 sm:px-32 sm:py-16">
-      {/* Experience Section */}
-      <section className="mt-12">
-        <h2 className="text-2xl font-semibold text-gray-200">Experience</h2>
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {experiences.map((exp) => (
-            <Link
-              key={exp.slug}
-              href={`/work/experience/${exp.slug}`}
-              className="group relative block"
-            >
-              {/* Experience Thumbnail */}
-              <div className="relative w-full aspect-[4/3] overflow-hidden">
-                {exp.imageUrl && (
-                  <Image
-                    src={exp.imageUrl}
-                    alt={exp.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-300 group-hover:scale-105"
+    <div className="min-h-screen pt-24 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Experiences Section */}
+        <section>
+          <h2 className="text-2xl  mb-8 text-gray-100">Experiences</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-8">
+            {experiences.map((experience) => (
+              <Link
+                key={experience.slug}
+                href={`/work/experience/${experience.slug}`}
+                className="group"
+              >
+                <div
+                  className="overflow-hidden"
+                  style={{ aspectRatio: "16/10" }}
+                >
+                  <img
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    src={experience.imageUrl}
+                    alt={experience.title}
                   />
-                )}
-              </div>
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-white text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <h3 className="text-lg font-semibold">
-                  {exp.title} ({exp.date})
-                </h3>
-                <p className="mt-2 text-sm px-4">{exp.description}</p>
-                <div className="mt-2">
-                  {exp.hashtags.map((hashtag, idx) => (
-                    <span
-                      key={idx}
-                      className="inline-block text-xs text-gray-200 mr-2"
-                    >
-                      #{hashtag}
-                    </span>
-                  ))}
                 </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+                <div className="mt-4">
+                  <h3 className="text-xl  text-white">{experience.title}</h3>
+                  <p className="mt-1 text-sm text-gray-400">
+                    {experience.date}
+                  </p>
+                  <p className="mt-2 text-gray-500">{experience.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
 
-      {/* Case Study Section */}
-      <section className="mt-12">
-        <h2 className="text-2xl font-semibold text-gray-200">Case Study</h2>
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {caseStudies.map((cs) => (
-            <Link
-              key={cs.slug}
-              href={`/work/case-study/${cs.slug}`}
-              className="group relative block"
-            >
-              {/* Case Study Thumbnail */}
-              <div className="relative w-full aspect-[4/3] overflow-hidden">
-                {cs.imageUrl && (
-                  <Image
-                    src={cs.imageUrl}
-                    alt={cs.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-300 group-hover:scale-105"
+        {/* Personal Projects Section */}
+        <section className="mt-16">
+          <h2 className="text-2xl  mb-8 text-gray-100">Personal Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-8">
+            {projects.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/work/project/${project.slug}`}
+                className="group"
+              >
+                <div
+                  className="overflow-hidden"
+                  style={{ aspectRatio: "16/10" }}
+                >
+                  <img
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    src={project.imageUrl}
+                    alt={project.title}
                   />
-                )}
-              </div>
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-white text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <h3 className="text-lg font-semibold">
-                  {cs.title} ({cs.date})
-                </h3>
-                <p className="mt-2 text-sm px-4">{cs.description}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+                </div>
+                <div className="mt-4">
+                  <h3 className="text-xl  text-white">{project.title}</h3>
+                  <p className="mt-1 text-sm text-gray-400">{project.date}</p>
+                  <p className="mt-2 text-gray-500">{project.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Merch Designs Section */}
+        <section className="mt-16">
+          <h2 className="text-2xl  mb-8 text-gray-100">Merch Designs</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-8">
+            {merchDesigns.map((merch) => (
+              <Link
+                key={merch.slug}
+                href={`/work/merch/${merch.slug}`}
+                className="group"
+              >
+                <div
+                  className="overflow-hidden"
+                  style={{ aspectRatio: "16/10" }}
+                >
+                  <img
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    src={merch.imageUrl}
+                    alt={merch.title}
+                  />
+                </div>
+                <div className="mt-4">
+                  <h3 className="text-xl  text-white">{merch.title}</h3>
+                  <p className="mt-1 text-sm text-gray-400">{merch.date}</p>
+                  <p className="mt-2 text-gray-500">{merch.description}</p>
+                  {/* <div className="mt-4 flex flex-wrap">
+                    {merch.hashtags.map((hashtag, index) => (
+                      <span
+                        key={index}
+                        className="inline-block text-sm font-semibold text-gray-100 mr-2 mb-2"
+                      >
+                        #{hashtag}
+                      </span>
+                    ))}
+                  </div> */}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
-};
-
-export default Work;
+}

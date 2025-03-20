@@ -12,6 +12,7 @@ export default function ArtPage() {
     alt: string;
     title: string;
     description: string;
+    link?: string;
   } | null>(null);
 
   const closeModal = () => setModalImage(null);
@@ -29,92 +30,121 @@ export default function ArtPage() {
   }, [modalImage]);
 
   return (
-    <div className=" min-h-screen pt-8">
-      <section className="max-w-screen-xl mx-auto px-4 py-8 text-center">
-        <h1 className="mb-4 font-bold text-4xl text-gray-800">Doodle to Art</h1>
-        <p className="mt-4 text-lg leading-8 text-gray-800">
-          Sometimes, I don&apos;t want to follow the rules of design. I imitate
-          masterpieces or create my own drawings.
-        </p>
-      </section>
+    <div className="min-h-screen pt-24 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Category Navigation */}
+        <nav className="mb-12">
+          <div className="flex space-x-8">
+            <button
+              onClick={() => setSelectedTab("digitalArt")}
+              className={`text-sm font-medium px-1 pt-1 ${
+                selectedTab === "digitalArt"
+                  ? "text-gray-100 border-b-2 border-gray-100"
+                  : "text-gray-400 hover:text-gray-100"
+              }`}
+            >
+              DIGITAL ART
+            </button>
+            <button
+              onClick={() => setSelectedTab("rendered3d")}
+              className={`text-sm font-medium px-1 pt-1 ${
+                selectedTab === "rendered3d"
+                  ? "text-gray-100 border-b-2 border-gray-100"
+                  : "text-gray-400 hover:text-gray-100"
+              }`}
+            >
+              RENDERED 3D
+            </button>
+            <button
+              onClick={() => setSelectedTab("handDrawing")}
+              className={`text-sm font-medium px-1 pt-1 ${
+                selectedTab === "handDrawing"
+                  ? "text-gray-100 border-b-2 border-gray-100"
+                  : "text-gray-400 hover:text-gray-100"
+              }`}
+            >
+              ORIGINAL HAND DRAWING
+            </button>
 
-      <section className="max-w-screen-lg mx-auto">
-        {/* Tab Buttons */}
-        <div className="flex justify-center space-x-4 py-4">
-          {(["digitalArt", "handDrawing", "copy"] as CategoryKey[]).map(
-            (tab) => (
-              <button
-                key={tab}
-                type="button"
-                className={`px-6 py-2 rounded-full font-medium ${
-                  selectedTab === tab
-                    ? "bg-gray-500 text-white"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                }`}
-                onClick={() => setSelectedTab(tab)}
-              >
-                {tab === "digitalArt"
-                  ? "Digital Art"
-                  : tab === "handDrawing"
-                  ? "Original Hand Drawing"
-                  : "Copy"}
-              </button>
-            )
-          )}
-        </div>
+            <button
+              onClick={() => setSelectedTab("copy")}
+              className={`text-sm font-medium px-1 pt-1 ${
+                selectedTab === "copy"
+                  ? "text-gray-100 border-b-2 border-gray-100"
+                  : "text-gray-400 hover:text-gray-100"
+              }`}
+            >
+              COPY
+            </button>
+          </div>
+        </nav>
 
-        {/* Artworks */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-4">
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {arts[selectedTab].map((art, index) => (
             <div
               key={index}
-              className="relative group w-full bg-white shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105"
+              className="cursor-pointer group"
               onClick={() => setModalImage(art)}
             >
-              <Image
-                src={art.src}
-                alt={art.alt}
-                width={500}
-                height={300}
-                className="w-full h-80 object-cover"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                <h3 className="text-xl font-bold mb-2">{art.title}</h3>
-                <p className="text-sm px-4 text-center">{art.description}</p>
+              <div className="relative bg-neutral-900 w-full aspect-square overflow-hidden">
+                <Image
+                  src={art.src}
+                  alt={art.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white">
+                  <h3 className="text-xl font-bold">{art.title}</h3>
+                  <p className="mt-2 text-center px-6">{art.description}</p>
+                </div>
               </div>
             </div>
           ))}
         </div>
-      </section>
 
-      {/* Modal */}
-      {modalImage && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
-          <div className="relative bg-white rounded-lg shadow-lg max-w-2xl mx-4">
+        {/* Modal */}
+        {modalImage && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 z-50">
             <button
-              className="absolute top-2 right-5 text-gray-500 hover:text-gray-700"
+              className="absolute top-4 right-4 text-white text-2xl"
               onClick={closeModal}
             >
-              ✕
+              ×
             </button>
-            <div className="overflow-hidden">
+            <div className="relative max-w-4xl mx-auto">
               <Image
-                className="object-contain max-h-[80vh] max-w-full"
                 src={modalImage.src}
                 alt={modalImage.alt}
-                width={500}
-                height={300}
+                width={480}
+                height={800}
+                className="rounded-lg h-[60vh] w-auto object-contain"
               />
-            </div>
-            <div className="p-4 text-center">
-              <h3 className="text-2xl font-semibold text-gray-800">
-                {modalImage.title}
-              </h3>
-              <p className="text-gray-600 mt-2">{modalImage.description}</p>
+              <div className="mt-4 text-center">
+                <h3 className="text-xl font-bold text-white">
+                  {modalImage.title}
+                </h3>
+                <p className="text-gray-300 mt-2">{modalImage.description}</p>
+                {selectedTab === "digitalArt" && modalImage.link && (
+                  <a
+                    href={modalImage.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-4"
+                  >
+                    <button
+                      type="button"
+                      className="text-white bg-hajoon-500 hover:bg-hajoon-700 font-medium rounded-lg text-sm px-5 py-2.5"
+                    >
+                      Go to Project
+                    </button>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

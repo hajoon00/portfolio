@@ -26,7 +26,7 @@ const Page = () => {
   console.log("Experience found:", experience); // Log if found
 
   return (
-    <div className="p-6">
+    <div>
       <ContentComponent />
     </div>
   );

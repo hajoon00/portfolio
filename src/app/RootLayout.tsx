@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import "./globals.css";
 import { usePathname } from "next/navigation";
-import "./globals.css"; // Tailwind 스타일 적용
+import Link from "next/link";
 import Footer from "./components/footer";
 
 export default function RootLayout({
@@ -10,62 +10,80 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname(); // 현재 경로 확인
+  const pathname = usePathname();
+
+  const isActive = (path: string) => {
+    if (path === "/" && pathname === "/") return true;
+    if (path !== "/" && pathname.startsWith(path)) return true;
+    return false;
+  };
 
   return (
     <html lang="en">
       <body>
-        {pathname !== "/" && (
-          <nav className="bg-transparent fixed w-full z-40 top-0 start-0">
-            <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
-              <Link href="/">
-                <span className="self-center text-2xl text-hajoon font-semibold whitespace-nowrap">
+        <nav className="fixed top-0 w-full z-50 bg-[#0d0d0d] bg-opacity-85 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between">
+            <div className="flex justify-start h-16">
+              <div className="flex space-x-8">
+                <Link
+                  href="/"
+                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                    isActive("/")
+                      ? "text-gray-100 border-b-2 border-gray-100"
+                      : "text-gray-400 hover:text-gray-100"
+                  }`}
+                >
                   Hajoon Park
-                </span>
-              </Link>
-
-              <div className="hidden md:flex md:w-auto">
-                <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 md:flex-row md:mt-0">
-                  <li>
-                    <Link
-                      href="/"
-                      className="block py-2 px-3 text-hajoon-200 hover:text-hajoon-500"
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/work"
-                      className="block py-2 px-3 text-hajoon-200 hover:text-hajoon-500"
-                    >
-                      Work
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/art"
-                      className="block py-2 px-3 text-hajoon-200 hover:text-hajoon-500"
-                    >
-                      Art
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/resume"
-                      className="block py-2 px-3 text-hajoon-200 hover:text-hajoon-500"
-                    >
-                      Resume
-                    </Link>
-                  </li>
-                </ul>
+                </Link>
               </div>
             </div>
-          </nav>
-        )}
-
-        <div>{children}</div>
-
+            <div className="flex justify-end h-16">
+              <div className="flex space-x-8">
+                <Link
+                  href="/"
+                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                    isActive("/")
+                      ? "text-gray-100 border-b-2 border-gray-100"
+                      : "text-gray-400 hover:text-gray-100"
+                  }`}
+                >
+                  HOME
+                </Link>
+                <Link
+                  href="/work"
+                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                    isActive("/work")
+                      ? "text-gray-100 border-b-2 border-gray-100"
+                      : "text-gray-400 hover:text-gray-100"
+                  }`}
+                >
+                  WORK
+                </Link>
+                <Link
+                  href="/art"
+                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                    isActive("/art")
+                      ? "text-gray-100 border-b-2 border-gray-100"
+                      : "text-gray-400 hover:text-gray-100"
+                  }`}
+                >
+                  ART
+                </Link>
+                <Link
+                  href="/resume"
+                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                    isActive("/resume")
+                      ? "text-gray-100 border-b-2 border-gray-100"
+                      : "text-gray-400 hover:text-gray-100"
+                  }`}
+                >
+                  RESUME
+                </Link>
+              </div>
+            </div>
+          </div>
+        </nav>
+        {children}
         <Footer />
       </body>
     </html>
