@@ -11,8 +11,6 @@ interface ImageStack {
 }
 
 const KPensaExperience = () => {
-  const [selectedStack, setSelectedStack] = useState<string | null>(null);
-
   const pensaData = experiences.find((exp) => exp.slug === "k-pensa");
 
   // Study session images
