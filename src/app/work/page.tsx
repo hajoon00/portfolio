@@ -5,7 +5,7 @@ import { projects, experiences, merchDesigns } from "@/data";
 
 export default function WorkPage() {
   return (
-    <div className="min-h-screen pt-24 pb-12">
+    <div className="min-h-screen pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Experiences Section */}
         <section>

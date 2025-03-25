@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { experiences } from "@/data";
 
 interface ImageStack {
   preview: string;
@@ -11,6 +12,8 @@ interface ImageStack {
 
 const KPensaExperience = () => {
   const [selectedStack, setSelectedStack] = useState<string | null>(null);
+
+  const pensaData = experiences.find((exp) => exp.slug === "k-pensa");
 
   // Study session images
   const studyImages: ImageStack = {
@@ -69,10 +72,19 @@ const KPensaExperience = () => {
           <h2 className="text-base font-semibold leading-7 text-hajoon-500">
             Overview
           </h2>
-          <p className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-2xl">
-            Executive Board at K-PEnSA (Korea-PENN Engineers & Scientists
-            Association)
+          <p className="mt-2 text-2xl font-bold tracking-tight sm:text-2xl">
+            Executive Board at K-PEnSA
           </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {pensaData?.hashtags.map((tag, index) => (
+              <span
+                key={index}
+                className="bg-gray-800 text-hajoon-200 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
           <dl className="mt-6 divide-y divide-gray-700">
             <div className="py-6">
               <dt className="text-sm font-medium leading-6 text-gray-400">
@@ -152,7 +164,7 @@ const KPensaExperience = () => {
           </p>
 
           {/* Image Gallery Section */}
-          <h2 className="text-xl font-bold tracking-tight text-white mb-8">
+          <h2 className="text-xl font-bold tracking-tight text-white mt-8 mb-4">
             Posters
           </h2>
 
@@ -255,7 +267,7 @@ const KPensaExperience = () => {
               </div>
             </div>
           )}
-          <p className="mt-4 text-lg leading-8 text-gray-300">
+          <p className="mt-10 text-lg leading-8 text-gray-300">
             The posters were variations of a base template that I created. I
             used Adobe Illustrator and tailored the graphics based on the snacks
             and theme of each session. Special events such as Halloween and
@@ -311,23 +323,26 @@ const KPensaExperience = () => {
 
           <div className=" py-20 sm:py-16">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="grid grid-cols-2 gap-8">
                 <div className="before-section">
                   <h2 className="text-2xl font-semibold leading-7 text-gray-200 mb-4">
                     Original Website
                   </h2>
-                  <img
-                    src="/images/k-pensa/website/old_website_1.png"
-                    alt="Before Image"
-                    className="w-full h-auto rounded-md shadow-md"
-                  />
                 </div>
-
                 <div className="after-section">
                   <h2 className="text-2xl font-semibold leading-7 text-gray-200 mb-4">
                     Problem
                   </h2>
                 </div>
+                <img
+                  src="/images/k-pensa/website/old_website_1.png"
+                  alt="Before Image"
+                  className="w-full h-auto rounded-md shadow-md"
+                />
+                <div className="after-section">
+                  가독성이 떨어짐. 옛날 사진 배경.
+                </div>
+
                 <div className="before-section">
                   <img
                     src="/images/k-pensa/website/old_website_2.png"
@@ -336,7 +351,7 @@ const KPensaExperience = () => {
                   />
                 </div>
 
-                <div className="after-section"></div>
+                <div className="after-section">ㅇㅇㅇ</div>
                 <div className="before-section">
                   <img
                     src="/images/k-pensa/website/old_website_3.png"
@@ -344,8 +359,8 @@ const KPensaExperience = () => {
                     className="w-full h-auto rounded-md shadow-md"
                   />
                 </div>
+                <div className="after-section">ㅇㅇㅇ</div>
 
-                <div className="after-section"></div>
                 <div className="before-section">
                   <img
                     src="/images/k-pensa/website/old_website_4.png"

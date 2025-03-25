@@ -33,12 +33,12 @@ export const experiences = [
   {
     id: "exp-04",
     slug: "metaphorique",
-    title: "Brand Identity Research Assistant at Metaphorique",
+    title: "Research Assistant at Metaphorique(formerly Sammade)",
     company: "Metaphorique",
     date: "Jan 2020 - Present",
     description: `Assisted in brand identity research, focusing on competitive analysis and market positioning.`,
     hashtags: ["Branding", "Design System", "Content Creation"],
-    imageUrl: "/images/thumbnail/metaphorique-thumbnail.jpg"
+    imageUrl: "/images/thumbnail/Thumbnails-sammade.webp"
   },
 ];
 

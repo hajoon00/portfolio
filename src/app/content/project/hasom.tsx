@@ -16,10 +16,16 @@ const Hasom = () => {
           <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Hasom – A Craft Brand Identity
           </p>
-          <span className="bg-hajoon-900/50 text-hajoon-200 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">
+          <span
+            key={0}
+            className="bg-gray-800 text-hajoon-200 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full"
+          >
             Brand Identity
           </span>
-          <span className="bg-hajoon-900/50 text-hajoon-200 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">
+          <span
+            key={1}
+            className="bg-gray-800 text-hajoon-200 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full"
+          >
             Visual Design
           </span>
 
@@ -33,7 +39,7 @@ const Hasom = () => {
       </section>
 
       {/* Brand Concept Section */}
-      <section className="py-20 sm:py-16">
+      <section className="py-20 sm:py-16 bg-alt-900">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="flex items-center space-x-4">
             <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
@@ -68,11 +74,18 @@ const Hasom = () => {
             web to merchandise.
           </p>
           {/* Add Image component here for logo variations */}
+          <Image
+            className="my-10"
+            src="/images/hasom/Logo-Design.jpg"
+            alt="Logo Design"
+            width={1000}
+            height={1000}
+          />
         </div>
       </section>
 
       {/* Typography & Elements Section */}
-      <section className="py-20 sm:py-16">
+      <section className="py-20 sm:py-16 bg-alt-900">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="flex items-center space-x-4">
             <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
@@ -86,6 +99,13 @@ const Hasom = () => {
             developed to reflect Hasom's quirky movements and preferences.
           </p>
           {/* Add Image component here for typography showcase */}
+          <Image
+            className="my-10"
+            src="/images/hasom/Typography.jpg"
+            alt="Typography"
+            width={1000}
+            height={1000}
+          />
         </div>
       </section>
 
@@ -97,6 +117,13 @@ const Hasom = () => {
               Color Palette & Symbolism
             </h2>
           </div>
+          <Image
+            className="my-10"
+            src="/images/hasom/Color-Palette.jpg"
+            alt="Color Palette"
+            width={1000}
+            height={1000}
+          />
           <p className="mt-4 text-lg leading-8 text-gray-300">
             The brand's core colors—Red (#FF2D46), Pink (#FFDCE1), and Blue
             (#B4DAF9)—were carefully selected to represent different aspects of
@@ -104,11 +131,19 @@ const Hasom = () => {
             quirks, while blue represents Hasom's perspective of the world.
           </p>
           {/* Add Image component here for color palette visualization */}
+
+          <Image
+            className="my-10"
+            src="/images/hasom/Color-Symbol.jpg"
+            alt="Color Symbol"
+            width={1000}
+            height={1000}
+          />
         </div>
       </section>
 
       {/* Brand Application Section */}
-      <section className="py-20 sm:py-16">
+      <section className="py-20 sm:py-16 bg-alt-900">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="flex items-center space-x-4">
             <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
@@ -122,6 +157,34 @@ const Hasom = () => {
             minimal aesthetic that tells the Hasom story.
           </p>
           {/* Add Image component here for brand applications */}
+          <Image
+            className="my-10"
+            src="/images/hasom/Business-Card.jpg"
+            alt="Business Card"
+            width={1000}
+            height={1000}
+          />
+          <Image
+            className="my-10"
+            src="/images/hasom/Pink-Mockup.jpg"
+            alt="Pink Mockup"
+            width={1000}
+            height={1000}
+          />
+          <Image
+            className="my-10"
+            src="/images/hasom/Blue-Mockup.jpg"
+            alt="Blue Mockup"
+            width={1000}
+            height={1000}
+          />
+          <Image
+            className="my-10"
+            src="/images/hasom/Sticker-Mockup.jpg"
+            alt="Blue Mockup Two"
+            width={1000}
+            height={1000}
+          />
         </div>
       </section>
 
@@ -140,7 +203,7 @@ const Hasom = () => {
             integrity across various platforms and applications.
           </p>
           {/* Add Image component here for final showcase */}
-      </div>
+        </div>
       </section>
     </>
   );

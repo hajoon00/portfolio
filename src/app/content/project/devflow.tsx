@@ -1,8 +1,11 @@
 "use client";
 
 import React, { RefObject, useRef } from "react";
+import { projects } from "@/data";
 
 const DevFlow: React.FC = () => {
+  const devflowData = projects.find((proj) => proj.slug === "devflow");
+
   // Create refs for each section with proper typing
   const defineRef = useRef<HTMLDivElement>(null);
   const ideateRef = useRef<HTMLDivElement>(null);
@@ -26,15 +29,25 @@ const DevFlow: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="space-y-6">
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <h2 className="text-base font-semibold leading-7 text-violet-400">
+          <h2 className="text-base font-semibold leading-7 text-hajoon-500">
             Overview
           </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            DevFlow
+          <p className="mt-2 text-2xl font-bold tracking-tight sm:text-2xl">
+            DevFlow: Code Editor Web App
           </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {devflowData?.hashtags.map((tag, index) => (
+              <span
+                key={index}
+                className="bg-gray-800 text-hajoon-200 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
           <span className="bg-violet-900 text-violet-200 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">
             Frontend Development
           </span>
@@ -60,7 +73,7 @@ const DevFlow: React.FC = () => {
           </a>
         </div>
       </section>
-      <section className="py-20 sm:py-16">
+      <section className="py-20 sm:py-16 bg-alt-900">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="flex items-center mb-8 space-x-4">
             <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
@@ -296,10 +309,7 @@ const DevFlow: React.FC = () => {
         </div>
       </section>
 
-      <section
-        ref={designAdjustmentRef}
-        className="bg-neutral-800 py-20 sm:py-16"
-      >
+      <section ref={designAdjustmentRef} className="py-20 sm:py-16 bg-alt-900">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="flex items-center space-x-4">
             <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
@@ -320,7 +330,7 @@ const DevFlow: React.FC = () => {
         </div>
       </section>
 
-      <section ref={aiIntegrationRef} className="bg-neutral-800 py-20 sm:py-16">
+      <section ref={aiIntegrationRef} className=" py-20 sm:py-16 bg-alt-900">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="flex items-center space-x-4">
             <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
@@ -342,7 +352,7 @@ const DevFlow: React.FC = () => {
 
       <section
         ref={futureEnhancementRef}
-        className="bg-neutral-800 py-20 sm:py-16"
+        className=" py-20 sm:py-16 bg-alt-900"
       >
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="flex items-center space-x-4">
@@ -383,7 +393,7 @@ const DevFlow: React.FC = () => {
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

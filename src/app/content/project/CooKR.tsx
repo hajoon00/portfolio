@@ -2,19 +2,31 @@
 "use client";
 
 import React from "react";
+import { projects } from "@/data";
 
-const KPensaExperience = () => {
+const CooKR = () => {
+  const cookrData = projects.find((proj) => proj.slug === "CooKR");
+
   return (
     <div className="space-y-6">
-      <section className="text-white py-24 sm:py-32">
+      <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <h2 className="text-base font-semibold leading-7 text-red-600">
             Overview
           </h2>
           <p className="mt-2 text-2xl font-bold tracking-tight sm:text-2xl">
-            Marketing Chair @K-PEnSA (Korea-PENN Engineers & Scientists
-            Association)
+            CooKR: Korean Recipe App
           </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {cookrData?.hashtags.map((tag, index) => (
+              <span
+                key={index}
+                className="bg-gray-800 text-hajoon-200 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
           <dl className="mt-6 divide-y divide-gray-100">
             <div className="px-4 py-6 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
               <dt className="text-sm font-medium leading-6">My Role</dt>
@@ -50,8 +62,11 @@ const KPensaExperience = () => {
           </dl>
         </div>
       </section>
+      <section className="py-12 sm:py-16 bg-alt-900">
+        {/* Content section */}
+      </section>
     </div>
   );
 };
 
-export default KPensaExperience;
+export default CooKR;
