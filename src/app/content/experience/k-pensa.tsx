@@ -332,9 +332,11 @@ const KPensaExperience = () => {
                     Problem
                   </h2>
                 </div>
-                <img
+                <Image
                   src="/images/k-pensa/website/old_website_1.png"
                   alt="Before Image"
+                  width={400}
+                  height={400}
                   className="w-full h-auto rounded-md shadow-md"
                 />
                 <div className="after-section">
@@ -342,27 +344,33 @@ const KPensaExperience = () => {
                 </div>
 
                 <div className="before-section">
-                  <img
+                  <Image
                     src="/images/k-pensa/website/old_website_2.png"
                     alt="Before Image"
+                    width={400}
+                    height={400}
                     className="w-full h-auto rounded-md shadow-md"
                   />
                 </div>
 
                 <div className="after-section">ㅇㅇㅇ</div>
                 <div className="before-section">
-                  <img
+                  <Image
                     src="/images/k-pensa/website/old_website_3.png"
                     alt="Before Image"
+                    width={400}
+                    height={400}
                     className="w-full h-auto rounded-md shadow-md"
                   />
                 </div>
                 <div className="after-section">ㅇㅇㅇ</div>
 
                 <div className="before-section">
-                  <img
+                  <Image
                     src="/images/k-pensa/website/old_website_4.png"
                     alt="Before Image"
+                    width={400}
+                    height={400}
                     className="w-full h-auto rounded-md shadow-md"
                   />
                 </div>

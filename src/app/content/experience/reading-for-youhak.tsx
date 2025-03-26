@@ -9,7 +9,7 @@ const consultingProcess = [
   {
     step: "Step 1",
     title: "Consultation",
-    description: `Initial consultation to understand student's goals and background`,
+    description: `Initial consultation to understand student&apos;s goals and background`,
   },
   {
     step: "Step 2",
@@ -124,7 +124,7 @@ const ReadingForYouhak: NextPage = () => {
                 1. Content Production
               </h3>
               <p className="mt-4 text-lg leading-8 text-gray-400">
-                The founding philosophy of "Reading for Youhak" was to provide
+                The founding philosophy of &quot;Reading for Youhak&quot; was to provide
                 easily accessible study abroad information. We chose YouTube as
                 our primary platform, producing over 50 videos that simplified
                 complex admissions topics.

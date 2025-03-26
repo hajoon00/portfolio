@@ -31,8 +31,8 @@ const Hasom = () => {
 
           <p className="mt-6 text-lg leading-8 text-gray-300">
             Hasom is a craft brand inspired by the personality of a cat named
-            Hasom—lazy, prickly, yet elegant. The brand's identity revolves
-            around duality, represented by Hasom's pink skin and sky-blue eyes,
+            Hasom—lazy, prickly, yet elegant. The brand&apos;s identity revolves
+            around duality, represented by Hasom&apos;s pink skin and sky-blue eyes,
             which became the foundation of the design system.
           </p>
         </div>
@@ -47,11 +47,11 @@ const Hasom = () => {
             </h2>
           </div>
           <p className="mt-4 text-lg leading-8 text-gray-300">
-            The brand concept was built around translating Hasom's unique
+            The brand concept was built around translating Hasom&apos;s unique
             character into a visual language that emphasizes both playfulness
             and elegance. The color palette represents a dual perspective: pink
             for how we see Hasom, and blue for how Hasom sees the world. This
-            duality became a core element of the brand's identity, influencing
+            duality became a core element of the brand&apos;s identity, influencing
             everything from logo design to packaging.
           </p>
           {/* Add Image component here for mood board */}
@@ -67,7 +67,7 @@ const Hasom = () => {
             </h2>
           </div>
           <p className="mt-4 text-lg leading-8 text-gray-300">
-            The main symbol was designed to reflect Hasom's distinctive
+            The main symbol was designed to reflect Hasom&apos;s distinctive
             features: sky-blue eyes, pink eyelids, and delicate nose, while
             maintaining a minimalist approach. Multiple logo variations were
             created to ensure flexibility across different applications, from
@@ -96,7 +96,7 @@ const Hasom = () => {
             The brand utilizes Montserrat as the primary typeface for its clean,
             modern appearance, complemented by All Round Gothic as a secondary
             typeface that adds a playful touch. Custom graphic elements were
-            developed to reflect Hasom's quirky movements and preferences.
+            developed to reflect Hasom&apos;s quirky movements and preferences.
           </p>
           {/* Add Image component here for typography showcase */}
           <Image
@@ -125,10 +125,10 @@ const Hasom = () => {
             height={1000}
           />
           <p className="mt-4 text-lg leading-8 text-gray-300">
-            The brand's core colors—Red (#FF2D46), Pink (#FFDCE1), and Blue
+            The brand&apos;s core colors—Red (#FF2D46), Pink (#FFDCE1), and Blue
             (#B4DAF9)—were carefully selected to represent different aspects of
-            Hasom's character. Pink represents Hasom's physical charm and
-            quirks, while blue represents Hasom's perspective of the world.
+            Hasom&apos;s character. Pink represents Hasom&apos;s physical charm and
+            quirks, while blue represents Hasom&apos;s perspective of the world.
           </p>
           {/* Add Image component here for color palette visualization */}
 
@@ -198,7 +198,7 @@ const Hasom = () => {
           </div>
           <p className="mt-4 text-lg leading-8 text-gray-300">
             The project successfully established a cohesive and scalable brand
-            identity that effectively tells Hasom's story through design. The
+            identity that effectively tells Hasom&apos;s story through design. The
             result is a recognizable and playful brand system that maintains its
             integrity across various platforms and applications.
           </p>

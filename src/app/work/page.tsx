@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { projects, experiences, merchDesigns } from "@/data";
+import Image from "next/image";
 
 export default function WorkPage() {
   return (
@@ -21,10 +22,12 @@ export default function WorkPage() {
                   className="overflow-hidden"
                   style={{ aspectRatio: "16/10" }}
                 >
-                  <img
+                  <Image
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     src={experience.imageUrl}
                     alt={experience.title}
+                    width={500}
+                    height={300}
                   />
                 </div>
                 <div className="mt-4">
@@ -53,10 +56,12 @@ export default function WorkPage() {
                   className="overflow-hidden"
                   style={{ aspectRatio: "16/10" }}
                 >
-                  <img
+                  <Image
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     src={project.imageUrl}
                     alt={project.title}
+                    width={500}
+                    height={300}
                   />
                 </div>
                 <div className="mt-4">
@@ -83,10 +88,12 @@ export default function WorkPage() {
                   className="overflow-hidden"
                   style={{ aspectRatio: "16/10" }}
                 >
-                  <img
+                  <Image
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     src={merch.imageUrl}
                     alt={merch.title}
+                    width={500}
+                    height={300}
                   />
                 </div>
                 <div className="mt-4">
