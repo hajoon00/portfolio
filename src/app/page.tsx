@@ -32,8 +32,8 @@ export default function Home() {
       >
         <p className="text-lg text-gray-300">
           Hi, I&apos;m Hajoon Park, a designer and developer based in
-          Philadelphia. I create digital experiences that combine aesthetics
-          with functionality.
+          Philadelphia. <br />I create digital experiences that combine
+          aesthetics with functionality.
         </p>
       </motion.div>
 
@@ -46,13 +46,13 @@ export default function Home() {
       >
         <Link
           href="/work"
-          className="px-12 py-6 text-lg font-base bg-alt-100 text-alt-900 rounded-lg"
+          className="px-6 py-3 text-md font-medium bg-transparent text-alt-100 hover:bg-alt-100 hover:text-alt-900 rounded-2xl"
         >
           WORK
         </Link>
         <Link
           href="/art"
-          className="px-12 py-6 text-lg font-base bg-alt-100 text-alt-900 rounded-lg"
+          className="px-6 py-3 text-md font-medium bg-transparent text-alt-100 hover:bg-alt-100 hover:text-alt-900 rounded-2xl"
         >
           ART
         </Link>

@@ -59,7 +59,7 @@ export const projects = [
     date: "Spring 2024",
     description: "A recipe app for authentic Korean cuisine.",
     hashtags: ["Product Design", "UX/UI", "App Design"],
-    imageUrl: "/images/thumbnail/Thumbnails-cookr.webp",
+    imageUrl: "/images/thumbnail/Thumbnails-cookr.jpgnp",
   },
   {
     id: "proj-03",
