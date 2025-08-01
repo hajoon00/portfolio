@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./globals.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,6 +10,34 @@ import Footer from "./components/footer";
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past 100px
+        setIsNavbarVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up
+        setIsNavbarVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, isMounted]);
 
   const isActive = (path: string) => {
     if (path === "/" && pathname === "/") return true;
@@ -20,58 +48,66 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body>
-        <main className={`${!isHomePage ? "pt-24" : ""}`}>
+        <main className={`${!isHomePage ? "pt-20" : ""}`}>
           {!isHomePage && (
-            <nav className="fixed top-0 w-full z-50 bg-[#0d0d0d] bg-opacity-85 backdrop-blur-sm">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between">
-                <div className="flex lg:flex-1 items-center h-16">
-                  <Link href="/" className="-m-1.5 p-1.5">
+            <nav
+              className={`fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 transition-transform duration-300 ${
+                isMounted && isNavbarVisible
+                  ? "translate-y-0"
+                  : "-translate-y-full"
+              }`}
+            >
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="flex items-center justify-between">
+                  {/* Logo */}
+                  <Link href="/" className="flex items-center space-x-2 group">
                     <Image
                       src="/images/Logo-white.svg"
                       alt="Hajoon Park Logo"
-                      width={120}
-                      height={40}
+                      width={100}
+                      height={35}
+                      className="transition-transform duration-300 group-hover:scale-105"
                     />
                   </Link>
-                </div>
-                <div className="flex justify-end h-16">
-                  <div className="flex space-x-8">
+
+                  {/* Navigation Links */}
+                  <div className="flex items-center space-x-1">
                     <Link
                       href="/"
-                      className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                      className={`relative px-4 py-4 text-sm font-medium transition-all duration-300 ${
                         isActive("/")
-                          ? "text-gray-100 border-b-2 border-gray-100"
-                          : "text-gray-400 hover:text-gray-100"
+                          ? "text-white border-b-2 border-white"
+                          : "text-gray-300 hover:text-white hover:bg-white/5"
                       }`}
                     >
                       HOME
                     </Link>
                     <Link
                       href="/work"
-                      className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                      className={`relative px-4 py-4 text-sm font-medium transition-all duration-300 ${
                         isActive("/work")
-                          ? "text-gray-100 border-b-2 border-gray-100"
-                          : "text-gray-400 hover:text-gray-100"
+                          ? "text-white border-b-2 border-white"
+                          : "text-gray-300 hover:text-white hover:bg-white/5"
                       }`}
                     >
                       WORK
                     </Link>
-                    <Link
+                    {/* <Link
                       href="/art"
-                      className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                      className={`relative px-4 py-4 text-sm font-medium transition-all duration-300 ${
                         isActive("/art")
-                          ? "text-gray-100 border-b-2 border-gray-100"
-                          : "text-gray-400 hover:text-gray-100"
+                          ? "text-white border-b-2 border-white"
+                          : "text-gray-300 hover:text-white hover:bg-white/5"
                       }`}
                     >
                       ART
-                    </Link>
+                    </Link> */}
                     <Link
                       href="/resume"
-                      className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                      className={`relative px-4 py-4 text-sm font-medium transition-all duration-300 ${
                         isActive("/resume")
-                          ? "text-gray-100 border-b-2 border-gray-100"
-                          : "text-gray-400 hover:text-gray-100"
+                          ? "text-white border-b-2 border-white"
+                          : "text-gray-300 hover:text-white hover:bg-white/5"
                       }`}
                     >
                       RESUME

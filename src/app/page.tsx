@@ -30,7 +30,7 @@ export default function Home() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-2xl text-center mb-16"
       >
-        <p className="text-lg text-gray-300">
+        <p className="text-lg text-alt-800">
           Hi, I&apos;m Hajoon Park, a designer and developer based in
           Philadelphia. <br />I create digital experiences that combine
           aesthetics with functionality.
@@ -46,13 +46,13 @@ export default function Home() {
       >
         <Link
           href="/work"
-          className="px-6 py-3 text-md font-medium bg-transparent text-alt-100 hover:bg-alt-100 hover:text-alt-900 rounded-2xl"
+          className="px-6 py-3 text-md font-medium bg-transparent text-alt-800 hover:bg-alt-100 hover:text-alt-900 rounded-2xl"
         >
           WORK
         </Link>
         <Link
           href="/art"
-          className="px-6 py-3 text-md font-medium bg-transparent text-alt-100 hover:bg-alt-100 hover:text-alt-900 rounded-2xl"
+          className="px-6 py-3 text-md font-medium bg-transparent text-alt-800 hover:bg-alt-100 hover:text-alt-900 rounded-2xl"
         >
           ART
         </Link>
