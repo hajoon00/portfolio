@@ -2,80 +2,107 @@
 
 import React from "react";
 import Image from "next/image";
+import { merchDesigns } from "@/data";
+import Link from "next/link";
+
 const KapacityMerch = () => {
+  const kapacityData = merchDesigns.find(
+    (merch) => merch.slug === "kapacity-merch"
+  );
+
   return (
     <div className="space-y-6">
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <h2 className="text-base font-semibold leading-7 text-hajoon-500">
+          <h2 className="text-base font-semibold leading-7 text-pink-500">
             Overview
           </h2>
           <p className="mt-2 text-2xl font-bold tracking-tight sm:text-2xl">
-            Kpacity Hoodie
+            Kapacity 후드티 디자인
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {kapacityData?.hashtags.map((tag, index) => (
+              <span
+                key={index}
+                className="bg-pink-900 text-pink-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <p className="my-6 text-lg leading-8 text-alt-700">
+            University of Pennsylvania 대표 한인 밴드 Kapacity 멤버들을 위한
+            머천다이즈 디자인입니다. 클라이언트의 요청에 따라 한국 전통 문화의
+            요소를 담은 악기를 연주하는 호랑이의 역동적인 초상화를 후드티에
+            적용했습니다.
           </p>
 
-          <dl className="mt-10 divide-y divide-gray-800">
-            <div className="px-4 py-6 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
-              <dt className="text-sm font-medium leading-6 text-gray-300">
-                Timeline
-              </dt>
-              <dd className="mt-1 text-sm leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
-                Jan 2019 - Sept 2020
-              </dd>
-            </div>
-            <div className="px-4 py-6 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
-              <dt className="text-sm font-medium leading-6 text-gray-300">
-                Tools Used
-              </dt>
-              <dd className="mt-1 text-sm leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
-                Adobe Illustrator Procreate
-              </dd>
-            </div>
-          </dl>
+          <p className="my-6 text-lg leading-8 text-alt-700">
+            Procreate를 사용해 로고와 호랑이 그래픽을 직접 손으로 그렸으며 Adobe
+            Illustrator를 이용해 멤버들의 이름을 새겨넣었습니다. 한국 전통
+            문화의 정체성을 현대적인 디자인으로 재해석한 드럼치는 호랑이는
+            추후에 공식 마스코트가 되었습니다.
+          </p>
         </div>
       </section>
 
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <h2 className="text-xl font-semibold leading-7 text-hajoon-600">
-            Design Process
-          </h2>
-          <p className="mt-4 text-lg leading-8 text-gray-300">
-            I had to make an original graphic for the hoodie. The client wanted
-            dynamic portrait of a tiger playing an instrument with the touch of
-            Korean heritage.
-          </p>
+          <h3 className="text-lg font-semibold text-alt-700 mb-6">
+            디자인 및 목업
+          </h3>
           <div className="grid grid-cols-2 gap-8">
-            <Image
-              src="/images/merch/kapacity/Kapacity-hoodie-final.png"
-              alt="Hoodie 1"
-              width={500}
-              height={500}
-            />
-            <Image
-              src="/images/merch/kapacity/Kapacity-hoodie-front-final.jpg"
-              alt="Hoodie 2"
-              width={500}
-              height={500}
-            />
+            <div>
+              <Image
+                src="/images/merch/kapacity/Kapacity-hoodie-final.png"
+                alt="Hoodie Front Design"
+                width={500}
+                height={500}
+              />
+              <p className="text-sm text-alt-600 mt-2 text-center">
+                후면 디자인
+              </p>
+            </div>
+            <div>
+              <Image
+                src="/images/merch/kapacity/Kapacity-hoodie-front-final.jpg"
+                alt="Hoodie Front Mockup"
+                width={500}
+                height={500}
+              />
+              <p className="text-sm text-alt-600 mt-2 text-center">
+                앞면 디자인 (좌측 가슴)
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <h2 className="text-xl font-semibold leading-7 text-hajoon-600">
-            Final Product
-          </h2>
+          <h3 className="text-lg font-semibold text-alt-700 mb-6">제품 목업</h3>
           <Image
             className="my-10"
             src="/images/merch/kapacity/kapacity-hoodie-back.jpg"
-            alt="Hoodie 1"
+            alt="Hoodie Back Mockup"
             width={1000}
             height={1000}
           />
         </div>
       </section>
+
+      {/* Fixed button at bottom center */}
+      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+        <Link href="/sides">
+          <button
+            type="button"
+            className="text-white bg-pink-700/70 hover:bg-pink-700 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 shadow-lg transition-all duration-300"
+          >
+            다른 사이드 프로젝트 보러가기
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

@@ -118,7 +118,7 @@ export const arts: Record<CategoryKey, ArtSection> = {
         description: "Procreate",
       },
       {
-        src: "/images/arts/handdrawing/Dr-Strange.jpg",
+        src: "/images/arts/handdrawing/Dr-strange.jpg",
         alt: "Dr. Strange",
         title: "Dr. Strange",
         description: "Procreate",

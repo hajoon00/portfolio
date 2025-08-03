@@ -22,21 +22,6 @@ const Nyangiverse = () => {
     },
   ];
 
-  const pixelArtExamples = [
-    {
-      src: "/images/arts/digital/DippinDots.gif",
-      alt: "픽셀 아트 애니메이션",
-      title: "동적인 움직임",
-      description: "고양이의 우아함을 담은 부드러운 픽셀 아트 애니메이션",
-    },
-    {
-      src: "/images/arts/handdrawing/Batman.jpg",
-      alt: "캐릭터 표현",
-      title: "감정적 깊이",
-      description: "성격 특성을 보여주는 표현력 있는 픽셀 아트",
-    },
-  ];
-
   const environmentDesigns = [
     {
       src: "/images/arts/handdrawing/Desert.jpg",
@@ -82,7 +67,7 @@ const Nyangiverse = () => {
               <span className="text-2xl">📅</span>
               <div className="text-left">
                 <p className="text-pink-300 font-semibold text-sm">Duration</p>
-                <p className="text-white font-medium">2023 - Ongoing</p>
+                <p className="text-white font-medium">2025.02 - 2025.04</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -175,28 +160,32 @@ const Nyangiverse = () => {
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              픽셀 아트 선택의 이유
+              픽셀 아트를 선택한 두가지 근본적 이유
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              픽셀 아트는 두 가지 근본적인 이유로 매체로 선택되었습니다. 첫째,
-              그 레트로한 매력은 기억이 종종 시각화되는 방식과 공명합니다—
-              향수를 불러오지만 현대적입니다.
-            </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white rounded-lg p-6 shadow-lg">
+            <div className="bg-white p-6 shadow-lg">
+              <div className="relative w-full h-96 mb-4 overflow-hidden">
+                <Image
+                  src={"/images/arts/handdrawing/Tiger.jpg"}
+                  alt={"하론 캐릭터 디자인"}
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 레트로 향수
               </h3>
               <p className="text-gray-600 mb-4">
-                90년대와 2000년대 초반에 태어난 사람들에게 친숙한 어린 시절
-                비디오 게임의 느낌을 불러일으켜 과거와 현재를 연결하는 다리를
-                만듭니다.
+                90년대와 2000년대 초반에 태어난 사람이라면 누구나 픽셀
+                스프라이트 게임을 한 번쯤 접해봤을 것입니다. 픽셀 아트는 우리를
+                다시 어린 시절로 데려가지만 결코 유치하게 느껴지지는 않습니다.
+                픽셀 아트의 디지털이면서도 아날로그적인 감성은 과거와 현재를
+                자연스럽게 이어주는 매력적인 매개체입니다.
               </p>
               <div className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-lg p-4">
                 <p className="text-sm text-gray-700">
-                  &ldquo;기억은 종종 우리 마음속에서 픽셀화됩니다&rdquo;
+                  &ldquo;우리는 한 때 모두 포켓몬 트레이너&rdquo;
                 </p>
               </div>
             </div>
@@ -211,30 +200,10 @@ const Nyangiverse = () => {
               </p>
               <div className="bg-gradient-to-r from-green-100 to-blue-100 rounded-lg p-4">
                 <p className="text-sm text-gray-700">
-                  &ldquo;본질을 포착하는 데 있어서 적은 것이 더 많습니다&rdquo;
+                  &ldquo;우리는 한 때 모두 포켓몬 트레이너&rdquo;
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* Pixel Art Examples */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {pixelArtExamples.map((art, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 shadow-lg">
-                <div className="relative h-64 mb-4 rounded-lg overflow-hidden">
-                  <Image
-                    src={art.src}
-                    alt={art.alt}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                  {art.title}
-                </h4>
-                <p className="text-gray-600">{art.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>

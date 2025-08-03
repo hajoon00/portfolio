@@ -56,34 +56,34 @@ export const experiences = [
 
 export const projects = [
   
-  {
-    id: "proj-01",  
-    slug: "hasom",
-    title: "Hasom",
-    date: "Fall 2024",
-    description: "Branding for a cat.",
-    hashtags: ["Branding", "Graphic Design"],
-    imageUrl: "/images/thumbnail/Thumbnails-hasom.webp",
-  },
+  // {
+  //   id: "proj-01",  
+  //   slug: "hasom",
+  //   title: "Hasom",
+  //   date: "Fall 2024",
+  //   description: "고양이를 위한 브랜딩 프로젝트입니다.",
+  //   hashtags: ["Branding", "Graphic Design"],
+  //   imageUrl: "/images/thumbnail/Thumbnails-hasom.webp",
+  // },
   
   {
     id: "proj-02",
     slug: "devflow",
-    title: "DevFlow: Code Editor Web App",
+    title: "DevFlow",
     date: "Spring 2024",
-    description: "Enhance coding productivity with AI.",
+    description: "AI를 활용한 코딩 생산성 향상 웹 애플리케이션입니다.",
     hashtags: ["Product Design", "UX/UI", "Frontend"],
     imageUrl: "/images/thumbnail/Thumbnails-devflow.webp",
   },
-  {
-    id: "proj-03",
-    slug: "station",
-    title: "Station: Seoul Mediacity Biennale Redesign",
-    date: "Fall 2022",
-    description: "Redesigned the Seoul Mediacity Biennale design system.",
-    hashtags: ["Redesign", "Branding", "Graphic Design"],
-    imageUrl: "/images/thumbnail/Thumbnails-station.webp",
-  },
+  // {
+  //   id: "proj-03",
+  //   slug: "station",
+  //   title: "Seoul Mediacity Biennale Redesign",
+  //   date: "Fall 2022",
+  //   description: "서울 미디어시티 비엔날레 디자인 시스템을 재설계했습니다.",
+  //   hashtags: ["Redesign", "Branding", "Graphic Design"],
+  //   imageUrl: "/images/thumbnail/Thumbnails-station.webp",
+  // },
 ];
 
 export const merchDesigns = [
@@ -99,9 +99,9 @@ export const merchDesigns = [
   {
     id: "merch-02",
     slug: "superbowl-merch",
-    title: "Penn FAD Board Superbowl Merchandise",
+    title: "Penn FAD Board Superbowl Event",
     date: "Spring 2025",
-    description: "Club merchandise design for Superbowl members",
+    description: "펜 FAD 보드 슈퍼볼 멤버들을 위한 머천다이즈 디자인입니다.",
     hashtags: ["Merch Design", "Branding"],
     imageUrl: "/images/thumbnail/Thumbnails-superbowl-merch.webp",
   },
@@ -109,9 +109,9 @@ export const merchDesigns = [
   {
     id: "merch-03",
     slug: "kapacity-merch",
-    title: "Kapacity Merchandise",
+    title: "Kapacity 후드티 디자인",
     date: "Spring 2025",
-    description: "Club merchandise design for Kapacity members",
+    description: "Kapacity 멤버들을 위한 머천다이즈 디자인입니다.",
     hashtags: ["Merch Design", "Branding"],
     imageUrl: "/images/thumbnail/Thumbnails-kapacity-hoodie.webp",
   },
