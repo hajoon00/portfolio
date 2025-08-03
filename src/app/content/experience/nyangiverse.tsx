@@ -50,13 +50,6 @@ const Nyangiverse = () => {
       description: "지문 대신 발바닥!",
     },
     {
-      src: "/images/arts/handdrawing/Tiger.jpg",
-      alt: "하론 캐릭터 디자인",
-      title: "하론",
-      description:
-        "조용하고 낯가림이 있지만, 마음을 열면 누구보다 다정한 고양이",
-    },
-    {
       src: "/images/nyangiverse/haron-sticker.webp",
       alt: "하론 스티커",
       title: "하론 스티커",
@@ -654,7 +647,7 @@ const Nyangiverse = () => {
               <div className="bg-white overflow-hidden">
                 <div className="relative w-1/2 h-96 mx-auto">
                   <Image
-                    src="/images/nyangiverse/Park_Hajoon_2.jpg"
+                    src="/images/nyangiverse/Park_Hajoon_2.JPG"
                     alt="스티커"
                     fill
                     className="object-cover"
