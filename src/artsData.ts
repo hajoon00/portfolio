@@ -77,25 +77,25 @@ export const arts: Record<CategoryKey, ArtSection> = {
     description: "Procreate를 활용한 디지털 드로잉 작업입니다. 제 개인적인 취향을 담았으니 온전히 느껴보세요.",
     items: [
       {
-        src: "/images/arts/handDrawing/Fear.jpg",
+        src: "/images/arts/handdrawing/Fear.jpg",
         alt: "Fear",
         title: "호환",
         description: "Procreate",
       },
       {
-        src: "/images/arts/handDrawing/Desert.jpg",
+        src: "/images/arts/handdrawing/Desert.jpg",
         alt: "Desert",
         title: "Desert",
         description: "Procreate",
       },
       {
-        src: "/images/arts/handDrawing/Ocean.jpg",
+        src: "/images/arts/handdrawing/Ocean.jpg",
         alt: "Ocean",
         title: "Ocean",
         description: "Procreate",
       },
       {
-        src: "/images/arts/handDrawing/Tiger.jpg",
+        src: "/images/arts/handdrawing/Tiger.jpg",
         alt: "Tiger I",
         title: "Tiger I",
         description: "Procreate",
@@ -106,37 +106,37 @@ export const arts: Record<CategoryKey, ArtSection> = {
     description: "기존의 명작들이나 실제 인물을 보고 그린 모작입니다. 원작자들에게 존경과 박수를.",
     items: [
       {
-        src: "/images/arts/handDrawing/Thresh.jpg",
+        src: "/images/arts/handdrawing/Thresh.jpg",
         alt: "Thresh",
         title: "Thresh",
         description: "Procreate",
       },
       {
-        src: "/images/arts/handDrawing/Batman.jpg",
+        src: "/images/arts/handdrawing/Batman.jpg",
         alt: "Batman",
         title: "Batman",
         description: "Procreate",
       },
       {
-        src: "/images/arts/handDrawing/Dr-Strange.jpg",
+        src: "/images/arts/handdrawing/Dr-Strange.jpg",
         alt: "Dr. Strange",
         title: "Dr. Strange",
         description: "Procreate",
       },
       {
-        src: "/images/arts/handDrawing/Pulp-fiction.jpg",
+        src: "/images/arts/handdrawing/Pulp-fiction.jpg",
         alt: "Pulp Fiction",
         title: "Pulp Fiction",
         description: "Procreate",
       },
       {
-        src: "/images/arts/handDrawing/aespa-winter.jpg",
+        src: "/images/arts/handdrawing/aespa-winter.jpg",
         alt: "Aespa Winter",
         title: "Aespa Winter",
         description: "Procreate",
       },
       {
-        src: "/images/arts/handDrawing/upside-down.jpg",
+        src: "/images/arts/handdrawing/upside-down.jpg",
         alt: "Upside Down",
         title: "Upside Down",
         description: "Procreate",
