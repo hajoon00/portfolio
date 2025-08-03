@@ -559,26 +559,38 @@ const Nyangiverse = () => {
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900">웹사이트 제작</h2>
-            <div className="flex my-12">
-              <a
-                href="https://nyangiverse.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg text-gray-100 bg-pink-700 rounded-lg p-4 max-w-3xl mx-auto"
-              >
-                웹사이트 바로가기
-              </a>
-            </div>
 
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-10">
-              이곳은 하솜이와 하론이에 대한 저의 기억을 사람들과 나누고, 그들의
-              흔적을 제 방식으로 남기는 디지털 아카이브입니다.
-            </p>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-10">
-              하나의 가상 브랜드의 공식 웹사이트를 만들었으며 브랜드 소개와 각종
-              제품들, 그리고 하솜과 하론을 주인공으로 한
-              <span className="font-bold"> 만화까지 만나보실 수 있습니다.</span>
-            </p>
+            <div className="flex flex-col md:flex-row gap-8 items-start my-12">
+              <Image
+                src="/images/nyangiverse/Park_Hajoon_3.jpg"
+                alt="Nyangiverse 웹사이트"
+                width={1000}
+                height={1000}
+                className="rounded-lg w-full md:w-1/2"
+              />
+
+              <div className="flex flex-col gap-6 w-1/2 md:w-1/2 py-8">
+                <a
+                  href="https://nyangiverse.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg text-gray-100 bg-pink-700 rounded-lg p-4 text-center w-1/2"
+                >
+                  웹사이트 바로가기
+                </a>
+
+                <p className="text-lg text-left text-gray-600">
+                  이곳은 하솜이와 하론이에 대한 저의 기억을 사람들과 나누고,
+                  그들의 흔적을 제 방식으로 남기는 디지털 아카이브입니다. 하나의
+                  가상 브랜드의 공식 웹사이트를 만들었으며 브랜드 소개와 각종
+                  제품들, 그리고 하솜과 하론을 주인공으로 한
+                  <span className="font-bold">
+                    {" "}
+                    만화까지 만나보실 수 있습니다.
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
           <div className="mt-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg p-8 text-white">
             <h3 className="text-2xl font-semibold mb-4 text-center">
