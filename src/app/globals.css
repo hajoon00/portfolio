@@ -55,6 +55,11 @@ body {
     transform: rotateY(180deg);
 }
 
+/* New Flip Card Styles for Nyangiverse */
+.group:hover .flip-card {
+    transform: rotateY(180deg) !important;
+}
+
 /* Float Animation Styles */
 @keyframes float {
     0%,
