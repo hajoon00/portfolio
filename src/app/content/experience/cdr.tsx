@@ -102,20 +102,20 @@ const CDRExperience = () => {
   return (
     <div className="space-y-6">
       {/* Hero Section */}
-      <section className="py-24 sm:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <section className="py-24 sm:py-32 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-base font-semibold leading-7 text-hajoon-500">
+            <h2 className="text-base font-semibold leading-7 text-neutral-300">
               Overview
             </h2>
             <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              Internship at CDR Associates
+              CDR Associates
             </h1>
             <div className="mt-4 flex flex-wrap justify-center gap-2">
               {cdrData?.hashtags.map((tag, index) => (
                 <span
                   key={index}
-                  className="bg-hajoon-500 text-white text-xs font-medium px-3 py-1 rounded-full"
+                  className="bg-neutral-700 text-white text-xs font-medium px-3 py-1 rounded-full"
                 >
                   {tag}
                 </span>
@@ -123,45 +123,46 @@ const CDRExperience = () => {
             </div>
           </div>
 
-          {/* Role & Project Info */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-              <div className="mb-4">
-                <h3 className="text-lg font-semibold text-white">
-                  Web Designer
-                </h3>
-              </div>
-              <p className="text-gray-300">
-                웹사이트 개편 프로젝트의 유일한 웹 디자이너
-              </p>
-            </div>
-            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-              <div className="mb-4">
-                <h3 className="text-lg font-semibold text-white">
-                  Planning Team Research Assistant
-                </h3>
-              </div>
-              <p className="text-gray-300">
-                기획팀 연구 보조원으로서 프로젝트 지원
-              </p>
-            </div>
-            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-              <div className="text-center">
-                <div className="text-hajoon-400 font-semibold text-sm mb-2">
+          {/* Project Info */}
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-8">
+            <div className="flex items-center space-x-3">
+              <span className="text-2xl">📅</span>
+              <div className="text-left">
+                <p className="text-neutral-300 font-semibold text-sm">
                   Duration
-                </div>
-                <div className="text-white font-medium">
-                  Dec 2024 - Jan 2025
-                </div>
+                </p>
+                <p className="text-white font-medium">Dec 2024 - Jan 2025</p>
               </div>
             </div>
-            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-              <div className="text-center">
-                <div className="text-hajoon-400 font-semibold text-sm mb-2">
+            <div className="flex items-center space-x-3">
+              <span className="text-2xl">🛠️</span>
+              <div className="text-left">
+                <p className="text-neutral-300 font-semibold text-sm">
                   Tools Used
-                </div>
-                <div className="text-white font-medium">Wordpress, Figma</div>
+                </p>
+                <p className="text-white font-medium">Wordpress, Figma</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* My Role Section */}
+      <section className="py-20 sm:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="flex items-center justify-center">
+            <div className="text-left max-w-2xl">
+              <h2 className="text-base font-semibold leading-7 text-neutral-600">
+                My Role
+              </h2>
+              <h3 className="text-3xl font-bold text-neutral-900 my-3">
+                Web Designer
+              </h3>
+
+              <p className="text-neutral-700 text-lg leading-relaxed">
+                CDR Associates에서 웹사이트 개편 프로젝트의 유일한 웹
+                디자이너로서 전체 디자인 시스템을 구축했습니다.
+              </p>
             </div>
           </div>
         </div>
@@ -171,10 +172,10 @@ const CDRExperience = () => {
       <section className="py-16 sm:py-24 bg-neutral-100">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-neutral-900 mb-4">
               Problem Statement
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
               기존 웹사이트의 다양한 문제점들을 해결하여 더 나은 사용자 경험을
               제공하기 위한 개편이 필요했습니다.
             </p>
@@ -184,14 +185,14 @@ const CDRExperience = () => {
             {problemCards.map((problem, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-6 shadow-lg border border-gray-200"
+                className="bg-white rounded-lg p-6 shadow-lg border border-neutral-200"
               >
                 <div className="mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-neutral-900">
                     {problem.title}
                   </h3>
                 </div>
-                <p className="text-gray-600">{problem.description}</p>
+                <p className="text-neutral-600">{problem.description}</p>
               </div>
             ))}
           </div>
@@ -202,10 +203,10 @@ const CDRExperience = () => {
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-neutral-900 mb-4">
               Design Process
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
               프로젝트 세부 페이지의 일관된 디자인 시스템을 구축하여 각
               프로젝트의 특성을 살리면서도 통일감 있는 레이아웃을 구현했습니다.
             </p>
@@ -213,21 +214,21 @@ const CDRExperience = () => {
 
           {/* Process Timeline */}
           <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-hajoon-500"></div>
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-neutral-400"></div>
             <div className="space-y-8">
               {processSteps.map((step, index) => (
                 <div key={index} className="relative flex items-start">
-                  <div className="absolute left-6 w-4 h-4 bg-hajoon-500 rounded-full border-4 border-white shadow-lg"></div>
-                  <div className="ml-16 bg-white rounded-lg p-6 shadow-lg border border-gray-200 flex-1">
+                  <div className="absolute left-6 w-4 h-4 bg-neutral-600 rounded-full border-4 border-white shadow-lg"></div>
+                  <div className="ml-16 bg-white rounded-lg p-6 shadow-lg border border-neutral-200 flex-1">
                     <div className="flex items-center mb-3">
-                      <span className="text-hajoon-500 font-bold text-lg mr-3">
+                      <span className="text-neutral-600 font-bold text-lg mr-3">
                         {step.step}
                       </span>
-                      <h3 className="text-xl font-semibold text-gray-900">
+                      <h3 className="text-xl font-semibold text-neutral-900">
                         {step.title}
                       </h3>
                     </div>
-                    <p className="text-gray-600">{step.description}</p>
+                    <p className="text-neutral-600">{step.description}</p>
                   </div>
                 </div>
               ))}
@@ -250,10 +251,10 @@ const CDRExperience = () => {
       <section className="py-16 sm:py-24 bg-neutral-100">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-neutral-900 mb-4">
               Responsive Design
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
               모든 기기에서 최적의 시청 경험을 제공하도록 완전히 반응형으로
               설계되었습니다.
             </p>
@@ -264,24 +265,26 @@ const CDRExperience = () => {
             {responsiveFeatures.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-6 text-center shadow-lg border border-gray-200"
+                className="bg-white rounded-lg p-6 text-center shadow-lg border border-neutral-200"
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-neutral-900 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
+                <p className="text-neutral-600 text-sm">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
 
           {/* Home Page Comparison */}
           <div className="mb-12">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
+            <h3 className="text-2xl font-semibold text-neutral-900 mb-6 text-center">
               Home Page
             </h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="bg-white rounded-lg p-6 shadow-lg">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                <h4 className="text-lg font-semibold text-neutral-900 mb-4 text-center">
                   Desktop
                 </h4>
                 <Image
@@ -293,7 +296,7 @@ const CDRExperience = () => {
                 />
               </div>
               <div className="bg-white rounded-lg p-6 shadow-lg">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                <h4 className="text-lg font-semibold text-neutral-900 mb-4 text-center">
                   Mobile
                 </h4>
                 <Image
@@ -309,12 +312,12 @@ const CDRExperience = () => {
 
           {/* Heritage Page Comparison */}
           <div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
+            <h3 className="text-2xl font-semibold text-neutral-900 mb-6 text-center">
               Heritage Page
             </h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="bg-white rounded-lg p-6 shadow-lg">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                <h4 className="text-lg font-semibold text-neutral-900 mb-4 text-center">
                   Desktop
                 </h4>
                 <Image
@@ -326,7 +329,7 @@ const CDRExperience = () => {
                 />
               </div>
               <div className="bg-white rounded-lg p-6 shadow-lg">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                <h4 className="text-lg font-semibold text-neutral-900 mb-4 text-center">
                   Mobile
                 </h4>
                 <Image
@@ -346,10 +349,10 @@ const CDRExperience = () => {
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-neutral-900 mb-4">
               Outcome & Impact
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
               성공적인 웹사이트 개편을 통해 달성한 주요 성과들입니다.
             </p>
           </div>
@@ -368,12 +371,12 @@ const CDRExperience = () => {
             {outcomes.map((outcome, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-r from-hajoon-500 to-hajoon-600 rounded-lg p-6 text-white"
+                className="bg-gradient-to-r from-neutral-700 to-neutral-800 rounded-lg p-6 text-white"
               >
                 <div className="mb-3">
                   <h3 className="text-lg font-semibold">{outcome.title}</h3>
                 </div>
-                <p className="text-hajoon-100">{outcome.description}</p>
+                <p className="text-neutral-200">{outcome.description}</p>
               </div>
             ))}
           </div>
@@ -383,7 +386,7 @@ const CDRExperience = () => {
               href="https://www.cdr.co.kr/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-hajoon-500 hover:bg-hajoon-600 text-white font-semibold rounded-lg transition-colors duration-200"
+              className="inline-flex items-center px-6 py-3 bg-neutral-700 hover:bg-neutral-800 text-white font-semibold rounded-lg transition-colors duration-200"
             >
               CDR Associates Website
             </a>
@@ -395,10 +398,10 @@ const CDRExperience = () => {
       <section className="py-16 sm:py-24 bg-neutral-100">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-neutral-900 mb-4">
               Key Takeaways
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
               이 프로젝트를 통해 얻은 귀중한 경험과 학습 내용들입니다.
             </p>
           </div>
@@ -407,12 +410,12 @@ const CDRExperience = () => {
             {takeaways.map((takeaway, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-6 shadow-lg border border-gray-200 text-center"
+                className="bg-white rounded-lg p-6 shadow-lg border border-neutral-200 text-center"
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                <h3 className="text-lg font-semibold text-neutral-900 mb-3">
                   {takeaway.title}
                 </h3>
-                <p className="text-gray-600">{takeaway.description}</p>
+                <p className="text-neutral-600">{takeaway.description}</p>
               </div>
             ))}
           </div>

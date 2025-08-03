@@ -47,31 +47,26 @@ const KPensaExperience = () => {
     ],
   };
 
-  const roleCards = [
+  const problemCards = [
     {
-      title: "마케팅 위원장",
-      period: "2023.09 - 2024.08",
-      description: "클럽의 이벤트와 활동을 위한 마케팅 자료 디자인",
+      title: "미비한 이벤트 홍보",
+      description:
+        "눈길을 사로잡는 포스터 디자인의 부재와 글로만 가득 채워진 홍보 이메일로 인해 회원 참여도가 저하되었습니다.",
     },
     {
-      title: "내무 위원장",
-      period: "2024.09 - 2025.05",
-      description: "클럽 운영 감독 및 모든 이벤트 원활한 진행",
-    },
-  ];
-
-  const achievementCards = [
-    {
-      title: "포스터 디자인",
-      description: "Adobe Illustrator를 활용한 다양한 이벤트 포스터 제작",
+      title: "방치된 공식 웹사이트",
+      description:
+        "수년간의 방치로 인한 UI 디자인 문제와 더불어 코드 버전 컨트롤 부재로 인해서 리액트의 최신 기능에 접근할 수 없었습니다.",
     },
     {
-      title: "머천다이즈 디자인",
-      description: "스티커 디자인을 통한 브랜드 아이덴티티 강화",
+      title: "공식 굿즈 부재",
+      description:
+        "수년간 동아리 공식 굿즈가 없었기 때문에 회원들의 소속감을 강조하는 것에 어려움을 겪었습니다.",
     },
     {
-      title: "커뮤니티 구축",
-      description: "회원 수 50% 증가를 통한 활발한 커뮤니티 형성",
+      title: "한인 사회 축소에 따른 부원 감소",
+      description:
+        "학교 한인 인구가 줄어들면서 부원이 우하향하는 경향을 보이고 있었습니다.",
     },
   ];
 
@@ -89,7 +84,7 @@ const KPensaExperience = () => {
     },
     {
       step: "03",
-      title: "머천다이즈 디자인",
+      title: "굿즈 디자인",
       description:
         "스티커 디자인을 통한 브랜드 아이덴티티 강화 및 회원 참여도 향상",
     },
@@ -179,11 +174,14 @@ const KPensaExperience = () => {
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-base font-semibold leading-7 text-hajoon-500">
-              개요
+              Overview
             </h2>
             <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              K-PEnSA 임원진
+              K-PEnSA
             </h1>
+            <h4 className="text-white text-sm font-medium mt-2">
+              (Korea-Penn Engineers and Scientists Association)
+            </h4>
             <div className="mt-4 flex flex-wrap justify-center gap-2">
               {pensaData?.hashtags.map((tag, index) => (
                 <span
@@ -196,44 +194,74 @@ const KPensaExperience = () => {
             </div>
           </div>
 
-          {/* Role Cards */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {roleCards.map((role, index) => (
-              <div
-                key={index}
-                className="bg-gray-800 rounded-lg p-6 border border-gray-700"
-              >
-                <div className="mb-4">
-                  <h3 className="text-lg font-semibold text-white">
-                    {role.title}
-                  </h3>
-                  <p className="text-hajoon-400 text-sm mt-1">{role.period}</p>
-                </div>
-                <p className="text-gray-300">{role.description}</p>
-              </div>
-            ))}
-          </div>
-
           {/* Project Info */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-              <div className="text-center">
-                <div className="text-hajoon-400 font-semibold text-sm mb-2">
-                  기간
-                </div>
-                <div className="text-white font-medium">2023.09 - 현재</div>
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-8">
+            <div className="flex items-center space-x-3">
+              <span className="text-2xl">📅</span>
+              <div className="text-left">
+                <p className="text-hajoon-400 font-semibold text-sm">
+                  Duration
+                </p>
+                <p className="text-white font-medium">2023.09 - 2025.05</p>
               </div>
             </div>
-            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-              <div className="text-center">
-                <div className="text-hajoon-400 font-semibold text-sm mb-2">
-                  사용 도구
+            <div className="flex items-center space-x-3">
+              <span className="text-2xl">🛠️</span>
+              <div className="text-left">
+                <p className="text-hajoon-400 font-semibold text-sm">
+                  Tools Used
+                </p>
+                <p className="text-white font-medium">
+                  Adobe Illustrator, Photoshop, Figma, React
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* My Role Section */}
+      <section className="py-20 sm:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="flex items-center justify-center">
+            <div className="text-left max-w-3xl">
+              <h2 className="text-base font-semibold leading-7 text-hajoon-500">
+                My Role
+              </h2>
+
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-1">
+                    Marketing Chair
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-2">
+                    2023.09 - 2024.08
+                  </p>
+                  <p className="text-gray-700 text-base leading-relaxed">
+                    이벤트 기획 및 홍보물 제작: 행사 목적과 대상에 맞춘 콘셉트
+                    기획부터 포스터·온라인 콘텐츠 등 다양한 홍보물을 직접 디자인
+                    및 제작하였습니다. <br />
+                    공식 굿즈 제작 및 배포: 브랜딩 전략의 일환으로 굿즈 아이템을
+                    기획하고, 디자인부터 제작 및 배포까지 전 과정을 주도하여
+                    커뮤니티 소속감과 인지도 강화에 기여했습니다.
+                  </p>
                 </div>
-                <div className="text-white font-medium">
-                  Adobe Illustrator <br />
-                  Adobe Photoshop <br />
-                  Figma <br />
-                  React
+
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-1">
+                    Internal Chair
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-2">
+                    2024.09 - 2025.05
+                  </p>
+                  <p className="text-gray-700 text-base leading-relaxed">
+                    공식 웹사이트 제작: 공식 웹사이트를 기획·디자인·개발하고
+                    사용자 친화적인 UI/UX와 반응형 구조를 적용하여 커뮤니티
+                    구성원 및 외부 방문자의 접근성과 활용도를 높였습니다.
+                    <br />
+                    이벤트 운영: 네트워킹 행사, 멘토링 세션, 패널 토론 등 다양한
+                    온·오프라인 이벤트를 기획하고 운영했습니다.
+                  </p>
                 </div>
               </div>
             </div>
@@ -241,27 +269,31 @@ const KPensaExperience = () => {
         </div>
       </section>
 
-      {/* My Role */}
+      {/* Problem Statement */}
       <section className="py-16 sm:py-24 bg-neutral-100">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">내 역할</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              K-PEnSA에서 마케팅 위원장과 내무 위원장으로서 클럽의 성장과 운영을
-              담당했습니다.
+            <h2 className="text-3xl font-bold text-neutral-900 mb-4">
+              Problem Statement
+            </h2>
+            <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+              기존 웹사이트의 다양한 문제점들을 해결하여 더 나은 사용자 경험을
+              제공하기 위한 개편이 필요했습니다.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {achievementCards.map((achievement, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {problemCards.map((problem, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-6 shadow-lg border border-gray-200 text-center"
+                className="bg-white rounded-lg p-6 shadow-lg border border-neutral-200"
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {achievement.title}
-                </h3>
-                <p className="text-gray-600">{achievement.description}</p>
+                <div className="mb-4">
+                  <h3 className="text-lg font-semibold text-neutral-900">
+                    {problem.title}
+                  </h3>
+                </div>
+                <p className="text-neutral-600">{problem.description}</p>
               </div>
             ))}
           </div>
@@ -545,25 +577,15 @@ const KPensaExperience = () => {
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              머천다이즈 디자인
+              굿즈 디자인
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              기존 K-PEnSA 머천다이즈는 주로 후드였는데, 이는 여러 문제점을
-              가지고 있었습니다. 높은 생산 비용, 계절적 제약, 보관 및 배포의
-              복잡성 등이 있었습니다.
+              높은 생산 비용으로 인한 학생들의 접근성 부족
+              <br />
+              계절적 날씨 제약으로 인한 제한된 사용성
+              <br />
+              조직의 보관 및 배포 복잡성
             </p>
-          </div>
-
-          {/* Design Process */}
-          <div className="bg-white rounded-lg p-8 mb-12">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              디자인 과정
-            </h3>
-            <ul className="text-gray-600 space-y-2">
-              <li>• 높은 생산 비용으로 인한 학생들의 접근성 부족</li>
-              <li>• 계절적 날씨 제약으로 인한 제한된 사용성</li>
-              <li>• 조직의 보관 및 배포 복잡성</li>
-            </ul>
           </div>
 
           {/* Stickers V2024 */}
@@ -657,16 +679,14 @@ const KPensaExperience = () => {
           {/* Merchandise Impact */}
           <div className="mt-12 bg-neutral-100 rounded-lg p-8">
             <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
-              머천다이즈 영향
+              굿즈 영향
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg p-6 text-center">
                 <h4 className="font-semibold text-gray-900 mb-2">
                   접근성 향상
                 </h4>
-                <p className="text-gray-600">
-                  낮은 가격대로 머천다이즈 접근성 증가
-                </p>
+                <p className="text-gray-600">낮은 가격대로 굿즈 접근성 증가</p>
               </div>
               <div className="bg-white rounded-lg p-6 text-center">
                 <h4 className="font-semibold text-gray-900 mb-2">

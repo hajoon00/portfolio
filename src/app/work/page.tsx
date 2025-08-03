@@ -2,71 +2,60 @@
 
 import Link from "next/link";
 import { experiences } from "@/data";
+import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 export default function WorkPage() {
-  return (
-    <div className="min-h-screen py-12">
-      <div className="w-full max-w-6xl mx-auto px-4">
-        <div className="flex flex-col items-center gap-16">
-          {/* Title */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8"
-          >
-            <h1 className="text-4xl font-bold text-white mb-4">
-              Work Experience
-            </h1>
-            <p className="text-lg text-gray-300">
-              Click on each experience to learn more
-            </p>
-          </motion.div>
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-          {/* Vertical Layout with Regular Cards */}
-          <div className="flex flex-col gap-32 w-full">
+  return (
+    <div className="min-h-screen py-12 md:py-20 lg:py-24">
+      <div className="w-full max-w-screen-2xl mx-auto px-4">
+        <div className="flex flex-col items-center gap-16">
+          {/* Responsive SVG Layout */}
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6 lg:gap-8 w-full justify-center items-center">
             {experiences.map((experience, index) => (
-              <motion.div
-                key={experience.slug}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="w-full"
-              >
+              <div key={experience.slug} className="flex-shrink-0">
                 <Link
-                  href={`/work/experience/${experience.slug}`}
-                  className="block w-full group"
+                  href={`/sides/experience/${experience.slug}`}
+                  className="block"
                 >
-                  <div className="w-full h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center p-8 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl">
-                    <div className="text-center">
-                      <Image
-                        className="w-64 h-64 object-contain mx-auto mb-6 transition-transform duration-300 group-hover:scale-110"
-                        src={experience.imageUrl}
-                        alt={experience.title}
-                        width={256}
-                        height={256}
-                      />
-                      <h3 className="text-2xl font-bold text-white mb-2">
-                        {experience.title}
-                      </h3>
-                      <p className="text-gray-300 text-lg mb-4">
-                        {experience.date}
-                      </p>
-                      <p className="text-gray-400 text-base max-w-md mx-auto leading-relaxed">
-                        {experience.description}
-                      </p>
-                      <div className="mt-6">
-                        <span className="inline-block px-4 py-2 bg-white/20 text-white rounded-lg text-sm font-medium transition-all duration-300 group-hover:bg-white/30">
-                          Click to explore
-                        </span>
-                      </div>
-                    </div>
+                  <div
+                    className={`w-48 h-48 sm:w-56 sm:h-56 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-lg flex items-center justify-center ${
+                      index % 2 === 0 ? "mt-0" : "md:mt-12 lg:mt-16"
+                    } animate-float`}
+                    style={{
+                      animationDelay: `${index * 0.5}s`,
+                      animationDuration: "3s",
+                    }}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    <Image
+                      className="w-full h-full object-contain transition-all duration-300"
+                      src={
+                        hoveredIndex === index
+                          ? experience.imageUrlBack
+                          : experience.imageUrl
+                      }
+                      alt={experience.title}
+                      width={256}
+                      height={256}
+                    />
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
+          </div>
+
+          {/* Side Projects Button */}
+          <div className="flex justify-center mt-12">
+            <Link
+              href="/sides"
+              className="inline-flex items-center px-8 py-4 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              사이드 프로젝트 보기
+            </Link>
           </div>
         </div>
       </div>

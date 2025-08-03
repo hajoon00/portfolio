@@ -2,8 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
+import { experiences } from "@/data";
 
 const Nyangiverse = () => {
+  const nyangiverseData = experiences.find((exp) => exp.slug === "nyangiverse");
+
   const characterImages = [
     {
       src: "/images/arts/digital/wordcloud.jpg",
@@ -56,29 +59,68 @@ const Nyangiverse = () => {
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-base font-semibold leading-7 text-pink-300">
-              개요
+              Overview
             </h2>
             <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
               냥이버스 – 디지털 추모관
             </h1>
             <div className="mt-4 flex flex-wrap justify-center gap-2">
-              <span className="bg-pink-500 text-white text-xs font-medium px-3 py-1 rounded-full">
-                픽셀 아트
-              </span>
-              <span className="bg-purple-500 text-white text-xs font-medium px-3 py-1 rounded-full">
-                디지털 추모관
-              </span>
-              <span className="bg-orange-500 text-white text-xs font-medium px-3 py-1 rounded-full">
-                개인 프로젝트
-              </span>
+              {nyangiverseData?.hashtags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="bg-pink-500 text-white text-xs font-medium px-3 py-1 rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
-            <p className="mt-6 text-lg leading-8 text-gray-200 max-w-3xl mx-auto">
-              냥이버스는 제 고양이들인 하솜과 하론과 떨어져 있는 씁쓸한 현실에서
-              탄생한 매우 개인적인 프로젝트입니다. 그들이 10년을 맞이하면서,
-              그리고 최근 그들의 형제를 잃으면서, 이 프로젝트는 디지털 추모관
-              역할을 합니다— 물리적 세계와 가상 세계를 연결하는 공간에서 그들의
-              독특한 성격과 우리의 공유된 기억을 보존하는 방법입니다.
-            </p>
+          </div>
+
+          {/* Project Info */}
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-8">
+            <div className="flex items-center space-x-3">
+              <span className="text-2xl">📅</span>
+              <div className="text-left">
+                <p className="text-pink-300 font-semibold text-sm">Duration</p>
+                <p className="text-white font-medium">2023 - Ongoing</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3">
+              <span className="text-2xl">🛠️</span>
+              <div className="text-left">
+                <p className="text-pink-300 font-semibold text-sm">
+                  Tools Used
+                </p>
+                <p className="text-white font-medium">
+                  Pixel Art, Digital Design
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* My Role Section */}
+      <section className="py-20 sm:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="flex items-center justify-center">
+            <div className="text-left max-w-2xl">
+              <h2 className="text-base font-semibold leading-7 text-pink-500">
+                My Role
+              </h2>
+              <h3 className="text-3xl font-bold text-gray-900 my-3">
+                Creator & Designer
+              </h3>
+
+              <p className="text-gray-700 text-base leading-relaxed">
+                Nyangiverse는 제 고양이들인 하솜과 하론과 떨어져 있는 씁쓸한
+                현실에서 탄생한 매우 개인적인 프로젝트입니다. 그들이 10년을
+                맞이하면서, 그리고 최근 그들의 형제를 잃으면서, 이 프로젝트는
+                디지털 추모관 역할을 합니다— 물리적 세계와 가상 세계를 연결하는
+                공간에서 그들의 독특한 성격과 우리의 공유된 기억을 보존하는
+                방법입니다.
+              </p>
+            </div>
           </div>
         </div>
       </section>

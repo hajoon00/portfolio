@@ -7,8 +7,9 @@ export const experiences = [
     company: "CDR Associates",
     date: "Dec 2024 - Jan 2025",
     description: `Built an official website for a major design agency in Korea.`,
-    hashtags: ["Frontend", "Branding", "UI/UX"],
-    imageUrl: "/images/thumbnail/CAP-CDR.svg", // 예시 이미지 URL
+    hashtags: ["Frontend", "UI/UX"],
+    imageUrl: "/images/thumbnail/CAP-CDR.svg",
+    imageUrlBack: "/images/thumbnail/BACK-CDR.svg",
   },
   {
     id: "exp-02",
@@ -17,8 +18,9 @@ export const experiences = [
     company: "K-PEnSA",
     date: "Sept 2023 - May 2025",
     description: `Marketing Chair/VP Internal at Korean STEM Student Association`,
-    hashtags: ["Marketing", "Frontend", "Event Planning"],
-    imageUrl: "/images/thumbnail/CAP-PENSA.svg"
+    hashtags: ["Marketing", "Frontend", "Graphic Design"],
+    imageUrl: "/images/thumbnail/CAP-PENSA.svg",
+    imageUrlBack: "/images/thumbnail/BACK-PENSA.svg",
   },
   {
     id: "exp-03",
@@ -28,7 +30,8 @@ export const experiences = [
     date: "Jan 2019 — Sep 2020",
     description: `Founded a platform that provides college admissions consulting services.`,
     hashtags: ["Marketing", "Design System", "Content Creation"],
-    imageUrl: "/images/thumbnail/CAP-RFY.svg"
+    imageUrl: "/images/thumbnail/CAP-RFY.svg",
+    imageUrlBack: "/images/thumbnail/BACK-RFY.svg",
   },
   {
     id: "exp-04",
@@ -38,6 +41,7 @@ export const experiences = [
     description: "A cat-themed universe project with pixel arts and digital space",
     hashtags: ["Product Design", "UX/UI", "Branding"],
     imageUrl: "/images/thumbnail/CAP-NYANG.svg",
+    imageUrlBack: "/images/thumbnail/BACK-NYANG.svg",
   },
   // {
   //   id: "exp-05",
@@ -83,15 +87,15 @@ export const projects = [
 ];
 
 export const merchDesigns = [
-  {
-    id: "merch-01",
-    slug: "pensa-merch",
-    title: "K-PEnSA Merchandise",
-    date: "Fall 2023",
-    description: "Club merchandise design for K-PEnSA members",
-    hashtags: ["Merch Design", "Branding"],
-    imageUrl: "/images/thumbnail/Thumbnails-pensa-sticker.webp",
-  },
+  // {
+  //   id: "merch-01",
+  //   slug: "pensa-merch",
+  //   title: "K-PEnSA Merchandise",
+  //   date: "Fall 2023",
+  //   description: "Club merchandise design for K-PEnSA members",
+  //   hashtags: ["Merch Design", "Branding"],
+  //   imageUrl: "/images/thumbnail/Thumbnails-pensa-sticker.webp",
+  // },
   {
     id: "merch-02",
     slug: "superbowl-merch",

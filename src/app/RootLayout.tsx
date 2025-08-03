@@ -51,7 +51,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <main className={`${!isHomePage ? "pt-20" : ""}`}>
           {!isHomePage && (
             <nav
-              className={`fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10 transition-transform duration-300 ${
+              className={`fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md transition-transform duration-300 ${
                 isMounted && isNavbarVisible
                   ? "translate-y-0"
                   : "-translate-y-full"
@@ -62,7 +62,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                   {/* Logo */}
                   <Link href="/" className="flex items-center space-x-2 group">
                     <Image
-                      src="/images/Logo-white.svg"
+                      src="/images/Logo-dark.svg"
                       alt="Hajoon Park Logo"
                       width={100}
                       height={35}
@@ -76,8 +76,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                       href="/"
                       className={`relative px-4 py-4 text-sm font-medium transition-all duration-300 ${
                         isActive("/")
-                          ? "text-white border-b-2 border-white"
-                          : "text-gray-300 hover:text-white hover:bg-white/5"
+                          ? "text-gray-900 border-b-2 border-gray-900"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                       }`}
                     >
                       HOME
@@ -86,28 +86,28 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                       href="/work"
                       className={`relative px-4 py-4 text-sm font-medium transition-all duration-300 ${
                         isActive("/work")
-                          ? "text-white border-b-2 border-white"
-                          : "text-gray-300 hover:text-white hover:bg-white/5"
+                          ? "text-gray-900 border-b-2 border-gray-900"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                       }`}
                     >
                       WORK
                     </Link>
-                    {/* <Link
+                    <Link
                       href="/art"
                       className={`relative px-4 py-4 text-sm font-medium transition-all duration-300 ${
                         isActive("/art")
-                          ? "text-white border-b-2 border-white"
-                          : "text-gray-300 hover:text-white hover:bg-white/5"
+                          ? "text-gray-900 border-b-2 border-gray-900"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                       }`}
                     >
                       ART
-                    </Link> */}
+                    </Link>
                     <Link
                       href="/resume"
                       className={`relative px-4 py-4 text-sm font-medium transition-all duration-300 ${
                         isActive("/resume")
-                          ? "text-white border-b-2 border-white"
-                          : "text-gray-300 hover:text-white hover:bg-white/5"
+                          ? "text-gray-900 border-b-2 border-gray-900"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                       }`}
                     >
                       RESUME
