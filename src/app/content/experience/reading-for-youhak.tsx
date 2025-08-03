@@ -462,11 +462,6 @@ const ReadingForYouhak: NextPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="relative group">
                 <div className="bg-white rounded-xl p-6 shadow-lg border border-pink-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg">
-                      <span className="text-2xl">1</span>
-                    </div>
-                  </div>
                   <h4 className="text-lg font-semibold text-neutral-900 mb-3 text-center">
                     시험 준비 콘텐츠 제작
                   </h4>
@@ -478,11 +473,6 @@ const ReadingForYouhak: NextPage = () => {
 
               <div className="relative group">
                 <div className="bg-white rounded-xl p-6 shadow-lg border border-pink-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg">
-                      <span className="text-2xl">2</span>
-                    </div>
-                  </div>
                   <h4 className="text-lg font-semibold text-neutral-900 mb-3 text-center">
                     Common App 가이드 영상
                   </h4>
@@ -495,11 +485,7 @@ const ReadingForYouhak: NextPage = () => {
 
               <div className="relative group">
                 <div className="bg-white rounded-xl p-6 shadow-lg border border-pink-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg">
-                      <span className="text-2xl">3</span>
-                    </div>
-                  </div>
+                  
                   <h4 className="text-lg font-semibold text-neutral-900 mb-3 text-center">
                     미국 입시 관련 뉴스 속보
                   </h4>

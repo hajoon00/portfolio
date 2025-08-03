@@ -702,7 +702,7 @@ const KPensaExperience = () => {
               </h4>
               <p className="text-gray-600 text-sm">
                 후드는 특정 계절에만 착용 가능해 활용도가 낮고, 이로 인해 제작
-                대비 효과가 제한적일 수 있다는 판단이 들었습니다.
+                대비 효과가 제한적이었습니다.
               </p>
             </div>
             <div className="text-center">
@@ -712,16 +712,17 @@ const KPensaExperience = () => {
               </h4>
               <p className="text-gray-600 text-sm">
                 의류는 사이즈 분류, 재고 관리, 보관 공간 확보 등에서 복잡한
-                관리가 요구되어 조직 차원에서 부담이 컸습니다.
+                관리가 요구되어 관리 차원에서 부담이 컸습니다.
               </p>
             </div>
           </div>
-          <div className="mt-12 bg-hajoon-600 rounded-lg p-6 text-white">
-            <p className="text-alt-100 text-left">
+          <div className="mt-12 bg-hajoon-600 rounded-lg p-6 text-white leading-loose">
+            <p className="text-alt-100 text-center">
               미국 대학에서 스티커는 학생들이 일상 속 다양한 물건에 쉽게 붙일 수
-              있어 본인의 정체성을 나타내는 하나의 문화 요소입니다. 비용 부담이
-              적고 계절을 타지 않으며, 보관과 배포가 간편한 스티커는 새로운 굿즈
-              형태에 가장 적합했습니다.
+              있어 본인의 정체성을 나타내는 하나의 문화 요소입니다.
+              <br />
+              비용 부담이 적고 계절을 타지 않으며, 보관과 배포가 간편한 스티커는
+              새로운 굿즈 형태에 가장 적합했습니다.
             </p>
           </div>
 
@@ -730,7 +731,7 @@ const KPensaExperience = () => {
             <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
               스티커 V2024
             </h3>
-            <p className="text-gray-700 text-left">
+            <p className="text-gray-700 max-w-4xl mx-auto text-left my-6">
               저는 Adobe Illustrator를 사용하여 스티커를 디자인했습니다. 미국의
               레트로한 스포츠 팀 로고들을 참고한 좌측 두 스티커와 귀여움에
               초점을 둔 K-PEnSA의 새로운 오리지날 마스코트인 고양이를 소개하는
@@ -757,9 +758,9 @@ const KPensaExperience = () => {
             <h3 className="text-2xl font-semibold text-gray-900 mb-4 text-center">
               스티커 V2025
             </h3>
-            <p className="text-gray-600 mb-6 text-left">
-              전년도에 가장 인기 있었던 디자인은 고양이였습니다. 그래서 고양이의
-              다양한 변형을 포함한 스티커 시리즈를 만들기로 결정했습니다.
+            <p className="text-gray-600 mb-6 text-center my-6">
+              전년도에 가장 인기 있었던 디자인은 고양이의 다양한 변형을 포함한
+              스티커 시리즈를 만들기로 결정했습니다.
             </p>
             <div className="grid grid-cols-2 lg:flex flex-row justify-around items-center gap-4">
               <div className="relative w-96 h-96">
