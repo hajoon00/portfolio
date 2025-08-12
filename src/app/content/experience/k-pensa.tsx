@@ -583,7 +583,7 @@ const KPensaExperience = () => {
                 </a>
                 <div className="space-y-3">
                   <Image
-                    src="/images/k-pensa/website/old_website_2.png"
+                    src="/images/k-pensa/website/New1.png"
                     alt="이전 이미지 2"
                     width={200}
                     height={200}
@@ -592,7 +592,7 @@ const KPensaExperience = () => {
                 </div>
                 <div className="space-y-3">
                   <Image
-                    src="/images/k-pensa/website/old_website_3.png"
+                    src="/images/k-pensa/website/New2.png"
                     alt="이전 이미지 3"
                     width={200}
                     height={200}
@@ -601,7 +601,7 @@ const KPensaExperience = () => {
                 </div>
                 <div className="space-y-3">
                   <Image
-                    src="/images/k-pensa/website/old_website_4.png"
+                    src="/images/k-pensa/website/New3.png"
                     alt="이전 이미지 4"
                     width={200}
                     height={200}
