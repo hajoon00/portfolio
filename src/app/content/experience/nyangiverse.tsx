@@ -7,8 +7,6 @@ import { experiences } from "@/data";
 
 const Nyangiverse = () => {
   const nyangiverseData = experiences.find((exp) => exp.slug === "nyangiverse");
-  const [hasomCarouselIndex, setHasomCarouselIndex] = React.useState(0);
-  const [haronCarouselIndex, setHaronCarouselIndex] = React.useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
 
@@ -242,33 +240,13 @@ const Nyangiverse = () => {
 
       {/* Design Process */}
       <section className="py-16 sm:py-24">
+        
+      
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              디자인 과정
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              하솜이와 하론이를 모티브로 한 캐릭터 디자인부터 인터랙티브
-              웹사이트 구현까지의 전체 과정
-            </p>
-          </div>
-
-          <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-purple-200"></div>
-            <div className="space-y-8">
-              {/* designProcess is removed as per edit hint */}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pixel Art Choice */}
-      <section className="py-16 sm:py-24 bg-neutral-100">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">
               픽셀 아트를 선택한 이유
-            </h2>
+            </h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -345,76 +323,55 @@ const Nyangiverse = () => {
             </p>
           </div>
 
-          {/* Flip Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {/* Hasom Card */}
-            <div className="bg-white p-6 group items-center">
-              <div className="relative w-4/5 h-96 mb-4 rounded-lg overflow-hidden mx-auto">
-                {/* Real Cat Image */}
-                <Image
-                  src="/images/nyangiverse/hasom-real.jpg"
-                  alt="하솜 실제 사진"
-                  fill
-                  className="object-cover transition-opacity duration-500 group-hover:opacity-0"
-                />
-                {/* Character Image */}
-                <Image
-                  src="/images/nyangiverse/Result-Hasom.png"
-                  alt="하솜 캐릭터"
-                  fill
-                  className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
+          {/* Character Images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+            {/* Hasom Section */}
+            <div className="text-center">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
                 하솜
               </h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="relative w-full aspect-square rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/nyangiverse/hasom-real.jpg"
+                    alt="하솜 실제 사진"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="relative w-full aspect-square rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/nyangiverse/Result-Hasom.png"
+                    alt="하솜 캐릭터"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Haron Card */}
-            <div className="bg-white p-6 group">
-              <div className="relative w-4/5 h-96 mb-4 rounded-lg overflow-hidden mx-auto">
-                {/* Real Cat Image */}
-                <Image
-                  src="/images/nyangiverse/haron-real.jpg"
-                  alt="하론 실제 사진"
-                  fill
-                  className="object-cover transition-opacity duration-500 group-hover:opacity-0"
-                />
-                {/* Character Image */}
-                <Image
-                  src="/images/nyangiverse/Result-Haron.png"
-                  alt="하론 캐릭터"
-                  fill
-                  className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
+            {/* Haron Section */}
+            <div className="text-center">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
                 하론
               </h3>
-            </div>
-          </div>
-          <p className="text-lg text-gray-600 text-center mx-auto">
-            하론이와 하솜이의 매력은 생김새도 성격도 정반대지만 마치
-            티격태격하는 남매처럼 독특한 관계성에서 나옵니다.
-            <br />
-            저는 이 관계성을 시각적으로 표현하는 데 큰 흥미를 느꼈습니다.
-          </p>
-
-          <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-6 mt-12">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <h5 className="font-medium text-purple-800">하솜이</h5>
-                <p className="text-sm">
-                  외향적이고 장난꾸러기이며, 가끔은 덤벙거리지만 어딘가 우아한
-                  매력이 있습니다.
-                </p>
-              </div>
-              <div>
-                <h5 className="font-medium text-pink-800">하론이</h5>
-                <p className="text-sm">
-                  조용하고 낯가림이 있지만, 마음을 열면 누구보다 다정한
-                  고양이입니다.
-                </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="relative w-full aspect-square rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/nyangiverse/haron-real.jpg"
+                    alt="하론 실제 사진"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="relative w-full aspect-square rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/nyangiverse/Result-Haron.png"
+                    alt="하론 캐릭터"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -427,181 +384,61 @@ const Nyangiverse = () => {
           </p>
 
           {/* Character Images */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            {/* Hasom Carousel */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <div className="relative w-full h-80 mb-4 rounded-lg overflow-hidden">
-                <Image
-                  src={hasomImages[hasomCarouselIndex].src}
-                  alt={hasomImages[hasomCarouselIndex].alt}
-                  fill
-                  className="object-contain"
-                />
-
-                {/* Navigation Buttons */}
-                <button
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all duration-200"
-                  onClick={() =>
-                    setHasomCarouselIndex((prev) => (prev === 0 ? 3 : prev - 1))
-                  }
-                >
-                  <svg
-                    className="w-6 h-6 text-gray-700"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 19l-7-7 7-7"
-                    />
-                  </svg>
-                </button>
-                <button
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all duration-200"
-                  onClick={() =>
-                    setHasomCarouselIndex((prev) => (prev === 3 ? 0 : prev + 1))
-                  }
-                >
-                  <svg
-                    className="w-6 h-6 text-gray-700"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-
-                {/* Image Indicators */}
-                <div className="flex justify-center absolute bottom-4 left-0 right-0 space-x-2">
-                  <button
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      hasomCarouselIndex === 0 ? "bg-purple-600" : "bg-gray-300"
-                    }`}
-                    onClick={() => setHasomCarouselIndex(0)}
-                  />
-                  <button
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      hasomCarouselIndex === 1 ? "bg-purple-600" : "bg-gray-300"
-                    }`}
-                    onClick={() => setHasomCarouselIndex(1)}
-                  />
-                  <button
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      hasomCarouselIndex === 2 ? "bg-purple-600" : "bg-gray-300"
-                    }`}
-                    onClick={() => setHasomCarouselIndex(2)}
-                  />
-                  <button
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      hasomCarouselIndex === 3 ? "bg-purple-600" : "bg-gray-300"
-                    }`}
-                    onClick={() => setHasomCarouselIndex(3)}
-                  />
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
-                {hasomImages[hasomCarouselIndex].title}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8">
+            {/* Hasom Images */}
+            <div className="text-center">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+                하솜
               </h3>
-              <p className="text-gray-600 text-sm text-center">
-                {hasomImages[hasomCarouselIndex].description}
-              </p>
+              <div className="space-y-4">
+                {hasomImages.map((image, index) => (
+                  <div key={index} className="relative w-full rounded-lg overflow-hidden">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={400}
+                      height={300}
+                      className="w-full h-auto object-contain"
+                    />
+                    <div className="mt-2">
+                      <h4 className="text-lg font-medium text-gray-900">
+                        {image.title}
+                      </h4>
+                      <p className="text-sm text-gray-600">
+                        {image.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Haron Carousel */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <div className="relative w-full h-80 mb-4 rounded-lg overflow-hidden">
-                <Image
-                  src={haronImages[haronCarouselIndex].src}
-                  alt={haronImages[haronCarouselIndex].alt}
-                  fill
-                  className="object-contain"
-                />
-
-                {/* Navigation Buttons */}
-                <button
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all duration-200"
-                  onClick={() =>
-                    setHaronCarouselIndex((prev) => (prev === 0 ? 3 : prev - 1))
-                  }
-                >
-                  <svg
-                    className="w-6 h-6 text-gray-700"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 19l-7-7 7-7"
-                    />
-                  </svg>
-                </button>
-                <button
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all duration-200"
-                  onClick={() =>
-                    setHaronCarouselIndex((prev) => (prev === 3 ? 0 : prev + 1))
-                  }
-                >
-                  <svg
-                    className="w-6 h-6 text-gray-700"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-
-                {/* Image Indicators */}
-                <div className="flex justify-center absolute bottom-4 left-0 right-0 space-x-2">
-                  <button
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      haronCarouselIndex === 0 ? "bg-blue-600" : "bg-gray-300"
-                    }`}
-                    onClick={() => setHaronCarouselIndex(0)}
-                  />
-                  <button
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      haronCarouselIndex === 1 ? "bg-blue-600" : "bg-gray-300"
-                    }`}
-                    onClick={() => setHaronCarouselIndex(1)}
-                  />
-                  <button
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      haronCarouselIndex === 2 ? "bg-blue-600" : "bg-gray-300"
-                    }`}
-                    onClick={() => setHaronCarouselIndex(2)}
-                  />
-                  <button
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      haronCarouselIndex === 3 ? "bg-blue-600" : "bg-gray-300"
-                    }`}
-                    onClick={() => setHaronCarouselIndex(3)}
-                  />
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
-                {haronImages[haronCarouselIndex].title}
+            {/* Haron Images */}
+            <div className="text-center">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+                하론
               </h3>
-              <p className="text-gray-600 text-sm text-center">
-                {haronImages[haronCarouselIndex].description}
-              </p>
+              <div className="space-y-4">
+                {haronImages.map((image, index) => (
+                  <div key={index} className="relative w-full rounded-lg overflow-hidden">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={400}
+                      height={300}
+                      className="w-full h-auto object-contain"
+                    />
+                    <div className="mt-2">
+                      <h4 className="text-lg font-medium text-gray-900">
+                        {image.title}
+                      </h4>
+                      <p className="text-sm text-gray-600">
+                        {image.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <p className="text-lg text-gray-600 text-center mx-auto mt-12">
@@ -655,9 +492,9 @@ const Nyangiverse = () => {
             </h3>
             <p className="text-center text-lg">
               React 컴포넌트와 Tailwind CSS를 활용하여 직관적이고 몰입감 있는
-              환경을 제작했습니다. 방문자들이 인터랙티브 요소와 시각적
-              스토리텔링을 통해 하솜이와 하론이의 독특한 성격을 경험할 수 있도록
-              구현했습니다.
+              환경을 제작했습니다. 전시에 찾아온 방문자들이 짧은 시간 안에
+              하솜이와 하론이의 성격을 알수 있게 짧은 설문조사 섹션도 넣어
+              간이 MBTI 테스트를 제작했습니다.
             </p>
           </div>
 
@@ -702,7 +539,7 @@ const Nyangiverse = () => {
           {/* Exhibition Photos */}
           <div className="mt-12">
             <div className="grid grid-cols-1 gap-6">
-              <div className="bg-white overflow-hidden">
+              <div className=" overflow-hidden">
                 <div className="relative w-1/3 h-96 mx-auto">
                   <Image
                     src="/images/nyangiverse/Park_Hajoon_1.jpg"
@@ -713,7 +550,7 @@ const Nyangiverse = () => {
                 </div>
               </div>
 
-              <div className="bg-white overflow-hidden">
+              <div className=" overflow-hidden">
                 <div className="relative w-1/2 h-96 mx-auto">
                   <Image
                     src="/images/nyangiverse/Park_Hajoon_2.JPG"

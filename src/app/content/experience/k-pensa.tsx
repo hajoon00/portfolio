@@ -200,7 +200,7 @@ const KPensaExperience = () => {
   ];
 
   return (
-    <div className="space-y-6 relative">
+    <div className="space-y-6 relative bg-neutral-800 min-h-screen">
       {/* Scroll Progress Indicator */}
       <motion.div
         className="fixed right-12 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block"
@@ -315,7 +315,7 @@ const KPensaExperience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="py-20 sm:py-32"
+        className="py-20 sm:py-32 bg-transparent"
       >
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="flex items-start">
@@ -326,13 +326,13 @@ const KPensaExperience = () => {
 
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-1">
+                  <h3 className="text-2xl font-semibold text-white mb-1">
                     Marketing Chair
                   </h3>
-                  <p className="text-gray-600 text-sm mb-2">
+                  <p className="text-gray-300 text-sm mb-2">
                     2023.09 - 2024.08
                   </p>
-                  <p className="text-gray-700 text-base leading-relaxed">
+                  <p className="text-gray-200 text-base leading-relaxed">
                     이벤트 기획 및 홍보물 제작: 행사 목적과 대상에 맞춘 콘셉트
                     기획부터 포스터·온라인 콘텐츠 등 다양한 홍보물을 직접 디자인
                     및 제작하였습니다. <br />
@@ -343,13 +343,13 @@ const KPensaExperience = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-1">
+                  <h3 className="text-2xl font-semibold text-white mb-1">
                     Internal Chair
                   </h3>
-                  <p className="text-gray-600 text-sm mb-2">
+                  <p className="text-gray-300 text-sm mb-2">
                     2024.09 - 2025.05
                   </p>
-                  <p className="text-gray-700 text-base leading-relaxed">
+                  <p className="text-gray-200 text-base leading-relaxed">
                     공식 웹사이트 제작: 공식 웹사이트를 기획·디자인·개발하고
                     사용자 친화적인 UI/UX와 반응형 구조를 적용하여 커뮤니티
                     구성원 및 외부 방문자의 접근성과 활용도를 높였습니다.
@@ -370,11 +370,11 @@ const KPensaExperience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="py-16 sm:py-24 bg-neutral-100"
+        className="py-16 sm:py-24 bg-neutral-900"
       >
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-left mb-12">
-            <h2 className="text-3xl font-bold text-neutral-900 mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4">
               Problem Statement
             </h2>
           </div>
@@ -387,14 +387,14 @@ const KPensaExperience = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-lg p-6 shadow-lg border border-neutral-200 transition-all duration-300"
+                className="bg-neutral-700 rounded-lg p-6 shadow-lg border border-neutral-600 transition-all duration-300"
               >
                 <div className="mb-4">
-                  <h3 className="text-lg font-semibold text-neutral-900">
+                  <h3 className="text-lg font-semibold text-white">
                     {problem.title}
                   </h3>
                 </div>
-                <p className="text-neutral-600">{problem.description}</p>
+                <p className="text-gray-200">{problem.description}</p>
               </motion.div>
             ))}
           </div>
@@ -407,14 +407,14 @@ const KPensaExperience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="py-16 sm:py-24"
+        className="py-16 sm:py-24 bg-transparent"
       >
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-left mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4">
               Activities
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl">
+            <p className="text-lg text-gray-300 max-w-3xl">
               제가 K-PEnSA에서 진행한 주요 프로젝트들과 그 과정을 소개합니다.
             </p>
           </div>
@@ -433,16 +433,16 @@ const KPensaExperience = () => {
                   className="relative flex items-start group"
                 >
                   <motion.div className="absolute left-6 w-4 h-4 bg-hajoon-500 rounded-full border-4 border-white shadow-lg"></motion.div>
-                  <div className="ml-16 bg-white rounded-lg p-6 shadow-lg border border-gray-200 flex-1">
+                  <div className="ml-16 bg-neutral-700 rounded-lg p-6 shadow-lg border border-neutral-600 flex-1">
                     <div className="flex items-center mb-3">
                       <span className="text-hajoon-500 font-bold text-lg mr-3">
                         {step.step}
                       </span>
-                      <h3 className="text-xl font-semibold text-gray-900">
+                      <h3 className="text-xl font-semibold text-white">
                         {step.title}
                       </h3>
                     </div>
-                    <p className="text-gray-600">{step.description}</p>
+                    <p className="text-gray-200">{step.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -457,7 +457,7 @@ const KPensaExperience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="py-16 sm:py-24 bg-neutral-100"
+        className="py-16 sm:py-24 bg-neutral-900"
       >
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <motion.div
@@ -466,15 +466,10 @@ const KPensaExperience = () => {
             viewport={{ once: true }}
             className="text-left mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4">
               마케팅 자료 디자인
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              가장 많은 노력을 기울인 부분은 포스터였습니다. 포스터는 K-PEnSA의
-              모든 커뮤니케이션 채널(정기 이메일, 인스타그램 등)을 통해 배포되기
-              때문에, 회원들이 이벤트에 대한 정보를 얻을 때 첫인상 역할을
-              합니다.
-            </p>
+            
           </motion.div>
 
           {/* Floating Gallery Section */}
@@ -485,7 +480,7 @@ const KPensaExperience = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-2xl font-semibold text-gray-900 mb-8 text-left"
+                className="text-2xl font-semibold text-white mb-8 text-left"
               >
                 스터디 세션 포스터
               </motion.h3>
@@ -535,6 +530,10 @@ const KPensaExperience = () => {
                   </motion.div>
                 ))}
               </div>
+              <p className="text-lg text-gray-300 max-w-3xl mt-12">
+              정기 스터디 세션은 가장 참여율이 높은 K-PEnSA의 핵심 이벤트였습니다. 하지만 홍보의 부재로 인해 이벤트가 일어나는 것조차 모르는 회원들이 많아져, 포스터에 집중하기로 했습니다.
+              기본 디자인을 세팅하고 색과 스터디세션 별 다양한 음식과 테마에 맞추어 변주를 주어 회원들에게 이 이벤트의 반복성을 각인시키고자 했습니다.
+            </p>
             </div>
 
             {/* Event Posters */}
@@ -543,7 +542,7 @@ const KPensaExperience = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-2xl font-semibold text-gray-900 mb-8 text-left"
+                className="text-2xl font-semibold text-white mb-8 text-left"
               >
                 이벤트 포스터
               </motion.h3>
@@ -599,13 +598,13 @@ const KPensaExperience = () => {
       </motion.section>
 
       {/* Website Redesign */}
-      <section className="py-16 sm:py-24">
+      <section className="py-16 sm:py-24 bg-transparent">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-left mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4">
               웹사이트 개편
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl">
+            <p className="text-lg text-gray-300 max-w-3xl">
               약 5년간 방치되어 있던 웹사이트를 개편했습니다.{" "}
               <span className="text-bold">
                 {" "}
@@ -620,7 +619,7 @@ const KPensaExperience = () => {
 
           {/* Connected Problem-Solution Cards */}
           <div className="space-y-8">
-            {/* Website Link Card */}
+            {/* Website Link Card
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -643,7 +642,7 @@ const KPensaExperience = () => {
                   <span>→</span>
                 </div>
               </a>
-            </motion.div>
+            </motion.div> */}
 
             {/* Problem-Solution Pairs */}
             {[
@@ -684,11 +683,11 @@ const KPensaExperience = () => {
                 className="relative"
               >
                 {/* Connection Line */}
-                <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 transform -translate-x-1/2 z-0"></div>
+                <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-600 transform -translate-x-1/2 z-0"></div>
 
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                   {/* Problem Side */}
-                  <motion.div className="bg-white rounded-lg p-6 shadow-lg border border-red-200 relative">
+                  <motion.div className="bg-neutral-700 rounded-lg p-6 shadow-lg border border-red-400 relative">
                     <div className="absolute -top-3 -left-3 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
                       <span className="text-white text-sm font-bold">!</span>
                     </div>
@@ -701,16 +700,16 @@ const KPensaExperience = () => {
                         className="rounded-lg shadow-md w-full"
                       />
                     </div>
-                    <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                    <h4 className="font-semibold text-white mb-2 text-lg">
                       {item.problem.title}
                     </h4>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-gray-200 text-sm">
                       {item.problem.description}
                     </p>
                   </motion.div>
 
                   {/* Solution Side */}
-                  <motion.div className="bg-white rounded-lg p-6 shadow-lg border border-green-200 relative">
+                  <motion.div className="bg-neutral-700 rounded-lg p-6 shadow-lg border border-green-400 relative">
                     <div className="absolute -top-3 -right-3 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
                       <span className="text-white text-sm font-bold">✓</span>
                     </div>
@@ -723,10 +722,10 @@ const KPensaExperience = () => {
                         className="rounded-lg shadow-md w-full"
                       />
                     </div>
-                    <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                    <h4 className="font-semibold text-white mb-2 text-lg">
                       해결됨
                     </h4>
-                    <p className="text-gray-600 text-sm">{item.solution}</p>
+                    <p className="text-gray-200 text-sm">{item.solution}</p>
                   </motion.div>
                 </div>
               </motion.div>
@@ -736,7 +735,7 @@ const KPensaExperience = () => {
       </section>
 
       {/* Merchandise Design */}
-      <section className="pb-16 sm:pb-24 bg-neutral-100">
+      <section className="pb-16 sm:pb-24 bg-neutral-900">
         <div className="relative mb-16">
           <div className="relative w-full h-[70vh] rounded-lg overflow-hidden">
             <Image
@@ -747,8 +746,8 @@ const KPensaExperience = () => {
               priority
             />
             <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-            <div className="absolute inset-0 flex items-start justify-start p-8">
-              <h2 className="text-5xl font-bold text-white text-left">
+            <div className="absolute inset-0 flex items-center justify-center p-8">
+              <h2 className="text-5xl font-bold text-white text-center">
                 굿즈 제작
               </h2>
             </div>
@@ -760,38 +759,38 @@ const KPensaExperience = () => {
 
           {/* Design Change Reason */}
           <div className="mb-16">
-            <h3 className="text-xl font-semibold text-gray-900 mb-8 text-left">
+            <h3 className="text-xl font-semibold text-white mb-8 text-left">
               기존 굿즈였던 <span className="text-hajoon-500">후드티</span>의
               문제점
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               <div className="text-left">
-                <div className="text-4xl mb-4">💰</div>
-                <h4 className="font-semibold text-gray-900 mb-3">
+                
+                <h4 className="font-semibold text-white mb-3">
                   높은 생산 비용
                 </h4>
-                <p className="text-gray-600">
+                <p className="text-gray-200">
                   후드 제작에는 단가가 높게 책정되어 학생들이 쉽게 구매하거나
                   접근하기 어려웠습니다. 굿즈가 모두를 위한 것이 되기 위해서는
                   가격 장벽을 낮추는 것이 필요했습니다.
                 </p>
               </div>
               <div className="text-left">
-                <div className="text-4xl mb-4">🌤️</div>
-                <h4 className="font-semibold text-gray-900 mb-3">
-                  계절적 사용 한계
+                
+                <h4 className="font-semibold text-white mb-3">
+                  계절적 한계
                 </h4>
-                <p className="text-gray-600">
+                <p className="text-gray-200">
                   후드는 특정 계절에만 착용 가능해 활용도가 낮고, 이로 인해 제작
                   대비 효과가 제한적이었습니다.
                 </p>
               </div>
               <div className="text-left">
-                <div className="text-4xl mb-4">📦</div>
-                <h4 className="font-semibold text-gray-900 mb-3">
+             
+                <h4 className="font-semibold text-white mb-3">
                   보관 및 배포의 복잡성
                 </h4>
-                <p className="text-gray-600">
+                <p className="text-gray-200">
                   의류는 사이즈 분류, 재고 관리, 보관 공간 확보 등에서 복잡한
                   관리가 요구되어 관리 차원에서 부담이 컸습니다.
                 </p>
@@ -810,10 +809,10 @@ const KPensaExperience = () => {
 
           {/* Stickers V2024 */}
           <div className="mb-16">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-left">
+            <h3 className="text-2xl font-semibold text-white mb-6 text-left">
               스티커 V2024
             </h3>
-            <p className="text-gray-700 max-w-4xl text-left mb-8">
+            <p className="text-gray-200 max-w-4xl text-left mb-8">
               저는 Adobe Illustrator를 사용하여 스티커를 디자인했습니다. 미국의
               레트로한 스포츠 팀 로고들을 참고한 좌측 두 스티커와 귀여움에
               초점을 둔 K-PEnSA의 새로운 오리지날 마스코트인 고양이를 소개하는
@@ -837,15 +836,15 @@ const KPensaExperience = () => {
 
           {/* Stickers V2025 */}
           <div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-left">
+            <h3 className="text-2xl font-semibold text-white mb-6 text-left">
               스티커 V2025
             </h3>
-            <p className="text-gray-600 mb-8 text-left">
+            <p className="text-gray-200 mb-8 text-left">
               전년도에 가장 인기 있었던 디자인은 고양이의 다양한 변형을 포함한
               스티커 시리즈를 만들기로 결정했습니다.
             </p>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <div className="relative w-full h-80">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-3xl mx-auto">
+              <div className="relative w-full aspect-square">
                 <Image
                   src="/images/merch/pensa/stickers-2025-1.jpg"
                   alt="Pensa Merch 2025"
@@ -854,7 +853,7 @@ const KPensaExperience = () => {
                   priority
                 />
               </div>
-              <div className="relative w-full h-80">
+              <div className="relative w-full aspect-square">
                 <Image
                   src="/images/merch/pensa/stickers-2025-2.jpg"
                   alt="Pensa Merch 2025"
@@ -869,13 +868,13 @@ const KPensaExperience = () => {
       </section>
 
       {/* Outcome & Impact */}
-      <section className="py-16 sm:py-24">
+      <section className="py-16 sm:py-24 bg-transparent">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-left mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4">
               Outcome & Impact
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl">
+            <p className="text-lg text-gray-300 max-w-3xl">
               K-PEnSA에서의 활동을 통해 달성한 주요 성과들입니다.
             </p>
           </div>
@@ -884,7 +883,7 @@ const KPensaExperience = () => {
             {outcomes.map((outcome, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-r from-hajoon-500 to-hajoon-600 rounded-lg p-6 text-white"
+                className="bg-hajoon-600 rounded-lg p-6 text-white"
               >
                 <div className="mb-3">
                   <h3 className="text-lg font-semibold">{outcome.title}</h3>
@@ -897,7 +896,7 @@ const KPensaExperience = () => {
       </section>
 
       {/* Takeaways */}
-      <section className="py-16 sm:py-24">
+      <section className="py-16 sm:py-24 bg-neutral-900">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="text-left mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">

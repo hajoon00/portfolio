@@ -2,17 +2,28 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { experiences, projects, merchDesigns } from "@/data";
 
 export default function Home() {
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const primaryExperience = experiences[0];
   const secondaryExperiences = experiences.slice(1, 3);
   const tertiaryExperience = experiences[3];
-  const sideItems = [...projects, ...merchDesigns].slice(0, 4);
+  const sideItems = [...merchDesigns.slice(0, 2), ...projects.slice(0, 2)];
 
   const getExperienceHref = (slug: string) => `/sides/experience/${slug}`;
   const getSideHref = (item: { id: string; slug: string }) =>
     `/sides/${item.id.startsWith("merch") ? "merch" : "project"}/${item.slug}`;
+
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/Resume-KOR.pdf';
+    link.download = 'Hajoon_Park_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const Card = ({
     title,
@@ -44,22 +55,22 @@ export default function Home() {
         : "text-white text-2xl md:text-3xl font-semibold tracking-tight";
     const dateClass =
       size === "small"
-        ? "text-[10px] md:text-[11px] text-neutral-300 tracking-wide"
-        : "text-[11px] md:text-xs text-neutral-300 tracking-wide";
+        ? "text-[10px] md:text-[11px] text-white/90 tracking-wide"
+        : "text-[11px] md:text-xs text-white/90 tracking-wide";
     const tagsWrapClass =
       size === "small"
-        ? "flex flex-wrap items-center gap-1 text-[10px] md:text-[11px] text-neutral-300"
-        : "flex flex-wrap items-center gap-2 text-[11px] md:text-xs text-neutral-300";
+        ? "flex flex-wrap items-center gap-1 text-[10px] md:text-[11px] text-white/80"
+        : "flex flex-wrap items-center gap-2 text-[11px] md:text-xs text-white/80";
     const tagChipClass =
       size === "small"
-        ? "px-1.5 py-[1px] border border-neutral-300 uppercase"
-        : "px-2 py-[2px] border border-neutral-300 uppercase";
+        ? "px-1.5 py-[1px] border border-white/60 uppercase"
+        : "px-2 py-[2px] border border-white/60 uppercase";
     const gapClass = size === "small" ? "gap-3" : "gap-4";
 
     return (
       <Link href={href} className={`group block relative w-full ${sizeClasses} overflow-hidden`}>
         <Image src={imageUrl} alt={title} fill className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/20" />
         <div className={`absolute inset-0 p-6 md:p-8 flex flex-col justify-end ${gapClass}`}>
           <div 
             className="rounded-xl p-4 flex flex-col gap-2"
@@ -90,10 +101,7 @@ export default function Home() {
 
   return (
     <div 
-      className="min-h-screen text-gray-100 relative overflow-hidden"
-      style={{
-        background: 'radial-gradient(180deg, #1a1a1a 0%, #0a0a0a 80%)',
-      }}
+      className="min-h-screen text-gray-100 relative overflow-hidden bg-neutral-900"
     >
       {/* Animated background elements */}
       <div 
@@ -113,9 +121,15 @@ export default function Home() {
           <Link href="/" className="flex items-center justify-center">
             <Image src="/images/Logo-white.svg" alt="Hajoon Park Logo" width={300} height={35} priority />
           </Link>
-          <p className="text-sm md:text-base text-neutral-300">
+          <p className="text-sm md:text-base text-neutral-300 mb-6">
             보기에 좋은 것을 가능한 모든 방식으로 만드는 디자이너/개발자 박하준입니다.
           </p>
+          <button
+            onClick={() => setIsResumeModalOpen(true)}
+            className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-all duration-300 text-base font-medium"
+          >
+            📄 이력서 보기
+          </button>
         </div>
       </section>
 
@@ -175,6 +189,50 @@ export default function Home() {
           ))}
         </div>
       </main>
+
+      {/* Resume Modal */}
+      {isResumeModalOpen && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <h2 className="text-2xl font-bold text-gray-900">Resume</h2>
+              <button
+                onClick={() => setIsResumeModalOpen(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="black" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* PDF Preview */}
+            <div className="p-6">
+              <div className="bg-gray-100 rounded-lg p-4 mb-6">
+                <iframe
+                  src="/Resume-KOR.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                  className="w-full h-[60vh] border-0 rounded-lg"
+                  title="Resume Preview"
+                />
+              </div>
+              
+              {/* Download Button */}
+              <div className="flex justify-center">
+                <button
+                  onClick={handleDownloadResume}
+                  className="px-8 py-3 bg-alt-600 hover:bg-alt-700 text-white font-semibold rounded-lg transition-colors duration-200 flex items-center gap-2"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  이력서 다운로드
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

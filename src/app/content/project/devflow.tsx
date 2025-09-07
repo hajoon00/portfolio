@@ -13,7 +13,7 @@ const DevFlow: React.FC = () => {
           <h2 className="text-base font-semibold leading-7 text-violet-500">
             Overview
           </h2>
-          <p className="mt-2 text-2xl font-bold tracking-tight sm:text-2xl">
+          <p className="mt-2 text-2xl font-bold text-alt-800 tracking-tight sm:text-2xl">
             DevFlow: Code Editor Web App
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
