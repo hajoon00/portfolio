@@ -18,7 +18,7 @@ const Hasom = () => {
             <h2 className="text-base font-semibold leading-7 text-sky-300">
               Overview
             </h2>
-            <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-bold tracking-tight text-alt-800 sm:text-5xl">
               Hasom – A Craft Brand Identity
             </h1>
             <div className="mt-4 flex flex-wrap justify-center gap-2">
