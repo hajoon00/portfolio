@@ -1,13 +1,42 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { experiences } from "@/data";
 
 const Nyangiverse = () => {
   const nyangiverseData = experiences.find((exp) => exp.slug === "nyangiverse");
   const [hasomCarouselIndex, setHasomCarouselIndex] = React.useState(0);
   const [haronCarouselIndex, setHaronCarouselIndex] = React.useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+
+    const handleScroll = () => {
+      const totalHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(Math.min(progress, 100));
+
+      // 스크롤 중임을 표시
+      setIsScrolling(true);
+
+      // 스크롤이 멈춘 후 1초 뒤에 인디케이터 숨김
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+      }, 1000);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, []);
 
   const hasomImages = [
     {
@@ -65,6 +94,34 @@ const Nyangiverse = () => {
 
   return (
     <div className="space-y-6">
+      {/* Scroll Progress Indicator */}
+      <motion.div
+        className="fixed right-12 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{
+          opacity: scrollProgress > 0 && isScrolling ? 1 : 0,
+          x: scrollProgress > 0 && isScrolling ? 0 : 20,
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="flex flex-col items-center space-y-2 opacity-50">
+          <div className="w-1 h-32 bg-gray-200 rounded-full overflow-hidden">
+            <motion.div
+              className="w-full bg-alt-600 rounded-full"
+              style={{ height: `${scrollProgress}%` }}
+              transition={{ duration: 0.1 }}
+            />
+          </div>
+          <motion.span
+            className="text-xs font-medium text-gray-600 transform whitespace-nowrap"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: scrollProgress > 0 && isScrolling ? 1 : 0 }}
+            transition={{ delay: 0.1, duration: 0.3 }}
+          >
+            {Math.round(scrollProgress)}%
+          </motion.span>
+        </div>
+      </motion.div>
       {/* Hero Section */}
       <section className="py-24 sm:py-32 bg-gradient-to-br from-purple-900 via-pink-800 to-orange-900">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">

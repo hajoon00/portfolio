@@ -1,8 +1,9 @@
 // src/content/experience/k-pensa.tsx
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { experiences } from "@/data";
 
 interface ImageStack {
@@ -12,6 +13,34 @@ interface ImageStack {
 
 const KPensaExperience = () => {
   const pensaData = experiences.find((exp) => exp.slug === "k-pensa");
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+
+    const handleScroll = () => {
+      const totalHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(Math.min(progress, 100));
+
+      // 스크롤 중임을 표시
+      setIsScrolling(true);
+
+      // 스크롤이 멈춘 후 1초 뒤에 인디케이터 숨김
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+      }, 1000);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, []);
 
   // Study session images
   const studyImages: ImageStack = {
@@ -170,40 +199,93 @@ const KPensaExperience = () => {
     },
   ];
 
-  // Carousel state for each card
-  const [studyCarouselIndex, setStudyCarouselIndex] = useState<number>(0);
-  const [eventCarouselIndex, setEventCarouselIndex] = useState<number>(0);
-
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 relative">
+      {/* Scroll Progress Indicator */}
+      <motion.div
+        className="fixed right-12 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{
+          opacity: scrollProgress > 0 && isScrolling ? 1 : 0,
+          x: scrollProgress > 0 && isScrolling ? 0 : 20,
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="flex flex-col items-center space-y-2 opacity-50">
+          <div className="w-1 h-32 bg-gray-200 rounded-full overflow-hidden">
+            <motion.div
+              className="w-full bg-alt-600 rounded-full"
+              style={{ height: `${scrollProgress}%` }}
+              transition={{ duration: 0.1 }}
+            />
+          </div>
+          <motion.span
+            className="text-xs font-medium text-gray-600 transform whitespace-nowrap"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: scrollProgress > 0 && isScrolling ? 1 : 0 }}
+            transition={{ delay: 0.1, duration: 0.3 }}
+          >
+            {Math.round(scrollProgress)}%
+          </motion.span>
+        </div>
+      </motion.div>
       {/* Hero Section */}
-      <section className="py-24 sm:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="py-24 sm:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
+      >
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-base font-semibold leading-7 text-hajoon-500">
+            <motion.h2
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-base font-semibold leading-7 text-hajoon-500"
+            >
               Overview
-            </h2>
-            <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            </motion.h2>
+            <motion.h1
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl"
+            >
               K-PEnSA
-            </h1>
-            <h4 className="text-white text-sm font-medium mt-2">
+            </motion.h1>
+            <motion.h4
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="text-white text-sm font-medium mt-2"
+            >
               (Korea-Penn Engineers and Scientists Association)
-            </h4>
-            <div className="mt-4 flex flex-wrap justify-center gap-2">
+            </motion.h4>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="mt-4 flex flex-wrap justify-center gap-2"
+            >
               {pensaData?.hashtags.map((tag, index) => (
-                <span
+                <motion.span
                   key={index}
                   className="bg-hajoon-500 text-white text-xs font-medium px-3 py-1 rounded-full"
                 >
                   {tag}
-                </span>
+                </motion.span>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* Project Info */}
-          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-8">
-            <div className="flex items-center space-x-3">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0 }}
+            className="mt-8 flex flex-col md:flex-row items-center justify-center gap-8"
+          >
+            <motion.div className="flex items-center space-x-3">
               <span className="text-2xl">📅</span>
               <div className="text-left">
                 <p className="text-hajoon-400 font-semibold text-sm">
@@ -211,8 +293,8 @@ const KPensaExperience = () => {
                 </p>
                 <p className="text-white font-medium">2023.09 - 2025.05</p>
               </div>
-            </div>
-            <div className="flex items-center space-x-3">
+            </motion.div>
+            <motion.div className="flex items-center space-x-3">
               <span className="text-2xl">🛠️</span>
               <div className="text-left">
                 <p className="text-hajoon-400 font-semibold text-sm">
@@ -222,15 +304,21 @@ const KPensaExperience = () => {
                   Adobe Illustrator, Photoshop, Figma, React
                 </p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* My Role Section */}
-      <section className="py-20 sm:py-32">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="py-20 sm:py-32"
+      >
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="flex items-center justify-center">
+          <div className="flex items-start">
             <div className="text-left max-w-3xl">
               <h2 className="text-base font-semibold leading-7 text-hajoon-500">
                 My Role
@@ -274,12 +362,18 @@ const KPensaExperience = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Problem Statement */}
-      <section className="py-16 sm:py-24 bg-neutral-100">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="py-16 sm:py-24 bg-neutral-100"
+      >
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-left mb-12">
             <h2 className="text-3xl font-bold text-neutral-900 mb-4">
               Problem Statement
             </h2>
@@ -287,9 +381,13 @@ const KPensaExperience = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {problemCards.map((problem, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white rounded-lg p-6 shadow-lg border border-neutral-200"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-lg p-6 shadow-lg border border-neutral-200 transition-all duration-300"
               >
                 <div className="mb-4">
                   <h3 className="text-lg font-semibold text-neutral-900">
@@ -297,20 +395,26 @@ const KPensaExperience = () => {
                   </h3>
                 </div>
                 <p className="text-neutral-600">{problem.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Project Process */}
-      <section className="py-16 sm:py-24">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="py-16 sm:py-24"
+      >
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-left mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Activities
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl">
               제가 K-PEnSA에서 진행한 주요 프로젝트들과 그 과정을 소개합니다.
             </p>
           </div>
@@ -320,8 +424,15 @@ const KPensaExperience = () => {
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-hajoon-500"></div>
             <div className="space-y-8">
               {projectSteps.map((step, index) => (
-                <div key={index} className="relative flex items-start">
-                  <div className="absolute left-6 w-4 h-4 bg-hajoon-500 rounded-full border-4 border-white shadow-lg"></div>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                  className="relative flex items-start group"
+                >
+                  <motion.div className="absolute left-6 w-4 h-4 bg-hajoon-500 rounded-full border-4 border-white shadow-lg"></motion.div>
                   <div className="ml-16 bg-white rounded-lg p-6 shadow-lg border border-gray-200 flex-1">
                     <div className="flex items-center mb-3">
                       <span className="text-hajoon-500 font-bold text-lg mr-3">
@@ -333,17 +444,28 @@ const KPensaExperience = () => {
                     </div>
                     <p className="text-gray-600">{step.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Marketing Materials Design */}
-      <section className="py-16 sm:py-24 bg-neutral-100">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="py-16 sm:py-24 bg-neutral-100"
+      >
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-left mb-12"
+          >
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               마케팅 자료 디자인
             </h2>
@@ -353,141 +475,137 @@ const KPensaExperience = () => {
               때문에, 회원들이 이벤트에 대한 정보를 얻을 때 첫인상 역할을
               합니다.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Image Gallery Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            {/* Study Sessions Stack */}
-            <div className="bg-white rounded-lg p-6 shadow-lg border border-gray-200">
-              <div className="relative mb-4">
-                <Image
-                  src={studyImages.images[studyCarouselIndex]}
-                  alt="스터디 세션 포스터"
-                  width={400}
-                  height={400}
-                  className="rounded-lg shadow-md w-full"
-                />
-
-                {/* Navigation Buttons */}
-                <button
-                  onClick={() =>
-                    setStudyCarouselIndex((prev) =>
-                      prev === 0 ? studyImages.images.length - 1 : prev - 1
-                    )
-                  }
-                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
-                >
-                  ‹
-                </button>
-
-                <button
-                  onClick={() =>
-                    setStudyCarouselIndex((prev) =>
-                      prev === studyImages.images.length - 1 ? 0 : prev + 1
-                    )
-                  }
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
-                >
-                  ›
-                </button>
-              </div>
-
-              {/* Image Indicators */}
-              <div className="flex justify-center space-x-2 mb-4">
-                {studyImages.images.map((_, index) => (
-                  <button
+          {/* Floating Gallery Section */}
+          <div className="relative min-h-[600px] mb-8">
+            {/* Study Session Posters */}
+            <div className="mb-16">
+              <motion.h3
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-2xl font-semibold text-gray-900 mb-8 text-left"
+              >
+                스터디 세션 포스터
+              </motion.h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {studyImages.images.map((image, index) => (
+                  <motion.div
                     key={index}
-                    onClick={() => setStudyCarouselIndex(index)}
-                    className={`w-2 h-2 rounded-full ${
-                      index === studyCarouselIndex
-                        ? "bg-hajoon-500"
-                        : "bg-gray-300"
-                    }`}
-                  />
+                    initial={{ opacity: 0, y: 50, rotate: -5 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      delay: index * 0.1,
+                      duration: 0.6,
+                      type: "spring",
+                      stiffness: 100,
+                    }}
+                    className="relative group cursor-pointer"
+                  >
+                    <motion.div
+                      animate={{
+                        y: [0, -10, 0],
+                        rotate: [0, 1, 0],
+                      }}
+                      transition={{
+                        duration: 4 + index * 0.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="relative"
+                    >
+                      <Image
+                        src={image}
+                        alt={`스터디 세션 포스터 ${index + 1}`}
+                        width={200}
+                        height={200}
+                        className="rounded-lg shadow-lg w-full object-cover"
+                      />
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        className="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center"
+                      >
+                        <span className="text-white font-medium text-sm">
+                          View
+                        </span>
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
                 ))}
               </div>
-
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                스터디 세션 포스터
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                정기적인 스터디 세션을 위한 포스터로 동아리의 가장 인기가 많고
-                대표적인 행사이기에 포스터 간 통일성을 중요하게 생각했습니다.
-                매번 달라지는 주제와 간식을 포스터에 반영해서 조금씩 변주를 주어
-                지루하지 않은 디자인을 유지했습니다.
-              </p>
             </div>
 
-            {/* Events Stack */}
-            <div className="bg-white rounded-lg p-6 shadow-lg border border-gray-200">
-              <div className="relative mb-4">
-                <Image
-                  src={eventImages.images[eventCarouselIndex]}
-                  alt="소셜 이벤트 포스터"
-                  width={400}
-                  height={400}
-                  className="rounded-lg shadow-md w-full"
-                />
-
-                {/* Navigation Buttons */}
-                <button
-                  onClick={() =>
-                    setEventCarouselIndex((prev) =>
-                      prev === 0 ? eventImages.images.length - 1 : prev - 1
-                    )
-                  }
-                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
-                >
-                  ‹
-                </button>
-
-                <button
-                  onClick={() =>
-                    setEventCarouselIndex((prev) =>
-                      prev === eventImages.images.length - 1 ? 0 : prev + 1
-                    )
-                  }
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
-                >
-                  ›
-                </button>
-              </div>
-
-              {/* Image Indicators */}
-              <div className="flex justify-center space-x-2 mb-4">
-                {eventImages.images.map((_, index) => (
-                  <button
+            {/* Event Posters */}
+            <div>
+              <motion.h3
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-2xl font-semibold text-gray-900 mb-8 text-left"
+              >
+                이벤트 포스터
+              </motion.h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {eventImages.images.map((image, index) => (
+                  <motion.div
                     key={index}
-                    onClick={() => setEventCarouselIndex(index)}
-                    className={`w-2 h-2 rounded-full ${
-                      index === eventCarouselIndex
-                        ? "bg-hajoon-500"
-                        : "bg-gray-300"
-                    }`}
-                  />
+                    initial={{ opacity: 0, y: 50, rotate: 5 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      delay: index * 0.1,
+                      duration: 0.6,
+                      type: "spring",
+                      stiffness: 100,
+                    }}
+                    className="relative group cursor-pointer"
+                  >
+                    <motion.div
+                      animate={{
+                        y: [0, 10, 0],
+                        rotate: [0, -1, 0],
+                      }}
+                      transition={{
+                        duration: 4 + index * 0.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="relative"
+                    >
+                      <Image
+                        src={image}
+                        alt={`이벤트 포스터 ${index + 1}`}
+                        width={200}
+                        height={200}
+                        className="rounded-lg shadow-lg w-full object-cover"
+                      />
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        className="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center"
+                      >
+                        <span className="text-white font-medium text-sm">
+                          View
+                        </span>
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
                 ))}
               </div>
-
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                이벤트 포스터
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed text-left">
-                네트워킹과 친목 도모를 위한 소셜 이벤트 또는 학술 행사 포스터로
-                각각의 행사에 맞게 다양한 색상과 스타일을 사용했습니다.
-              </p>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Website Redesign */}
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-left mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               웹사이트 개편
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto text-left">
+            <p className="text-lg text-gray-600 max-w-3xl">
               약 5년간 방치되어 있던 웹사이트를 개편했습니다.{" "}
               <span className="text-bold">
                 {" "}
@@ -500,253 +618,217 @@ const KPensaExperience = () => {
             </p>
           </div>
 
-          {/* Website Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Problem Card */}
-            <div className="bg-white rounded-lg p-6 shadow-lg border border-gray-200">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                기존 웹사이트 문제점
-              </h3>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="space-y-3">
-                  <Image
-                    src="/images/k-pensa/website/old_website_1.png"
-                    alt="이전 이미지 1"
-                    width={200}
-                    height={200}
-                    className="rounded-lg shadow-md w-full"
-                  />
+          {/* Connected Problem-Solution Cards */}
+          <div className="space-y-8">
+            {/* Website Link Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-r from-hajoon-500 to-hajoon-600 rounded-lg p-6 text-white text-left shadow-lg"
+            >
+              <a
+                href="https://k-pensa.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="text-4xl mb-4">🌐</div>
+                <h3 className="text-2xl font-bold mb-2">K-PEnSA 웹사이트</h3>
+                <p className="text-hajoon-100 mb-4">
+                  개편된 웹사이트를 직접 확인해보세요
+                </p>
+                <div className="inline-flex items-center px-6 py-3 bg-white text-hajoon-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                  <span className="mr-2">방문하기</span>
+                  <span>→</span>
                 </div>
-                <div className="space-y-3">
-                  <Image
-                    src="/images/k-pensa/website/old_website_2.png"
-                    alt="이전 이미지 2"
-                    width={200}
-                    height={200}
-                    className="rounded-lg shadow-md w-full"
-                  />
-                </div>
-                <div className="space-y-3">
-                  <Image
-                    src="/images/k-pensa/website/old_website_3.png"
-                    alt="이전 이미지 3"
-                    width={200}
-                    height={200}
-                    className="rounded-lg shadow-md w-full"
-                  />
-                </div>
-                <div className="space-y-3">
-                  <Image
-                    src="/images/k-pensa/website/old_website_4.png"
-                    alt="이전 이미지 4"
-                    width={200}
-                    height={200}
-                    className="rounded-lg shadow-md w-full"
-                  />
-                </div>
-              </div>
+              </a>
+            </motion.div>
 
-              <div className="space-y-3">
-                {websiteProblems.map((problem, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <span className="text-red-500 font-bold text-lg">•</span>
-                    <div>
-                      <h4 className="font-semibold text-gray-900">
-                        {problem.title}
-                      </h4>
-                      <p className="text-gray-600 text-sm">
-                        {problem.description}
-                      </p>
+            {/* Problem-Solution Pairs */}
+            {[
+              {
+                problem: websiteProblems[0],
+                solution:
+                  "최신 버전 React와 Tailwind CSS 사용으로 최적화된 코드 작성",
+                oldImage: "/images/k-pensa/website/old_website_1.png",
+                newImage: "/images/k-pensa/website/New1.png",
+              },
+              {
+                problem: websiteProblems[1],
+                solution: "현대적이고 일관된 UI/UX 디자인으로 사용자 경험 개선",
+                oldImage: "/images/k-pensa/website/old_website_2.png",
+                newImage: "/images/k-pensa/website/New2.png",
+              },
+              {
+                problem: websiteProblems[2],
+                solution:
+                  "모바일, 태블릿, 데스크톱 모든 기기에서 최적화된 경험 제공",
+                oldImage: "/images/k-pensa/website/old_website_3.png",
+                newImage: "/images/k-pensa/website/New3.png",
+              },
+              {
+                problem: websiteProblems[3],
+                solution:
+                  "직관적인 네비게이션과 공식 이메일로 실시간으로 저장되는 Contact Us 페이지",
+                oldImage: "/images/k-pensa/website/old_website_4.png",
+                newImage: "/images/k-pensa/website/New1.png",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="relative"
+              >
+                {/* Connection Line */}
+                <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 transform -translate-x-1/2 z-0"></div>
+
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  {/* Problem Side */}
+                  <motion.div className="bg-white rounded-lg p-6 shadow-lg border border-red-200 relative">
+                    <div className="absolute -top-3 -left-3 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm font-bold">!</span>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Solution Card */}
-            <div className="bg-white rounded-lg p-6 shadow-lg border border-gray-200">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                개선 사항
-              </h3>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <a
-                  href="https://k-pensa.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block h-full bg-hajoon-500 hover:bg-hajoon-600 text-white font-semibold rounded-lg shadow-md transition-colors duration-200 flex items-center justify-center text-center"
-                >
-                  <div>
-                    <div className="text-2xl mb-2">🌐</div>
-                    <div className="text-sm">웹사이트</div>
-                    <div className="text-xs opacity-90">방문하기</div>
-                  </div>
-                </a>
-                <div className="space-y-3">
-                  <Image
-                    src="/images/k-pensa/website/New1.png"
-                    alt="이전 이미지 2"
-                    width={200}
-                    height={200}
-                    className="rounded-lg shadow-md w-full"
-                  />
-                </div>
-                <div className="space-y-3">
-                  <Image
-                    src="/images/k-pensa/website/New2.png"
-                    alt="이전 이미지 3"
-                    width={200}
-                    height={200}
-                    className="rounded-lg shadow-md w-full"
-                  />
-                </div>
-                <div className="space-y-3">
-                  <Image
-                    src="/images/k-pensa/website/New3.png"
-                    alt="이전 이미지 4"
-                    width={200}
-                    height={200}
-                    className="rounded-lg shadow-md w-full"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-4 mb-6">
-                <div className="flex items-start space-x-3">
-                  <span className="text-green-500 font-bold text-lg">✓</span>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">버전 컨트롤</h4>
-                    <p className="text-gray-600 text-sm">
-                      최신 버전 React와 Tailwind CSS 사용으로 최적화된 코드 작성
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <span className="text-green-500 font-bold text-lg">✓</span>
-
-                  <div>
-                    <h4 className="font-semibold text-gray-900">
-                      현대적인 디자인
+                    <div className="mb-4">
+                      <Image
+                        src={item.oldImage}
+                        alt={`문제점 ${index + 1}`}
+                        width={300}
+                        height={200}
+                        className="rounded-lg shadow-md w-full"
+                      />
+                    </div>
+                    <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                      {item.problem.title}
                     </h4>
                     <p className="text-gray-600 text-sm">
-                      현대적이고 일관된 UI/UX 디자인으로 사용자 경험 개선
+                      {item.problem.description}
                     </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <span className="text-green-500 font-bold text-lg">✓</span>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">
-                      반응형 웹 디자인
+                  </motion.div>
+
+                  {/* Solution Side */}
+                  <motion.div className="bg-white rounded-lg p-6 shadow-lg border border-green-200 relative">
+                    <div className="absolute -top-3 -right-3 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm font-bold">✓</span>
+                    </div>
+                    <div className="mb-4">
+                      <Image
+                        src={item.newImage}
+                        alt={`개선사항 ${index + 1}`}
+                        width={300}
+                        height={200}
+                        className="rounded-lg shadow-md w-full"
+                      />
+                    </div>
+                    <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                      해결됨
                     </h4>
-                    <p className="text-gray-600 text-sm">
-                      모바일, 태블릿, 데스크톱 모든 기기에서 최적화된 경험 제공
-                    </p>
-                  </div>
+                    <p className="text-gray-600 text-sm">{item.solution}</p>
+                  </motion.div>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <span className="text-green-500 font-bold text-lg">✓</span>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">
-                      개선된 정보 구조
-                    </h4>
-                    <p className="text-gray-600 text-sm">
-                      직관적인 네비게이션과 공식 이메일로 실시간으로 저장되는
-                      Contact Us 페이지
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Merchandise Design */}
-      <section className="py-16 sm:py-24 bg-neutral-100">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">굿즈 제작</h2>
-            <div className="relative w-full h-96 mx-auto mb-6">
-              <Image
-                src="/images/thumbnail/Thumbnails-pensa-sticker.webp"
-                alt="Pensa Sticker Thumbnail"
-                fill
-                className="object-cover rounded-lg"
-                priority
-              />
+      <section className="pb-16 sm:pb-24 bg-neutral-100">
+        <div className="relative mb-16">
+          <div className="relative w-full h-[70vh] rounded-lg overflow-hidden">
+            <Image
+              src="/images/thumbnail/Thumbnails-pensa-sticker.webp"
+              alt="Pensa Sticker Thumbnail"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+            <div className="absolute inset-0 flex items-start justify-start p-8">
+              <h2 className="text-5xl font-bold text-white text-left">
+                굿즈 제작
+              </h2>
             </div>
           </div>
+        </div>
+
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          {/* Section Header with Background */}
 
           {/* Design Change Reason */}
-          <h3 className="text-xl font-semibold text-gray-900 mb-6 text-center">
-            기존 굿즈였던 <span className="text-hajoon-500">후드티</span>의
-            문제점
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-white rounded-lg p-6 ">
-            <div className="text-center">
-              <div className="text-3xl mb-3">💰</div>
-              <h4 className="font-semibold text-gray-900 mb-2">
-                높은 생산 비용
-              </h4>
-              <p className="text-gray-600 text-sm">
-                후드 제작에는 단가가 높게 책정되어 학생들이 쉽게 구매하거나
-                접근하기 어려웠습니다. 굿즈가 모두를 위한 것이 되기 위해서는
-                가격 장벽을 낮추는 것이 필요했습니다.
+          <div className="mb-16">
+            <h3 className="text-xl font-semibold text-gray-900 mb-8 text-left">
+              기존 굿즈였던 <span className="text-hajoon-500">후드티</span>의
+              문제점
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="text-left">
+                <div className="text-4xl mb-4">💰</div>
+                <h4 className="font-semibold text-gray-900 mb-3">
+                  높은 생산 비용
+                </h4>
+                <p className="text-gray-600">
+                  후드 제작에는 단가가 높게 책정되어 학생들이 쉽게 구매하거나
+                  접근하기 어려웠습니다. 굿즈가 모두를 위한 것이 되기 위해서는
+                  가격 장벽을 낮추는 것이 필요했습니다.
+                </p>
+              </div>
+              <div className="text-left">
+                <div className="text-4xl mb-4">🌤️</div>
+                <h4 className="font-semibold text-gray-900 mb-3">
+                  계절적 사용 한계
+                </h4>
+                <p className="text-gray-600">
+                  후드는 특정 계절에만 착용 가능해 활용도가 낮고, 이로 인해 제작
+                  대비 효과가 제한적이었습니다.
+                </p>
+              </div>
+              <div className="text-left">
+                <div className="text-4xl mb-4">📦</div>
+                <h4 className="font-semibold text-gray-900 mb-3">
+                  보관 및 배포의 복잡성
+                </h4>
+                <p className="text-gray-600">
+                  의류는 사이즈 분류, 재고 관리, 보관 공간 확보 등에서 복잡한
+                  관리가 요구되어 관리 차원에서 부담이 컸습니다.
+                </p>
+              </div>
+            </div>
+            <div className="bg-hajoon-600 rounded-lg p-8 text-white">
+              <p className="text-left text-lg leading-relaxed">
+                미국 대학에서 스티커는 학생들이 일상 속 다양한 물건에 쉽게 붙일
+                수 있어 본인의 정체성을 나타내는 하나의 문화 요소입니다.
+                <br />
+                비용 부담이 적고 계절을 타지 않으며, 보관과 배포가 간편한
+                스티커는 새로운 굿즈 형태에 가장 적합했습니다.
               </p>
             </div>
-            <div className="text-center">
-              <div className="text-3xl mb-3">🌤️</div>
-              <h4 className="font-semibold text-gray-900 mb-2">
-                계절적 사용 한계
-              </h4>
-              <p className="text-gray-600 text-sm">
-                후드는 특정 계절에만 착용 가능해 활용도가 낮고, 이로 인해 제작
-                대비 효과가 제한적이었습니다.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl mb-3">📦</div>
-              <h4 className="font-semibold text-gray-900 mb-2">
-                보관 및 배포의 복잡성
-              </h4>
-              <p className="text-gray-600 text-sm">
-                의류는 사이즈 분류, 재고 관리, 보관 공간 확보 등에서 복잡한
-                관리가 요구되어 관리 차원에서 부담이 컸습니다.
-              </p>
-            </div>
-          </div>
-          <div className="mt-12 bg-hajoon-600 rounded-lg p-6 text-white leading-loose">
-            <p className="text-alt-100 text-center">
-              미국 대학에서 스티커는 학생들이 일상 속 다양한 물건에 쉽게 붙일 수
-              있어 본인의 정체성을 나타내는 하나의 문화 요소입니다.
-              <br />
-              비용 부담이 적고 계절을 타지 않으며, 보관과 배포가 간편한 스티커는
-              새로운 굿즈 형태에 가장 적합했습니다.
-            </p>
           </div>
 
           {/* Stickers V2024 */}
-          <div className="my-12 bg-white rounded-lg p-8">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-left">
               스티커 V2024
             </h3>
-            <p className="text-gray-700 max-w-4xl mx-auto text-left my-6">
+            <p className="text-gray-700 max-w-4xl text-left mb-8">
               저는 Adobe Illustrator를 사용하여 스티커를 디자인했습니다. 미국의
               레트로한 스포츠 팀 로고들을 참고한 좌측 두 스티커와 귀여움에
               초점을 둔 K-PEnSA의 새로운 오리지날 마스코트인 고양이를 소개하는
               우측 두 스티커는 제가 만들었던 10여개의 디자인 중 투표로 채택되어
               실제로 제작/배포되었습니다.
             </p>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               {stickerImages.map((image, index) => (
-                <div key={index} className="rounded-lg">
+                <div key={index} className="rounded-lg overflow-hidden">
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    width={150}
-                    height={150}
-                    className="object-cover rounded-lg w-full"
+                    width={200}
+                    height={200}
+                    className="object-cover w-full h-auto"
                   />
                 </div>
               ))}
@@ -754,16 +836,16 @@ const KPensaExperience = () => {
           </div>
 
           {/* Stickers V2025 */}
-          <div className="bg-white rounded-lg p-8">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4 text-center">
+          <div>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-left">
               스티커 V2025
             </h3>
-            <p className="text-gray-600 mb-6 text-center my-6">
+            <p className="text-gray-600 mb-8 text-left">
               전년도에 가장 인기 있었던 디자인은 고양이의 다양한 변형을 포함한
               스티커 시리즈를 만들기로 결정했습니다.
             </p>
-            <div className="grid grid-cols-2 lg:flex flex-row justify-around items-center gap-4">
-              <div className="relative w-96 h-96">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              <div className="relative w-full h-80">
                 <Image
                   src="/images/merch/pensa/stickers-2025-1.jpg"
                   alt="Pensa Merch 2025"
@@ -772,7 +854,7 @@ const KPensaExperience = () => {
                   priority
                 />
               </div>
-              <div className="relative w-96 h-96">
+              <div className="relative w-full h-80">
                 <Image
                   src="/images/merch/pensa/stickers-2025-2.jpg"
                   alt="Pensa Merch 2025"
@@ -789,11 +871,11 @@ const KPensaExperience = () => {
       {/* Outcome & Impact */}
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-left mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Outcome & Impact
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl">
               K-PEnSA에서의 활동을 통해 달성한 주요 성과들입니다.
             </p>
           </div>
@@ -817,26 +899,30 @@ const KPensaExperience = () => {
       {/* Takeaways */}
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-left mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Key Takeaways
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl">
               이 프로젝트를 통해 얻은 귀중한 경험과 학습 내용들입니다.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:flex flex-row justify-center gap-6">
             {takeaways.map((takeaway, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white rounded-lg p-6 shadow-lg border border-gray-200 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-lg p-6 shadow-lg border border-gray-200 text-left transition-all duration-300"
               >
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">
                   {takeaway.title}
                 </h3>
                 <p className="text-gray-600">{takeaway.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

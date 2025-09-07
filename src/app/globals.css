@@ -12,12 +12,12 @@
 :root {
     --foreground-rgb: 0, 0, 0;
     /* --background-end-rgb: 156, 179, 201; */
-    --background-rgb: (#ebe4cf);
+    --background-rgb: (#0a0a0a);
 }
 
 body {
-    color: rgb(var(--foreground-rgb));
-    background: rgb(var(--background-rgb));
+    color: rgb(240, 240, 240);
+    background: #0a0a0a;
     font-family: 'Pretendard', sans-serif; /* Use Pretendard as the default font */
 }
 
@@ -78,3 +78,20 @@ body {
 .animate-float:hover {
     animation-play-state: paused;
 }
+
+/* Responsive clip-path for work page */
+@media (min-width: 1024px) {
+    .diagonal-clip-odd {
+        clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+    }
+    
+    .diagonal-clip-even {
+        clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+    }
+}
+
+/* Custom shadow for work page sections */
+.shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(200, 0, 0, 0.8);
+}
+

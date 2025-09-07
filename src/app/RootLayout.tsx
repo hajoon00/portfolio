@@ -48,7 +48,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body>
-        <main className={`${!isHomePage ? "pt-20" : ""}`}>
+        <main>
           {!isHomePage && (
             <nav
               className={`fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md transition-transform duration-300 ${
@@ -82,7 +82,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                     >
                       HOME
                     </Link>
-                    <Link
+                    {/* <Link
                       href="/work"
                       className={`relative px-4 py-4 text-sm font-medium transition-all duration-300 ${
                         isActive("/work")
@@ -91,8 +91,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                       }`}
                     >
                       WORK
-                    </Link>
-                    <Link
+                    </Link> */}
+                    {/* <Link
                       href="/art"
                       className={`relative px-4 py-4 text-sm font-medium transition-all duration-300 ${
                         isActive("/art")
@@ -101,7 +101,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                       }`}
                     >
                       ART
-                    </Link>
+                    </Link> */}
                     <Link
                       href="/resume"
                       className={`relative px-4 py-4 text-sm font-medium transition-all duration-300 ${
