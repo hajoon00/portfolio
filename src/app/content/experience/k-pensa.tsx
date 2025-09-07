@@ -664,14 +664,14 @@ const KPensaExperience = () => {
                 solution:
                   "모바일, 태블릿, 데스크톱 모든 기기에서 최적화된 경험 제공",
                 oldImage: "/images/k-pensa/website/old_website_3.png",
-                newImage: "/images/k-pensa/website/New3.png",
+                newImage: "/images/k-pensa/website/New4.jpg",
               },
               {
                 problem: websiteProblems[3],
                 solution:
                   "직관적인 네비게이션과 공식 이메일로 실시간으로 저장되는 Contact Us 페이지",
                 oldImage: "/images/k-pensa/website/old_website_4.png",
-                newImage: "/images/k-pensa/website/New1.png",
+                newImage: "/images/k-pensa/website/New3.png",
               },
             ].map((item, index) => (
               <motion.div
@@ -719,7 +719,11 @@ const KPensaExperience = () => {
                         alt={`개선사항 ${index + 1}`}
                         width={300}
                         height={200}
-                        className="rounded-lg shadow-md w-full"
+                        className={`rounded-lg shadow-md w-full ${
+                          item.newImage.includes('New4.jpg') 
+                            ? 'h-64 object-contain bg-gray-800' 
+                            : ''
+                        }`}
                       />
                     </div>
                     <h4 className="font-semibold text-white mb-2 text-lg">
