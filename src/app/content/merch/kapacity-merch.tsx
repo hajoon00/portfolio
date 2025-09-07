@@ -73,7 +73,7 @@ const KapacityMerch = () => {
               </div>
 
               {/* Design images */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <Image
                     src="/images/merch/kapacity/Kapacity-hoodie-final.png"
@@ -88,7 +88,7 @@ const KapacityMerch = () => {
                 </div>
                 <div>
                   <Image
-                    src="/images/merch/kapacity/Kapacity-hoodie-front-final.jpg"
+                    src="/images/merch/kapacity/kapacity-hoodie-front-final.jpg"
                     alt="Hoodie Front Design"
                     width={500}
                     height={500}
@@ -98,7 +98,7 @@ const KapacityMerch = () => {
                     앞면 디자인 (좌측 가슴)
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
