@@ -537,6 +537,74 @@ const ReadingForYouhak: NextPage = () => {
           </motion.div>
 
           {/* Representative Video */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8"
+          >
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <motion.h3
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="text-lg font-semibold text-neutral-900 mb-4 text-center"
+              >
+                YouTube 홈
+              </motion.h3>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 }}
+              >
+                <Image
+                  src="/images/reading-for-youhak/youtube-home.jpg"
+                  alt="youtube home"
+                  width={500}
+                  height={300}
+                  className="rounded-lg shadow-md w-full"
+                />
+              </motion.div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
+              <motion.h3
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 }}
+                className="text-lg font-semibold text-neutral-900 mb-4 text-center"
+              >
+                YouTube 영상들
+              </motion.h3>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8 }}
+              >
+                <Image
+                  src="/images/reading-for-youhak/youtube-videos.jpg"
+                  alt="youtube videos"
+                  width={500}
+                  height={300}
+                  className="rounded-lg shadow-md w-full"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
           {/* Video Production Details */}
           <motion.div
@@ -661,88 +729,21 @@ const ReadingForYouhak: NextPage = () => {
                 </div>
                 <div className="bg-white rounded-xl p-6 shadow-lg border border-red-200 text-center">
                   <div className="text-3xl font-bold text-red-600 mb-2">
-                    66K+
+                    66k+
                   </div>
                   <div className="text-neutral-600 text-sm">총 조회수</div>
                 </div>
                 <div className="bg-white rounded-xl p-6 shadow-lg border border-red-200 text-center">
                   <div className="text-3xl font-bold text-red-600 mb-2">
-                    100%
+                    14k+
                   </div>
-                  <div className="text-neutral-600 text-sm">직접 제작</div>
+                  <div className="text-neutral-600 text-sm">최고 조회수</div>
                 </div>
               </motion.div>
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8"
-          >
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="text-lg font-semibold text-neutral-900 mb-4 text-center"
-              >
-                YouTube 홈
-              </motion.h3>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-              >
-                <Image
-                  src="/images/reading-for-youhak/youtube-home.jpg"
-                  alt="youtube home"
-                  width={500}
-                  height={300}
-                  className="rounded-lg shadow-md w-full"
-                />
-              </motion.div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-                className="text-lg font-semibold text-neutral-900 mb-4 text-center"
-              >
-                YouTube 영상들
-              </motion.h3>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.8 }}
-              >
-                <Image
-                  src="/images/reading-for-youhak/youtube-videos.jpg"
-                  alt="youtube videos"
-                  width={500}
-                  height={300}
-                  className="rounded-lg shadow-md w-full"
-                />
-              </motion.div>
-            </motion.div>
-          </motion.div>
+          
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -897,13 +898,13 @@ const ReadingForYouhak: NextPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl p-8 shadow-xl border border-pink-200"
+              className="bg-red-700 rounded-2xl p-8 shadow-xl border border-pink-200"
             >
               <motion.h3
                 initial={{ opacity: 0, y: -10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-2xl font-semibold text-neutral-900 mb-6 text-center"
+                className="text-2xl font-semibold text-neutral-200 mb-6 text-center"
               >
                 콘텐츠 방향성 확립
               </motion.h3>
@@ -912,7 +913,7 @@ const ReadingForYouhak: NextPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="text-neutral-600 text-lg leading-relaxed text-center mb-6 text-semibold"
+                className="text-neutral-200 text-lg leading-relaxed text-center mb-6 text-semibold"
               >
                 미국 유학 입시생이라는 굉장히 작은 시장에서 저희는 아무도
                 제공하지 않지만 끊임없이 수요가 존재하는 지점을 파고들고자
@@ -956,13 +957,13 @@ const ReadingForYouhak: NextPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-8 shadow-xl border border-red-200"
+              className="bg-red-700 rounded-2xl p-8 shadow-xl border border-red-200"
             >
               <motion.h3
                 initial={{ opacity: 0, y: -10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-2xl font-semibold text-neutral-900 mb-6 text-center"
+                className="text-2xl font-semibold text-neutral-200 mb-6 text-center"
               >
                 개인 컨설팅 과정
               </motion.h3>
@@ -971,7 +972,7 @@ const ReadingForYouhak: NextPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="text-neutral-600 text-lg leading-relaxed text-center mb-6 text-semibold"
+                className="text-neutral-200 text-lg leading-relaxed text-center mb-6 text-semibold"
               >
                 위의 콘텐츠로 쌓인 코어 유저들을 대상으로 종합적인 미국 대입
                 가이던스 프로그램을 진행했습니다.
@@ -987,7 +988,7 @@ const ReadingForYouhak: NextPage = () => {
                     className="bg-white rounded-xl p-4 shadow-lg border border-red-200"
                   >
                     <div className="flex items-center mb-3">
-                      <div className="bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg mr-4">
+                      <div className="bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg mr-4">
                         <span className="text-lg font-bold">{index + 1}</span>
                       </div>
                       <h4 className="text-lg font-semibold text-neutral-900">
