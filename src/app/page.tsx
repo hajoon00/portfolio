@@ -4,9 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { experiences, projects, merchDesigns } from "@/data";
+import { arts } from "@/artsData";
 
 export default function Home() {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const [selectedArt, setSelectedArt] = useState<typeof arts[0] | null>(null);
   const primaryExperience = experiences[0];
   const secondaryExperiences = experiences.slice(1, 3);
   const tertiaryExperience = experiences[3];
@@ -188,6 +190,39 @@ export default function Home() {
             />
           ))}
         </div>
+
+        {/* Art Section */}
+        <div className="mt-16 md:mt-20">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-2">Art Works</h2>
+            <p className="text-sm md:text-base text-neutral-400">개인 작품 모음</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
+            {arts.map((art, index) => (
+              <div 
+                key={index} 
+                className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer"
+                onClick={() => setSelectedArt(art)}
+              >
+                <Image
+                  src={art.src}
+                  alt={art.alt}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 className="text-white text-xs font-medium truncate">{art.title}</h3>
+                  <p className="text-white/80 text-[10px] truncate">{art.description}</p>
+                </div>
+                {art.isInteractive && (
+                  <div className="absolute top-2 right-2 w-2 h-2 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </main>
 
       {/* Resume Modal */}
@@ -229,6 +264,58 @@ export default function Home() {
                   이력서 다운로드
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Art Modal */}
+      {selectedArt && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">{selectedArt.title}</h2>
+                <p className="text-gray-600 mt-1">{selectedArt.description}</p>
+              </div>
+              <button
+                onClick={() => setSelectedArt(null)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="black" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Art Image */}
+            <div className="p-6">
+              <div className="relative w-full h-[60vh] rounded-lg overflow-hidden bg-gray-100">
+                <Image
+                  src={selectedArt.src}
+                  alt={selectedArt.alt}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              
+              {/* Interactive Link */}
+              {selectedArt.link && (
+                <div className="mt-6 text-center">
+                  <a
+                    href={selectedArt.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    작품 보러가기
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>

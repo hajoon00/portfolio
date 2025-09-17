@@ -134,7 +134,7 @@ const ReadingForYouhak: NextPage = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-0">
       {/* Scroll Progress Indicator */}
       <motion.div
         className="fixed right-12 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block"
@@ -504,6 +504,115 @@ const ReadingForYouhak: NextPage = () => {
             >
               콘텐츠 제작
             </motion.h2>
+
+            {/* Branding Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="mb-16"
+            >
+              <motion.h3
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="text-2xl font-bold text-neutral-900 mb-8 text-center"
+              >
+                브랜딩 & 디자인 시스템
+              </motion.h3>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                {/* Logo Design */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                  className="bg-white rounded-2xl p-8 shadow-lg border border-neutral-200"
+                >
+                  <h4 className="text-xl font-semibold text-neutral-900 mb-4 text-center">
+                    로고 디자인
+                  </h4>
+                  <div className="space-y-4">
+                    <div className="bg-gradient-to-r from-red-50 to-red-100 rounded-xl p-6 text-center">
+                      <div className="text-4xl font-bold text-red-600 mb-2">
+                        유학 읽어주는 남자
+                      </div>
+                      <p className="text-sm text-neutral-600">
+                        Adobe Illustrator로 제작한 브랜드 로고
+                      </p>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-neutral-600 text-sm">
+                          한국어와 영어가 조화된 타이포그래피 디자인
+                        </p>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-neutral-600 text-sm">
+                          교육 브랜드에 적합한 신뢰감 있는 색상 선택
+                        </p>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-neutral-600 text-sm">
+                          다양한 매체에서 활용 가능한 확장성 고려
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Video Template */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 }}
+                  className="bg-white rounded-2xl p-8 shadow-lg border border-neutral-200"
+                >
+                  <h4 className="text-xl font-semibold text-neutral-900 mb-4 text-center">
+                    영상 템플릿 제작
+                  </h4>
+                  <div className="space-y-4">
+                    <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 text-center">
+                      <div className="text-2xl font-bold text-blue-600 mb-2">
+                        인트로/아웃트로
+                      </div>
+                      <p className="text-sm text-neutral-600">
+                        일관된 브랜드 경험을 위한 모션 그래픽
+                      </p>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-neutral-600 text-sm">
+                          Adobe After Effects로 제작한 모션 그래픽
+                        </p>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-neutral-600 text-sm">
+                          브랜드 컬러와 로고를 활용한 시각적 일관성
+                        </p>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-neutral-600 text-sm">
+                          모든 영상에 적용 가능한 재사용 가능한 템플릿
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Representative Video */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -511,6 +620,15 @@ const ReadingForYouhak: NextPage = () => {
               transition={{ delay: 0.4 }}
               className="mb-12"
             >
+              <motion.h3
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="text-2xl font-bold text-neutral-900 mb-6 text-center"
+              >
+                대표 영상
+              </motion.h3>
               <div className="max-w-4xl mx-auto">
                 <div className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden shadow-lg">
                   <iframe

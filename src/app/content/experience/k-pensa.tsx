@@ -200,7 +200,7 @@ const KPensaExperience = () => {
   ];
 
   return (
-    <div className="space-y-6 relative bg-neutral-800 min-h-screen">
+    <div className=" relative bg-neutral-800 min-h-screen">
       {/* Scroll Progress Indicator */}
       <motion.div
         className="fixed right-12 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block"

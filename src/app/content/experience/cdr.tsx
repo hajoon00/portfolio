@@ -118,7 +118,7 @@ const CDRExperience = () => {
   ];
 
   return (
-    <div className="space-y-6 relative bg-neutral-950 text-neutral-100">
+    <div className=" relative bg-neutral-950 text-neutral-100">
       {/* Scroll Progress Indicator */}
       <motion.div
         className="fixed right-12 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block"

@@ -101,7 +101,7 @@ export const merchDesigns = [
     title: "Penn FAD Board Superbowl Event",
     date: "Spring 2025",
     description: "펜 FAD 보드 슈퍼볼 멤버들을 위한 머천다이즈 디자인입니다.",
-    hashtags: ["Merch Design", "Branding"],
+    hashtags: ["Merch Design", "Event Coordination"],
     imageUrl: "/images/thumbnail/Thumbnails-superbowl-merch.webp",
   },
   

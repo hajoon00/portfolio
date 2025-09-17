@@ -3,10 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { experiences } from "@/data";
 
 const Nyangiverse = () => {
-  const nyangiverseData = experiences.find((exp) => exp.slug === "nyangiverse");
+  // const nyangiverseData = experiences.find((exp) => exp.slug === "nyangiverse");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
 
@@ -91,7 +90,7 @@ const Nyangiverse = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-0">
       {/* Scroll Progress Indicator */}
       <motion.div
         className="fixed right-12 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block"
@@ -121,45 +120,60 @@ const Nyangiverse = () => {
         </div>
       </motion.div>
       {/* Hero Section */}
-      <section className="py-24 sm:py-32 bg-gradient-to-br from-purple-900 via-pink-800 to-orange-900">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-base font-semibold leading-7 text-pink-300">
-              Overview
-            </h2>
-            <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              NYANGIVERSE
-            </h1>
-            <div className="mt-4 flex flex-wrap justify-center gap-2">
-              {nyangiverseData?.hashtags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="bg-pink-500 text-white text-xs font-medium px-3 py-1 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
+      <section className="relative w-full aspect-video overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="/images/nyangiverse/RENDER_3.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Overlay */}
+        <div className="absolute inset-0  z-10" />
+        {/* Glassmorphism Info Card */}
+        <div className="absolute bottom-4 left-4 right-4 z-20">
+          <div 
+            className="max-w-lg mx-auto p-4 rounded-xl backdrop-blur-md"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)'
+            }}
+          >
+            <div className="text-center">
+              <h2 className="text-xs font-semibold leading-6 text-pink-600">
+                Overview
+              </h2>
+              <h1 className="mt-1 text-lg font-bold tracking-tight text-white sm:text-xl">
+                NYANGIVERSE
+              </h1>
             </div>
-          </div>
 
-          {/* Project Info */}
-          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-8">
-            <div className="flex items-center space-x-3">
-              <span className="text-2xl">📅</span>
-              <div className="text-left">
-                <p className="text-pink-300 font-semibold text-sm">Duration</p>
-                <p className="text-white font-medium">2025.02 - 2025.04</p>
+            {/* Project Info */}
+            <div className="mt-3 flex flex-col sm:flex-row items-center justify-center gap-3 text-xs">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm">📅</span>
+                <div className="text-left">
+                  <p className="text-pink-600 font-semibold text-[10px]">Duration</p>
+                  <p className="text-white font-medium text-[10px]">2025.02 - 2025.04</p>
+                </div>
               </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <span className="text-2xl">🛠️</span>
-              <div className="text-left">
-                <p className="text-pink-300 font-semibold text-sm">
-                  Tools Used
-                </p>
-                <p className="text-white font-medium">
-                  React, Adobe Illustrator, Adobe Photoshop, Procreate
-                </p>
+              <div className="flex items-center space-x-2">
+                <span className="text-sm">🛠️</span>
+                <div className="text-left">
+                  <p className="text-pink-600 font-semibold text-[10px]">
+                    Tools Used
+                  </p>
+                  <p className="text-white font-medium text-[10px]">
+                    React, Adobe Illustrator, Adobe Photoshop, Procreate
+                  </p>
+                </div>
               </div>
             </div>
           </div>
