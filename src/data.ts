@@ -33,38 +33,9 @@ export const experiences = [
     imageUrl: "/images/thumbnail/rfy-mockup.jpg",
     imageUrlBack: "/images/thumbnail/BACK-RFY.svg",
   },
-  {
-    id: "exp-04",
-    slug: "nyangiverse",
-    title: "Nyangiverse",
-    date: "Spring 2025",
-    description: "2025 University of Pennsylvania Design 졸업 작품. 실제 고양이를 이용한 픽셀 아트 캐릭터 디자인.",
-    hashtags: ["Product Design", "Graphic Design", "BX"],
-    imageUrl: "/images/nyangiverse/hoodie-hasom-navy.jpg",
-    imageUrlBack: "/images/thumbnail/BACK-NYANG.svg",
-  },
-  // {
-  //   id: "exp-05",
-  //   slug: "CooKR",
-  //   title: "CooKR: Korean Recipe App",
-  //   date: "Spring 2024",
-  //   description: "A recipe app for authentic Korean cuisine.",
-  //   hashtags: ["Product Design", "UX/UI", "App Design"],
-  //   imageUrl: "/images/thumbnail/Thumbnails-cookr.jpg",
-  // },
 ];
 
 export const projects = [
-  {
-    id: "proj-01",  
-    slug: "hasom",
-    title: "Hasom",
-    date: "Fall 2024",
-    description: "고양이를 위한 브랜딩 프로젝트입니다.",
-    hashtags: ["Branding", "Graphic Design"],
-    imageUrl: "/images/thumbnail/Thumbnails-hasom.webp",
-  },
-  
   {
     id: "proj-02",
     slug: "devflow",
@@ -74,15 +45,15 @@ export const projects = [
     hashtags: ["Product Design", "UX/UI", "Frontend"],
     imageUrl: "/images/thumbnail/Thumbnails-devflow.webp",
   },
-  // {
-  //   id: "proj-03",
-  //   slug: "station",
-  //   title: "Seoul Mediacity Biennale Redesign",
-  //   date: "Fall 2022",
-  //   description: "서울 미디어시티 비엔날레 디자인 시스템을 재설계했습니다.",
-  //   hashtags: ["Redesign", "Branding", "Graphic Design"],
-  //   imageUrl: "/images/thumbnail/Thumbnails-station.webp",
-  // },
+  {
+    id: "proj-cookr",
+    slug: "CooKR",
+    title: "CooKR: Korean Recipe App",
+    date: "Spring 2024",
+    description: "한식 레시피를 찾고 따라 만들 수 있는 앱 디자인입니다.",
+    hashtags: ["Product Design", "UX/UI", "App Design"],
+    imageUrl: "/images/thumbnail/Thumbnails-cookr.webp",
+  },
 ];
 
 export const merchDesigns = [
@@ -105,15 +76,137 @@ export const merchDesigns = [
     imageUrl: "/images/thumbnail/Thumbnails-superbowl-merch.webp",
   },
   
+  // Add more merch designs as needed
+];
+
+/** Single entry for the combined graphic design case study page. */
+export const graphicDesignsCollection = {
+  slug: "graphic-design",
+  title: "Graphic design",
+  date: "2024 — 2025",
+  description:
+    "Nyangiverse, Hasom 브랜딩, Kapacity 머천다이즈 등 그래픽·브랜딩 작업입니다.",
+  hashtags: ["Branding", "Graphic Design", "BX", "Merch"],
+} as const;
+
+/** Home page: project cards grouped by practice area. */
+export type HomePortfolioItemRef =
+  | { kind: "experience"; slug: string }
+  | { kind: "project"; slug: string }
+  | { kind: "merch"; slug: string };
+
+export type HomePortfolioSection = {
+  id: string;
+  title: string;
+  items: HomePortfolioItemRef[];
+};
+
+export type PortfolioCardItem = {
+  slug: string;
+  title: string;
+  imageUrl: string;
+  date?: string;
+  hashtags?: string[];
+  href: string;
+};
+
+/** Cards on /graphic-design — each links to /graphic-design/[slug]. */
+export const graphicDesignProjects: PortfolioCardItem[] = [
   {
-    id: "merch-03",
-    slug: "kapacity-merch",
+    slug: "nyangiverse",
+    title: "Nyangiverse",
+    date: "Spring 2025",
+    hashtags: ["Product Design", "Graphic Design", "BX"],
+    imageUrl: "/images/nyangiverse/hoodie-hasom-navy.jpg",
+    href: "/graphic-design/nyangiverse",
+  },
+  {
+    slug: "hasom",
+    title: "Hasom",
+    date: "Fall 2024",
+    hashtags: ["Branding", "Graphic Design"],
+    imageUrl: "/images/thumbnail/Thumbnails-hasom.webp",
+    href: "/graphic-design/hasom",
+  },
+  {
+    slug: "kapacity",
     title: "Kapacity 후드티 디자인",
     date: "Spring 2025",
-    description: "Kapacity 멤버들을 위한 머천다이즈 디자인입니다.",
     hashtags: ["Merch Design", "Branding"],
     imageUrl: "/images/thumbnail/Thumbnails-kapacity-hoodie.webp",
+    href: "/graphic-design/kapacity",
   },
-  
-  // Add more merch designs as needed
+];
+
+export const graphicDesignSlugs = ["nyangiverse", "hasom", "kapacity"] as const;
+export type GraphicDesignSlug = (typeof graphicDesignSlugs)[number];
+
+export function isGraphicDesignSlug(s: string): s is GraphicDesignSlug {
+  return (graphicDesignSlugs as readonly string[]).includes(s);
+}
+
+export function resolveHomePortfolioItem(
+  ref: HomePortfolioItemRef
+): PortfolioCardItem | null {
+  if (ref.kind === "experience") {
+    const e = experiences.find((x) => x.slug === ref.slug);
+    if (!e) return null;
+    return {
+      slug: e.slug,
+      title: e.title,
+      imageUrl: e.imageUrl,
+      date: e.date,
+      hashtags: e.hashtags,
+      href: `/sides/experience/${e.slug}`,
+    };
+  }
+  if (ref.kind === "project") {
+    const p = projects.find((x) => x.slug === ref.slug);
+    if (!p) return null;
+    return {
+      slug: p.slug,
+      title: p.title,
+      imageUrl: p.imageUrl,
+      date: p.date,
+      hashtags: p.hashtags,
+      href: `/sides/project/${p.slug}`,
+    };
+  }
+  const m = merchDesigns.find((x) => x.slug === ref.slug);
+  if (!m) return null;
+  return {
+    slug: m.slug,
+    title: m.title,
+    imageUrl: m.imageUrl,
+    date: m.date,
+    hashtags: m.hashtags,
+    href: `/sides/merch/${m.slug}`,
+  };
+}
+
+export const homePortfolioSections: HomePortfolioSection[] = [
+  {
+    id: "content-creation",
+    title: "Content creation",
+    items: [
+      { kind: "experience", slug: "cdr" },
+      { kind: "experience", slug: "reading-for-youhak" },
+    ],
+  },
+  {
+    id: "offline-marketing",
+    title: "Offline marketing",
+    items: [
+      { kind: "experience", slug: "k-pensa" },
+      { kind: "merch", slug: "superbowl-merch" },
+    ],
+  },
+  {
+    id: "product-design",
+    title: "Product design",
+    items: [
+      { kind: "project", slug: "devflow" },
+      { kind: "project", slug: "CooKR" },
+    ],
+  },
 ];

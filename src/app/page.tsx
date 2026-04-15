@@ -2,324 +2,177 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { experiences, projects, merchDesigns } from "@/data";
-import { arts } from "@/artsData";
+import { useMemo, useState } from "react";
+import {
+  graphicDesignsCollection,
+  homePortfolioSections,
+  resolveHomePortfolioItem,
+  type PortfolioCardItem,
+} from "@/data";
+
+type HomeFeedItem = {
+  item: PortfolioCardItem;
+  category: string;
+};
+
+const TRANSITION_MS = 700;
+
+function BackgroundLayer({
+  item,
+  className,
+  style,
+}: {
+  item: HomeFeedItem;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <div className={`absolute inset-0 ${className ?? ""}`} style={style}>
+      <Image
+        src={item.item.imageUrl}
+        alt={item.item.title}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-black/45" />
+    </div>
+  );
+}
 
 export default function Home() {
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
-  const [selectedArt, setSelectedArt] = useState<typeof arts[0] | null>(null);
-  const primaryExperience = experiences[0];
-  const secondaryExperiences = experiences.slice(1, 3);
-  const tertiaryExperience = experiences[3];
-  const sideItems = [...merchDesigns.slice(0, 2), ...projects.slice(0, 2)];
-
-  const getExperienceHref = (slug: string) => `/sides/experience/${slug}`;
-  const getSideHref = (item: { id: string; slug: string }) =>
-    `/sides/${item.id.startsWith("merch") ? "merch" : "project"}/${item.slug}`;
-
-  const handleDownloadResume = () => {
-    const link = document.createElement('a');
-    link.href = '/Resume-KOR.pdf';
-    link.download = 'Hajoon_Park_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const Card = ({
-    title,
-    imageUrl,
-    href,
-    size,
-    date,
-    hashtags,
-  }: {
-    title: string;
-    imageUrl: string;
-    href: string;
-    size: "hero" | "half" | "wide" | "small";
-    date?: string;
-    hashtags?: string[];
-  }) => {
-    const sizeClasses =
-      size === "hero"
-        ? "h-[60vh]"
-        : size === "half"
-        ? "h-[40vh]"
-        : size === "wide"
-        ? "h-[50vh]"
-        : "aspect-[4/3]"; // small
-
-    const titleClass =
-      size === "small"
-        ? "text-white text-sm md:text-base font-semibold tracking-tight"
-        : "text-white text-2xl md:text-3xl font-semibold tracking-tight";
-    const dateClass =
-      size === "small"
-        ? "text-[10px] md:text-[11px] text-white/90 tracking-wide"
-        : "text-[11px] md:text-xs text-white/90 tracking-wide";
-    const tagsWrapClass =
-      size === "small"
-        ? "flex flex-wrap items-center gap-1 text-[10px] md:text-[11px] text-white/80"
-        : "flex flex-wrap items-center gap-2 text-[11px] md:text-xs text-white/80";
-    const tagChipClass =
-      size === "small"
-        ? "px-1.5 py-[1px] border border-white/60 uppercase"
-        : "px-2 py-[2px] border border-white/60 uppercase";
-    const gapClass = size === "small" ? "gap-3" : "gap-4";
-
-    return (
-      <Link href={href} className={`group block relative w-full ${sizeClasses} overflow-hidden`}>
-        <Image src={imageUrl} alt={title} fill className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/20" />
-        <div className={`absolute inset-0 p-6 md:p-8 flex flex-col justify-end ${gapClass}`}>
-          <div 
-            className="rounded-xl p-4 flex flex-col gap-2"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)'
-            }}
-          >
-            <h3 className={titleClass}>{title}</h3>
-            {date && <div className={dateClass}>{date}</div>}
-            {hashtags && (
-              <div className={tagsWrapClass}>
-                {hashtags.slice(0, 4).map((tag) => (
-                  <span key={tag} className={tagChipClass}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-            </div>
-        </div>
-      </Link>
+  const feedItems: HomeFeedItem[] = useMemo(() => {
+    const baseItems = homePortfolioSections.flatMap((section) =>
+      section.items
+        .map((ref) => {
+          const item = resolveHomePortfolioItem(ref);
+          if (!item) return null;
+          return { item, category: section.title };
+        })
+        .filter((entry): entry is HomeFeedItem => entry !== null)
     );
+
+    baseItems.push({
+      category: "Graphic design",
+      item: {
+        slug: graphicDesignsCollection.slug,
+        title: graphicDesignsCollection.title,
+        date: graphicDesignsCollection.date,
+        hashtags: [...graphicDesignsCollection.hashtags],
+        imageUrl: "/images/thumbnail/Thumbnails-nyangiverse.webp",
+        href: "/graphic-design",
+      },
+    });
+
+    return baseItems;
+  }, []);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [transition, setTransition] = useState<{
+    from: number;
+    to: number;
+  } | null>(null);
+
+  const activeItem = feedItems[activeIndex];
+
+  const handleLogoClick = () => {
+    if (transition) return;
+    const next = (activeIndex + 1) % feedItems.length;
+    setTransition({ from: activeIndex, to: next });
+
+    window.setTimeout(() => {
+      setActiveIndex(next);
+      setTransition(null);
+    }, TRANSITION_MS);
   };
 
   return (
-    <div 
-      className="min-h-screen text-gray-100 relative overflow-hidden bg-neutral-900"
-    >
-      {/* Animated background elements */}
-      <div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `
-            radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
-            radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 50%)
-          `,
-          animation: 'float 6s ease-in-out infinite'
-        }}
-      />
-      {/* Intro Section */}
-      <section className="py-16 md:py-24 relative">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 flex flex-col gap-8 justify-center items-center text-center">
-          <Link href="/" className="flex items-center justify-center">
-            <Image src="/images/Logo-white.svg" alt="Hajoon Park Logo" width={300} height={35} priority />
-          </Link>
-          <p className="text-sm md:text-base text-neutral-300 mb-6">
-            보기에 좋은 것을 가능한 모든 방식으로 만드는 디자이너/개발자 박하준입니다.
+    <div className="relative h-screen overflow-hidden bg-black text-white">
+      {!transition && <BackgroundLayer item={activeItem} />}
+      {transition && (
+        <>
+          <BackgroundLayer
+            item={feedItems[transition.from]}
+            style={{ animation: `slideOutUp ${TRANSITION_MS}ms ease forwards` }}
+          />
+          <BackgroundLayer
+            item={feedItems[transition.to]}
+            style={{ animation: `slideInUp ${TRANSITION_MS}ms ease forwards` }}
+          />
+        </>
+      )}
+
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/35 via-transparent to-black/55" />
+
+      <div className="absolute top-6 left-6 right-6 z-20 flex items-center justify-between">
+        <span className="text-[10px] md:text-xs uppercase tracking-[0.24em] text-white/75">
+          Hajoon Park
+        </span>
+        <Link
+          href="/resume"
+          className="pointer-events-auto inline-flex items-center justify-center rounded-full border border-white/30 bg-black/30 px-4 py-2 text-xs font-medium backdrop-blur-sm transition-colors hover:bg-white/10"
+        >
+          Resume
+        </Link>
+      </div>
+
+      <button
+        onClick={handleLogoClick}
+        aria-label="다음 프로젝트 보기"
+        className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2 rounded-full px-6 py-4"
+      >
+        <Image
+          src="/images/Logo-white.svg"
+          alt="Hajoon Park"
+          width={320}
+          height={36}
+          priority
+          className="drop-shadow-[0_10px_30px_rgba(0,0,0,0.55)]"
+        />
+      </button>
+
+      <div className="absolute bottom-8 left-6 right-6 z-20 flex items-end justify-between gap-6">
+        <div className="max-w-3xl">
+          <p className="mb-2 text-[10px] md:text-xs uppercase tracking-[0.22em] text-white/70">
+            {activeItem.category}
           </p>
-          <button
-            onClick={() => setIsResumeModalOpen(true)}
-            className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-all duration-300 text-base font-medium"
-          >
-            📄 이력서 보기
-          </button>
-        </div>
-      </section>
-
-      {/* Cards Layout */}
-      <main className="max-w-6xl mx-auto px-4 md:px-8 py-8 md:py-12 space-y-8 md:space-y-12">
-        {/* Row 1: single */}
-        {primaryExperience && (
-          <Card
-            title={primaryExperience.title}
-            imageUrl={primaryExperience.imageUrl}
-            href={getExperienceHref(primaryExperience.slug)}
-            size="hero"
-            date={primaryExperience.date}
-            hashtags={primaryExperience.hashtags}
-          />
-        )}
-
-        {/* Row 2: two */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {secondaryExperiences.map((exp) => (
-            <Card
-              key={exp.slug}
-              title={exp.title}
-              imageUrl={exp.imageUrl}
-              href={getExperienceHref(exp.slug)}
-              size="half"
-              date={exp.date}
-              hashtags={exp.hashtags}
-            />
-          ))}
+          <h1 className="text-2xl md:text-4xl font-medium tracking-tight">
+            {activeItem.item.title}
+          </h1>
+          {activeItem.item.date && (
+            <p className="mt-2 text-xs md:text-sm text-white/75">
+              {activeItem.item.date}
+            </p>
+          )}
         </div>
 
-        {/* Row 3: single */}
-        {tertiaryExperience && (
-          <Card
-            title={tertiaryExperience.title}
-            imageUrl={tertiaryExperience.imageUrl}
-            href={getExperienceHref(tertiaryExperience.slug)}
-            size="wide"
-            date={tertiaryExperience.date}
-            hashtags={tertiaryExperience.hashtags}
-          />
-        )}
+        <Link
+          href={activeItem.item.href}
+          className="pointer-events-auto shrink-0 inline-flex items-center rounded-full border border-white/30 bg-black/30 px-4 py-2 text-xs md:text-sm backdrop-blur-sm transition-colors hover:bg-white/10"
+        >
+          View project
+        </Link>
+      </div>
 
-        {/* Row 4: four sides */}
-        <div className="grid grid-cols-2 gap-4 md:gap-6">
-          {sideItems.map((item) => (
-            <Card
-              key={item.slug}
-              title={item.title}
-              imageUrl={item.imageUrl}
-              href={getSideHref(item)}
-              size="small"
-              date={item.date}
-              hashtags={item.hashtags}
-            />
-          ))}
-        </div>
-
-        {/* Art Section */}
-        <div className="mt-16 md:mt-20">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-2">Art Works</h2>
-            <p className="text-sm md:text-base text-neutral-400">개인 작품 모음</p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
-            {arts.map((art, index) => (
-              <div 
-                key={index} 
-                className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer"
-                onClick={() => setSelectedArt(art)}
-              >
-                <Image
-                  src={art.src}
-                  alt={art.alt}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="text-white text-xs font-medium truncate">{art.title}</h3>
-                  <p className="text-white/80 text-[10px] truncate">{art.description}</p>
-                </div>
-                {art.isInteractive && (
-                  <div className="absolute top-2 right-2 w-2 h-2 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </main>
-
-      {/* Resume Modal */}
-      {isResumeModalOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <h2 className="text-2xl font-bold text-gray-900">Resume</h2>
-              <button
-                onClick={() => setIsResumeModalOpen(false)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="black" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            
-            {/* PDF Preview */}
-            <div className="p-6">
-              <div className="bg-gray-100 rounded-lg p-4 mb-6">
-                <iframe
-                  src="/Resume-KOR.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                  className="w-full h-[60vh] border-0 rounded-lg"
-                  title="Resume Preview"
-                />
-              </div>
-              
-              {/* Download Button */}
-              <div className="flex justify-center">
-                <button
-                  onClick={handleDownloadResume}
-                  className="px-8 py-3 bg-alt-600 hover:bg-alt-700 text-white font-semibold rounded-lg transition-colors duration-200 flex items-center gap-2"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  이력서 다운로드
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Art Modal */}
-      {selectedArt && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900">{selectedArt.title}</h2>
-                <p className="text-gray-600 mt-1">{selectedArt.description}</p>
-              </div>
-              <button
-                onClick={() => setSelectedArt(null)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="black" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            
-            {/* Art Image */}
-            <div className="p-6">
-              <div className="relative w-full h-[60vh] rounded-lg overflow-hidden bg-gray-100">
-                <Image
-                  src={selectedArt.src}
-                  alt={selectedArt.alt}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              
-              {/* Interactive Link */}
-              {selectedArt.link && (
-                <div className="mt-6 text-center">
-                  <a
-                    href={selectedArt.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    작품 보러가기
-                  </a>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      <style jsx global>{`
+        @keyframes slideInUp {
+          from {
+            transform: translateY(100%);
+          }
+          to {
+            transform: translateY(0);
+          }
+        }
+        @keyframes slideOutUp {
+          from {
+            transform: translateY(0);
+          }
+          to {
+            transform: translateY(-100%);
+          }
+        }
+      `}</style>
     </div>
   );
 }

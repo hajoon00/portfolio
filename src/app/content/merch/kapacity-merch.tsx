@@ -2,17 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
-import { merchDesigns } from "@/data";
+const KAPACITY_TAGS = ["Merch Design", "Branding"] as const;
 
 const KapacityMerch = () => {
-  const kapacityData = merchDesigns.find(
-    (merch) => merch.slug === "kapacity-merch"
-  );
-
   return (
-    <div className="relative min-h-screen">
-      {/* Fixed Background */}
-      <div className="fixed inset-0 w-full h-full z-0">
+    <div className="relative min-h-screen isolate">
+      {/* Section-scoped background (scrolls with this block on the graphic-design page) */}
+      <div className="absolute inset-0 w-full h-full z-0">
         <Image
           src="/images/merch/kapacity/kapacity-hoodie-back.jpg"
           alt="Kapacity Hoodie Background"
@@ -47,7 +43,7 @@ const KapacityMerch = () => {
                   Kapacity 후드티 디자인
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {kapacityData?.hashtags.map((tag, index) => (
+                  {KAPACITY_TAGS.map((tag, index) => (
                     <span
                       key={index}
                       className="bg-pink-600 text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-full"

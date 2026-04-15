@@ -4,10 +4,9 @@
 import React from "react";
 import Image from "next/image";
 
-import { projects } from "@/data";
+const HASOM_TAGS = ["Branding", "Graphic Design"] as const;
 
 const Hasom = () => {
-  const hasomData = projects.find((proj) => proj.slug === "hasom");
 
   return (
     <div className="space-y-6">
@@ -22,7 +21,7 @@ const Hasom = () => {
               Hasom – A Craft Brand Identity
             </h1>
             <div className="mt-4 flex flex-wrap justify-center gap-2">
-              {hasomData?.hashtags.map((tag, index) => (
+              {HASOM_TAGS.map((tag, index) => (
                 <span
                   key={index}
                   className="bg-sky-700 text-white text-xs font-medium px-3 py-1 rounded-full"
