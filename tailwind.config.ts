@@ -9,6 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        surface: "#fdfdfd",
         background: "var(--background)",
         foreground: "var(--foreground)",
         hajoon: {

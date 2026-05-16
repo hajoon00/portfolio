@@ -1,35 +1,26 @@
 "use client";
 
+import JpegPortfolio from "@/app/components/jpeg-portfolio";
 import { experiences } from "@/data";
-import dynamic from "next/dynamic";
+import { getExperienceJpegGallery } from "@/lib/jpeg-galleries";
 import { notFound } from "next/navigation";
-import { useParams } from "next/navigation"; // Import useParams
+import { useParams } from "next/navigation";
 
 const Page = () => {
-  // Use useParams to get the slug directly
-  const { slug } = useParams<{ slug: string }>(); // Specify the type for params
+  const { slug } = useParams<{ slug: string }>();
 
-  // Find the experience based on the slug
   const experience = experiences.find((exp) => exp.slug === slug);
 
   if (!experience) {
-    console.log("Experience not found for slug:", slug); // Log if not found
     return notFound();
   }
 
-  // Dynamically load the experience content
-  const ContentComponent = dynamic(
-    () => import(`@/app/content/experience/${experience.slug}.tsx`),
-    { ssr: false }
-  );
+  const jpegGallery = getExperienceJpegGallery(slug);
+  if (!jpegGallery) {
+    return notFound();
+  }
 
-  console.log("Experience found:", experience); // Log if found
-
-  return (
-    <div>
-      <ContentComponent />
-    </div>
-  );
+  return <JpegPortfolio items={jpegGallery} />;
 };
 
 export default Page;
