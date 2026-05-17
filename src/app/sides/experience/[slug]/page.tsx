@@ -3,6 +3,7 @@
 import JpegPortfolio from "@/app/components/jpeg-portfolio";
 import { experiences } from "@/data";
 import { getExperienceJpegGallery } from "@/lib/jpeg-galleries";
+import { getProjectMeta } from "@/lib/project-meta";
 import { notFound } from "next/navigation";
 import { useParams } from "next/navigation";
 
@@ -20,7 +21,9 @@ const Page = () => {
     return notFound();
   }
 
-  return <JpegPortfolio items={jpegGallery} />;
+  return (
+    <JpegPortfolio blocks={jpegGallery} meta={getProjectMeta(slug)} />
+  );
 };
 
 export default Page;

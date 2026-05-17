@@ -9,9 +9,11 @@ import { useCallback, useState } from "react";
 function ProjectMedia({
   project,
   priority,
+  sizes,
 }: {
   project: FeaturedProject;
   priority?: boolean;
+  sizes?: string;
 }) {
   const { thumbnail } = project;
 
@@ -33,14 +35,54 @@ function ProjectMedia({
       src={thumbnail.src}
       alt={project.title}
       fill
-      sizes="(max-width: 1024px) 100vw, 55vw"
+      sizes={sizes ?? "(max-width: 1024px) 100vw, 55vw"}
       priority={priority}
       className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
     />
   );
 }
 
-function FeaturedProjectRow({
+function ProjectDetails({
+  project,
+  compact = false,
+}: {
+  project: FeaturedProject;
+  compact?: boolean;
+}) {
+  return (
+    <>
+      <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-500">
+        {project.category}
+      </p>
+      <h3
+        className={
+          compact
+            ? "text-base font-medium tracking-tight text-neutral-900 md:text-lg"
+            : "text-xl font-medium tracking-tight text-neutral-900 transition-transform duration-500 ease-out group-hover:translate-x-1 md:text-2xl lg:text-3xl"
+        }
+      >
+        {project.title}
+      </h3>
+      {project.description ? (
+        <p
+          className={`leading-relaxed text-neutral-600 ${
+            compact
+              ? "text-xs md:text-sm"
+              : "max-w-md text-sm md:text-base md:leading-relaxed"
+          }`}
+          style={{ wordBreak: "keep-all" }}
+        >
+          {project.description}
+        </p>
+      ) : null}
+      {project.year ? (
+        <p className="text-sm text-neutral-400">{project.year}</p>
+      ) : null}
+    </>
+  );
+}
+
+function PortfolioProjectRow({
   project,
   index,
   priority,
@@ -88,9 +130,9 @@ function FeaturedProjectRow({
         </motion.span>
 
         <motion.div
-          className={`relative aspect-[4/3] overflow-hidden bg-neutral-100 ${
-            reversed ? "lg:order-2" : ""
-          }`}
+          className={`relative overflow-hidden bg-neutral-100 ${
+            project.thumbnail.type === "video" ? "aspect-video" : "aspect-[4/3]"
+          } ${reversed ? "lg:order-2" : ""}`}
           whileHover={{ scale: 1.01 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -104,15 +146,37 @@ function FeaturedProjectRow({
               : "group-hover:translate-x-2"
           }`}
         >
-          <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-500">
-            {project.category}
-          </p>
-          <h3 className="text-3xl font-medium tracking-tight text-neutral-900 transition-transform duration-500 ease-out group-hover:translate-x-1 md:text-5xl lg:text-6xl">
-            {project.title}
-          </h3>
-          {project.year ? (
-            <p className="text-sm text-neutral-400">{project.year}</p>
-          ) : null}
+          <ProjectDetails project={project} />
+        </div>
+      </Link>
+    </motion.article>
+  );
+}
+
+function CompactProjectCard({
+  project,
+  priority,
+}: {
+  project: FeaturedProject;
+  priority?: boolean;
+}) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-8%" }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <Link href={project.href} className="group block">
+        <div className="relative aspect-video overflow-hidden bg-neutral-100">
+          <ProjectMedia
+            project={project}
+            priority={priority}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        </div>
+        <div className="mt-4 flex flex-col gap-2 transition-transform duration-500 ease-out group-hover:translate-x-1 md:mt-5">
+          <ProjectDetails project={project} compact />
         </div>
       </Link>
     </motion.article>
@@ -120,9 +184,11 @@ function FeaturedProjectRow({
 }
 
 export default function FeaturedProjects({
-  projects,
+  featured,
+  more,
 }: {
-  projects: FeaturedProject[];
+  featured: FeaturedProject[];
+  more: FeaturedProject[];
 }) {
   return (
     <section id="work" className="scroll-mt-24 bg-surface py-24 md:py-32">
@@ -134,16 +200,31 @@ export default function FeaturedProjects({
         transition={{ duration: 0.6 }}
       >
         <p className="mb-16 text-[10px] uppercase tracking-[0.32em] text-neutral-400 md:mb-24">
-          Selected work
+          Work
         </p>
-        {projects.map((project, index) => (
-          <FeaturedProjectRow
+
+        {more.map((project, index) => (
+          <PortfolioProjectRow
             key={project.slug}
             project={project}
             index={index}
             priority={index === 0}
           />
         ))}
+
+        {featured.length > 0 ? (
+          <div className="mt-20 border-t border-neutral-200/80 pt-16 md:mt-28 md:pt-20">
+            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+              {featured.map((project, index) => (
+                <CompactProjectCard
+                  key={project.slug}
+                  project={project}
+                  priority={more.length === 0 && index === 0}
+                />
+              ))}
+            </div>
+          </div>
+        ) : null}
       </motion.div>
     </section>
   );
