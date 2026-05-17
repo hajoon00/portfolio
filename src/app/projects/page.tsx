@@ -53,12 +53,6 @@ export default function ProjectsPage() {
       <main className="mx-auto w-full max-w-[2400px]">
         {rows.map((row) => (
           <section key={row.id} aria-labelledby={`row-${row.id}`}>
-            <h2
-              id={`row-${row.id}`}
-              className="px-4 py-3 text-xs font-medium uppercase tracking-[0.22em] text-white/55 md:px-6 md:text-sm"
-            >
-              {row.title}
-            </h2>
             <div className="grid grid-cols-2">
               {row.items.map((item) => (
                 <ProjectThumbnail
@@ -83,9 +77,21 @@ function ProjectThumbnail({
   priority?: boolean;
 }) {
   const media = getPortfolioThumbnailMedia(item);
+  const tags = item.hashtags ?? [];
 
   return (
     <Link href={item.href} className="relative block aspect-[16/9] w-full">
+      {tags.length > 0 ? (
+        <>
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-1/3 bg-gradient-to-t from-black/50 to-transparent"
+            aria-hidden
+          />
+          <span className="absolute bottom-3 left-3 right-3 z-20 text-[10px] font-medium leading-relaxed tracking-wide text-white md:bottom-4 md:left-4 md:right-4">
+            {tags.join(" · ")}
+          </span>
+        </>
+      ) : null}
       {media.type === "video" ? (
         <video
           src={media.src}

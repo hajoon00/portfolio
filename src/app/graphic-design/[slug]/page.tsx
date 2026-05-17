@@ -3,7 +3,6 @@
 import JpegPortfolio from "@/app/components/jpeg-portfolio";
 import { isGraphicDesignSlug } from "@/data";
 import { getGraphicDesignJpegGallery } from "@/lib/jpeg-galleries";
-import { getProjectMeta } from "@/lib/project-meta";
 import { notFound, useParams } from "next/navigation";
 
 export default function GraphicDesignCasePage() {
@@ -21,6 +20,6 @@ export default function GraphicDesignCasePage() {
   }
 
   return (
-    <JpegPortfolio blocks={jpegGallery} meta={getProjectMeta(slugStr)} />
+    <JpegPortfolio blocks={jpegGallery} />
   );
 }

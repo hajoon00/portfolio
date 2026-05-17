@@ -34,7 +34,7 @@ export const projects = [
     date: "Spring 2024",
     description: `AI를 활용한 코딩 생산성 향상 웹 애플리케케이션을 "가상으로 구현해보기"`,
     hashtags: ["Product Design", "UX/UI", "Frontend"],
-    imageUrl: "/images/thumbnail/Thumbnails-devflow.webp",
+    imageUrl: "/images/thumbnail-ai/devflow-thumbnail-ai.png",
   },
 ];
 
@@ -43,7 +43,7 @@ export const merchDesigns = [
     slug: "superbowl-merch",
     title: "Penn FAD Board Superbowl Event",
     date: "Spring 2025",
-    description: "펜 FAD 보드 슈퍼볼 멤버들을 위한 머천다이즈 디자인입니다.",
+    description: "바다 건너 외지인이 지역사회와 공명하는 법",
     hashtags: ["Merch Design", "Event Coordination"],
     imageUrl: "/images/thumbnail/Thumbnails-superbowl-merch.webp",
   },
@@ -82,7 +82,7 @@ export const graphicDesignProjects: PortfolioCardItem[] = [
     title: "Nyangiverse",
     date: "Spring 2025",
     description:
-      "냥이버스는 제가 키우는 두 고양이를 모티브로 만든 가상 캐릭터 세계관이며, 브랜딩과 굿즈로 확장 가능한 인터랙티브 공간을 목표로 했습니다.",
+      "귀여움이 가지는 힘",
     hashtags: ["Product Design", "Graphic Design", "BX"],
     imageUrl: "/images/nyangiverse/hoodie-hasom-navy.jpg",
     href: "/graphic-design/nyangiverse",
@@ -92,7 +92,7 @@ export const graphicDesignProjects: PortfolioCardItem[] = [
     title: "Kapacity 후드티 디자인",
     date: "Spring 2025",
     description:
-      "University of Pennsylvania 한인 밴드 Kapacity 멤버들을 위한 머천다이즈 디자인. 한국 전통 문화의 요소를 담은 호랑이 그래픽을 후드티에 적용했습니다.",
+      "전통을 역동적으로",
     hashtags: ["Merch Design", "Branding"],
     imageUrl: "/images/thumbnail/Thumbnails-kapacity-hoodie.webp",
     href: "/graphic-design/kapacity",

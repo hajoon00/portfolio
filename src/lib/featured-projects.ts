@@ -13,7 +13,7 @@ import {
 export type FeaturedProject = {
   slug: string;
   title: string;
-  category: string;
+  hashtags: string[];
   year?: string;
   description?: string;
   href: string;
@@ -22,11 +22,7 @@ export type FeaturedProject = {
 
 const homeFeaturedSlugs = new Set(["nyangiverse", "kapacity", "devflow"]);
 
-const homeFeaturedOrder = [
-  { slug: "nyangiverse", category: "Graphic design" },
-  { slug: "kapacity", category: "Graphic design" },
-  { slug: "devflow", category: "Product design" },
-] as const;
+const homeFeaturedOrder = ["nyangiverse", "kapacity", "devflow"] as const;
 
 function extractYear(date?: string): string | undefined {
   if (!date) return undefined;
@@ -36,14 +32,11 @@ function extractYear(date?: string): string | undefined {
   return `${years[0]}–${years[years.length - 1]}`;
 }
 
-function toFeatured(
-  item: PortfolioCardItem,
-  category: string
-): FeaturedProject {
+function toFeatured(item: PortfolioCardItem): FeaturedProject {
   return {
     slug: item.slug,
     title: item.title,
-    category,
+    hashtags: item.hashtags ?? [],
     year: extractYear(item.date),
     description: item.description,
     href: item.href,
@@ -53,9 +46,9 @@ function toFeatured(
 
 export function getFeaturedProjects(): FeaturedProject[] {
   return homeFeaturedOrder
-    .map(({ slug, category }) => {
+    .map((slug) => {
       const item = resolvePortfolioItemBySlug(slug);
-      return item ? toFeatured(item, category) : null;
+      return item ? toFeatured(item) : null;
     })
     .filter((p): p is FeaturedProject => p !== null);
 }
@@ -67,14 +60,14 @@ export function getAdditionalHomeProjects(): FeaturedProject[] {
     for (const ref of section.items) {
       const item = resolveHomePortfolioItem(ref);
       if (item && !homeFeaturedSlugs.has(item.slug)) {
-        additional.push(toFeatured(item, section.title));
+        additional.push(toFeatured(item));
       }
     }
   }
 
   for (const item of graphicDesignProjects) {
     if (!homeFeaturedSlugs.has(item.slug)) {
-      additional.push(toFeatured(item, "Graphic design"));
+      additional.push(toFeatured(item));
     }
   }
 

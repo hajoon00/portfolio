@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const heroLabel = "크리에이티브 디자이너 · 개발자";
+const heroLabel = "디자이너 · 기획자";
 
 const heroSubtext =
-  "콘텐츠·캠페인·프로덕트·그래픽 디자인을 넘나들며, 명확하고 표현력 있는 경험을 설계합니다.";
+  "0에서 1을, 1에서 100을.";
 
 export default function HomeHeroContent() {
   return (
@@ -16,45 +16,46 @@ export default function HomeHeroContent() {
       aria-label="Introduction"
     >
       <motion.div
-        className="mx-auto max-w-2xl"
+        className="mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
       >
-        <p className="text-xs text-neutral-500 md:text-sm">
-          <span className="font-medium text-neutral-700">박하준</span>
-          <span className="mx-2 text-neutral-300">·</span>
-          {heroLabel}
-        </p>
+        <div className="max-w-2xl">
+          <p className="text-xs text-neutral-500 md:text-sm">
+            <span className="font-medium text-neutral-700">박하준</span>
+            <span className="mx-2 text-neutral-300">·</span>
+            {heroLabel}
+          </p>
 
-        <h1
-          className="mt-4 text-2xl font-medium leading-snug tracking-tight text-neutral-900 md:mt-5 md:text-3xl"
-          style={{ wordBreak: "keep-all" }}
-        >
-          기획부터 디자인까지.
-        </h1>
+          <h1
+            className="mt-4 text-2xl font-medium leading-snug tracking-tight text-neutral-900 md:mt-5 md:text-3xl"
+            style={{ wordBreak: "keep-all" }}
+          >
+            기획부터 디자인까지.
+          </h1>
 
-        <p
-          className="mt-4 text-xs leading-relaxed text-neutral-600 md:text-sm md:leading-relaxed"
-          style={{ wordBreak: "keep-all" }}
-        >
+          <p
+            className="mt-4 text-xs leading-relaxed text-neutral-600 md:text-sm md:leading-relaxed"
+            style={{ wordBreak: "keep-all" }}
+          >
           {heroSubtext}
         </p>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 md:mt-8"
+          className="shrink-0 md:self-end"
         >
           <Link
             href="/Resume-KOR.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-5 py-2 text-xs font-medium text-neutral-800 transition-colors hover:border-neutral-400 hover:bg-neutral-50 md:text-sm"
+            className="inline-flex items-center rounded-full bg-neutral-900 px-5 py-2 text-xs font-medium text-white transition-colors hover:bg-neutral-800 md:text-sm"
           >
             이력서 보기
-            <span aria-hidden>→</span>
           </Link>
         </motion.div>
       </motion.div>

@@ -3,7 +3,6 @@
 import JpegPortfolio from "@/app/components/jpeg-portfolio";
 import { merchDesigns } from "@/data";
 import { getMerchJpegGallery } from "@/lib/jpeg-galleries";
-import { getProjectMeta } from "@/lib/project-meta";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { useParams } from "next/navigation";
@@ -20,7 +19,7 @@ const Page = () => {
   const jpegGallery = getMerchJpegGallery(slug);
   if (jpegGallery) {
     return (
-      <JpegPortfolio blocks={jpegGallery} meta={getProjectMeta(slug)} />
+      <JpegPortfolio blocks={jpegGallery} />
     );
   }
 

@@ -42,6 +42,22 @@ function ProjectMedia({
   );
 }
 
+function ThumbnailHashtags({ tags }: { tags: string[] }) {
+  if (!tags.length) return null;
+
+  return (
+    <>
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-1/3 bg-gradient-to-t from-black/50 to-transparent"
+        aria-hidden
+      />
+      <span className="absolute bottom-3 left-3 right-3 z-20 text-[10px] font-medium leading-relaxed tracking-wide text-white md:bottom-4 md:left-4 md:right-4">
+        {tags.join(" · ")}
+      </span>
+    </>
+  );
+}
+
 function ProjectDetails({
   project,
   compact = false,
@@ -51,9 +67,6 @@ function ProjectDetails({
 }) {
   return (
     <>
-      <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-500">
-        {project.category}
-      </p>
       <h3
         className={
           compact
@@ -137,6 +150,7 @@ function PortfolioProjectRow({
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <ProjectMedia project={project} priority={priority} />
+          <ThumbnailHashtags tags={project.hashtags} />
         </motion.div>
 
         <div
@@ -174,6 +188,7 @@ function CompactProjectCard({
             priority={priority}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
+          <ThumbnailHashtags tags={project.hashtags} />
         </div>
         <div className="mt-4 flex flex-col gap-2 transition-transform duration-500 ease-out group-hover:translate-x-1 md:mt-5">
           <ProjectDetails project={project} compact />

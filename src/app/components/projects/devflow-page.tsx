@@ -7,11 +7,10 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
 
 const SERVICE_URL = "https://hajoon00.github.io/devflow-public/";
-const GITHUB_URL = "https://github.com/hajoon00/devflow-public";
-
+const GITHUB_URL = "https://github.com/EmmaMQJin/DevFlow";
+  
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const fadeUp = {
@@ -27,24 +26,24 @@ const screens = [
   {
     label: "메인 대시보드",
     caption: "연결된 스니펫과 노트를 한눈에",
-    src: "/images/thumbnail/Thumbnails-devflow.webp",
+    src: "/images/devflow/gif1.gif",
   },
   {
     label: "주요 기능",
     caption: "주제별 코드 흐름 탐색",
-    src: "/images/thumbnail/Thumbnails-devflow.webp",
+    src: "/images/devflow/gif2.gif",
   },
   {
     label: "핵심 인터랙션",
     caption: "AI 기반 코드 작성·수정",
-    src: "/images/thumbnail/Thumbnails-devflow.webp",
+    src: "/images/devflow/AIgif.GIF",
   },
 ];
 
 const meta = [
-  { label: "역할", value: "기획 · 디자인 · 프론트엔드 개발" },
-  { label: "기술 스택", value: "Next.js / TypeScript / Tailwind" },
-  { label: "제작연도", value: "2025" },
+  { label: "ROLE", value: "기획 · 디자인 · 프론트엔드 개발" },
+  { label: "TOOLS", value: "Figma · JavaScript · html/CSS" },
+  { label: "YEAR", value: "2024" },
 ];
 
 function Reveal({
@@ -84,30 +83,22 @@ function ScreenCard({
   return (
     <Reveal delay={index * 0.08} className="group">
       <div className="overflow-hidden rounded-sm border border-white/[0.08] bg-white/[0.02]">
-        <div className="relative aspect-[16/10] overflow-hidden">
-          <motion.div
-            className="absolute inset-0"
-            whileHover={{ scale: 1.04 }}
-            transition={{ duration: 0.7, ease }}
-          >
-            <Image
-              src={src}
-              alt={label}
-              fill
-              sizes="(max-width: 1200px) 100vw, 600px"
-              className="object-cover object-top opacity-90 transition-opacity duration-500 group-hover:opacity-100"
-              priority={index === 0}
-            />
-          </motion.div>
-          <motion.div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60"
-            initial={false}
-            whileInView={{ y: -8 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6, ease }}
+        <motion.div
+          className="relative aspect-[16/10] overflow-hidden"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.7, ease }}
+        >
+          <Image
+            src={src}
+            alt={label}
+            fill
+            unoptimized
+            sizes="(max-width: 1200px) 100vw, 400px"
+            className="object-cover object-top opacity-90 transition-opacity duration-500 group-hover:opacity-100"
+            priority={index === 0}
           />
-        </div>
-        <motion.div className="space-y-1 px-5 py-5 md:px-6 md:py-6">
+        </motion.div>
+        <div className="space-y-1 px-5 py-5 md:px-6 md:py-6">
           <p className="text-[10px] uppercase tracking-[0.28em] text-white/40">
             {String(index + 1).padStart(2, "0")}
           </p>
@@ -115,23 +106,19 @@ function ScreenCard({
             {label}
           </h3>
           <p className="text-sm text-white/45">{caption}</p>
-        </motion.div>
+        </div>
       </div>
     </Reveal>
   );
 }
 
 export default function DevflowPage() {
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 480], [0, 80]);
+  const heroOpacity = useTransform(scrollY, [0, 560], [1, 0]);
 
   return (
-    <div className="bg-[#0a0a0a] text-white">
+    <div className="relative bg-[#0a0a0a] text-white">
       <div className="devflow-grain pointer-events-none fixed inset-0 z-0" aria-hidden />
 
       <Link
@@ -142,10 +129,7 @@ export default function DevflowPage() {
       </Link>
 
       {/* Hero */}
-      <section
-        ref={heroRef}
-        className="relative z-10 flex min-h-screen flex-col justify-end px-6 pb-20 pt-32 md:px-10 md:pb-28"
-      >
+      <section className="relative z-10 flex min-h-screen flex-col justify-end px-6 pb-20 pt-32 md:px-10 md:pb-28">
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
           className="mx-auto w-full max-w-6xl"
@@ -175,8 +159,7 @@ export default function DevflowPage() {
             className="mt-8 max-w-xl text-base leading-relaxed text-white/55 md:mt-10 md:text-lg md:leading-relaxed"
             style={{ wordBreak: "keep-all" }}
           >
-            개발 과정의 흐름을 더 직관적이고 효율적으로 만들기 위한 워크플로우
-            플랫폼
+            개발 과정의 흐름을 더 직관적이고 효율적으로 만들기 위한 가상의 워크플로우 플랫폼
           </motion.p>
 
           <motion.div
@@ -191,7 +174,7 @@ export default function DevflowPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-medium text-[#0a0a0a] transition-colors hover:bg-white/90"
             >
-              서비스 바로가기
+              서비스 소개
             </a>
             <a
               href={GITHUB_URL}
@@ -234,9 +217,7 @@ export default function DevflowPage() {
               className="mt-8 text-xl leading-[1.75] text-white/75 md:text-2xl md:leading-[1.7]"
               style={{ wordBreak: "keep-all" }}
             >
-              DevFlow는 여러 도구를 오가며 발생하는 작업 흐름의 단절을 줄이고,
-              보다 자연스럽고 집중할 수 있는 개발 경험을 만들기 위해 시작한
-              프로젝트입니다.
+              DevFlow는 여러 도구를 오가며 발생하는 작업 흐름의 단절을 줄이고, 보다 자연스럽고 집중할 수 있는 개발 경험을 만들기 위해 시작한 프로젝트입니다. 실제 제품을 시장에 출시하지는 못했지만, 문제 발견부터 사용자 경험 설계, 기능 기획, 프로토타이핑까지 서비스가 만들어지는 과정을 주도적으로 경험했습니다.
             </p>
           </Reveal>
         </div>
@@ -258,29 +239,7 @@ export default function DevflowPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative z-10 border-t border-white/[0.06] px-6 py-28 md:px-10 md:py-40">
-        <Reveal className="mx-auto max-w-4xl text-center">
-          <h2 className="text-[clamp(2rem,6vw,4rem)] font-medium leading-tight tracking-[-0.03em] text-white">
-            직접 DevFlow를 경험해보세요
-          </h2>
-          <motion.div
-            className="mt-10"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <a
-              href={SERVICE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-8 py-4 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/[0.1]"
-            >
-              서비스 방문하기
-              <span aria-hidden>→</span>
-            </a>
-          </motion.div>
-        </Reveal>
-      </section>
+      
     </div>
   );
 }
